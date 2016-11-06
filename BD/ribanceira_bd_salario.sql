@@ -25,12 +25,12 @@ DROP TABLE IF EXISTS `salario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `salario` (
-  `codigo` int(11) NOT NULL,
+  `codigo` int(11) NOT NULL AUTO_INCREMENT,
   `base_salarial` float NOT NULL,
   `funcionario` int(11) NOT NULL,
   PRIMARY KEY (`codigo`),
-  KEY `funcionario_idx` (`funcionario`),
-  CONSTRAINT `funcionario` FOREIGN KEY (`funcionario`) REFERENCES `funcionario` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `sal_funcionario_idx` (`funcionario`),
+  CONSTRAINT `salario_funcionario` FOREIGN KEY (`funcionario`) REFERENCES `funcionario` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-06 15:23:15
+-- Dump completed on 2016-11-06 18:33:50
