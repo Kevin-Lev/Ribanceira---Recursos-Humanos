@@ -68,7 +68,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuOcorr&#xea;ncias">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ocorr&#xea;ncias"/>
+            <Property name="text" type="java.lang.String" value="Ocorr&#xea;ncia"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuInsere_Oco">
@@ -91,7 +91,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuAvisos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Avisos"/>
+            <Property name="text" type="java.lang.String" value="Aviso Pr&#xe9;vio"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuGerar_Alerta">

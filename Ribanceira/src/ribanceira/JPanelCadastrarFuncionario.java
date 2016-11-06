@@ -9,6 +9,7 @@ import DAO.Funcionario;
 import Util.HibernateUtil;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
+
 /**
  *
  * @author Alessandra
@@ -214,6 +215,7 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
         s.beginTransaction();
         s.save(f);
         s.getTransaction().commit();
+        JOptionPane.showMessageDialog(this, "Funcionário cadastrado com sucesso!","Cadastro de funcionário",JOptionPane.INFORMATION_MESSAGE);
         this.hide();
     }//GEN-LAST:event_jButtonSalvarFuncionarioActionPerformed
 

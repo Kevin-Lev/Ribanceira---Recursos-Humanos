@@ -19,8 +19,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
      */
     
     CardLayout card;
-    private javax.swing.JPanel jPanelconsul
-            ;
+    private javax.swing.JPanel jPanelconsul;
     public JFrameprincipal() {
         initComponents();
         
@@ -123,7 +122,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuFuncionario);
 
-        jMenuOcorrências.setText("Ocorrências");
+        jMenuOcorrências.setText("Ocorrência");
 
         jMenuInsere_Oco.setText("Registrar");
         jMenuInsere_Oco.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +142,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuOcorrências);
 
-        jMenuAvisos.setText("Avisos");
+        jMenuAvisos.setText("Aviso Prévio");
 
         jMenuGerar_Alerta.setText("Registrar");
         jMenuGerar_Alerta.addActionListener(new java.awt.event.ActionListener() {
@@ -198,6 +197,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
         JPanel panelCadastrarFuncionario = new JPanelCadastrarFuncionario();
         jPanelRoot.add(panelCadastrarFuncionario);
         card.next(jPanelRoot);
+        this.setTitle("Ribanceira RH");
     }//GEN-LAST:event_jMenuConsultar_FunActionPerformed
 
     private void jMenuInsere_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInsere_OcoActionPerformed
