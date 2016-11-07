@@ -29,56 +29,160 @@ public class JPanelCadastrarEmpresa extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabelNomeEmpresa = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jLabelNomeFantasia = new javax.swing.JLabel();
+        jLabelCnpj = new javax.swing.JLabel();
+        jLabelInscricaoEstadual = new javax.swing.JLabel();
+        jLabelInscricaoMunicipal = new javax.swing.JLabel();
+        jLabelTipoEmpresa = new javax.swing.JLabel();
+        jLabelEnderecoEmpresa = new javax.swing.JLabel();
+        jLabelTelefoneEmpresa = new javax.swing.JLabel();
+        jLabelEmailEmpresa = new javax.swing.JLabel();
+        jLabelRegimeTributacao = new javax.swing.JLabel();
+        jTextFieldNomeEmpresa = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jRadioButtonSimRegimeTributacao = new javax.swing.JRadioButton();
+        jRadioButtonNaoRegimeTributacao = new javax.swing.JRadioButton();
+        jButtonSalvar = new javax.swing.JButton();
 
         jLabelNomeEmpresa.setText("Nome da empresa:");
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonCancelarActionPerformed(evt);
             }
         });
 
-        jTextField1.setText("jTextField1");
+        jLabelNomeFantasia.setText("Nome fantasia:");
+
+        jLabelCnpj.setText("CNPJ:");
+
+        jLabelInscricaoEstadual.setText("Inscrição Estadual:");
+
+        jLabelInscricaoMunicipal.setText("Inscrição Municipal:");
+
+        jLabelTipoEmpresa.setText("Tipo:");
+
+        jLabelEnderecoEmpresa.setText("Endereço:");
+
+        jLabelTelefoneEmpresa.setText("Telefone:");
+
+        jLabelEmailEmpresa.setText("E-mail:");
+
+        jLabelRegimeTributacao.setText("Regime de Tributação:");
+
+        jRadioButtonSimRegimeTributacao.setText("Sim");
+
+        jRadioButtonNaoRegimeTributacao.setText("Não");
+
+        jButtonSalvar.setText("Salvar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(239, 239, 239))
             .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelRegimeTributacao)
+                    .addComponent(jLabelNomeEmpresa)
+                    .addComponent(jLabelNomeFantasia)
+                    .addComponent(jLabelCnpj)
+                    .addComponent(jLabelInscricaoEstadual)
+                    .addComponent(jLabelInscricaoMunicipal)
+                    .addComponent(jLabelTipoEmpresa)
+                    .addComponent(jLabelEnderecoEmpresa)
+                    .addComponent(jLabelTelefoneEmpresa)
+                    .addComponent(jLabelEmailEmpresa))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(311, 311, 311)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabelNomeEmpresa)))
-                .addContainerGap(430, Short.MAX_VALUE))
+                        .addComponent(jRadioButtonSimRegimeTributacao)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButtonNaoRegimeTributacao))
+                    .addComponent(jTextFieldNomeEmpresa)
+                    .addComponent(jTextField2)
+                    .addComponent(jTextField6)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCancelar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabelNomeEmpresa)
-                .addGap(130, 130, 130)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(167, 167, 167)
-                .addComponent(jButton1)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNomeEmpresa)
+                    .addComponent(jTextFieldNomeEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNomeFantasia)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCnpj)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelInscricaoEstadual)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelInscricaoMunicipal)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTipoEmpresa)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelEnderecoEmpresa)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTelefoneEmpresa)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelEmailEmpresa)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelRegimeTributacao)
+                    .addComponent(jRadioButtonSimRegimeTributacao)
+                    .addComponent(jRadioButtonNaoRegimeTributacao))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCancelar)
+                    .addComponent(jButtonSalvar))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
         
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -86,9 +190,29 @@ public class JPanelCadastrarEmpresa extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JLabel jLabelCnpj;
+    private javax.swing.JLabel jLabelEmailEmpresa;
+    private javax.swing.JLabel jLabelEnderecoEmpresa;
+    private javax.swing.JLabel jLabelInscricaoEstadual;
+    private javax.swing.JLabel jLabelInscricaoMunicipal;
     private javax.swing.JLabel jLabelNomeEmpresa;
+    private javax.swing.JLabel jLabelNomeFantasia;
+    private javax.swing.JLabel jLabelRegimeTributacao;
+    private javax.swing.JLabel jLabelTelefoneEmpresa;
+    private javax.swing.JLabel jLabelTipoEmpresa;
+    private javax.swing.JRadioButton jRadioButtonNaoRegimeTributacao;
+    private javax.swing.JRadioButton jRadioButtonSimRegimeTributacao;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextFieldNomeEmpresa;
     // End of variables declaration//GEN-END:variables
 
     private void setLocationRelativeto(Object object) {

@@ -5,10 +5,8 @@
  */
 package ribanceira;
 
-import DAO.Funcionario;
-import Util.HibernateUtil;
+import controladores.G_Funcionario;
 import javax.swing.JOptionPane;
-import org.hibernate.Session;
 
 /**
  *
@@ -200,21 +198,16 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
 
     private void jButtonSalvarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarFuncionarioActionPerformed
         // TODO add your handling code here:
-        Funcionario f = new Funcionario();
-        f.setNome(jTextFieldNomeFuncionario.getText());
-        f.setDataNascimento(jFormattedTextFieldDataNascimentoFuncionario.getText());
-        f.setEndereco(jTextFieldEnderecoFuncionario.getText());
-        f.setTelefone(jFormattedTextFieldTelefoneFuncionario.getText());
-        f.setEmail(jTextFieldEmailFuncionario.getText());
-        f.setRg(jFormattedTextFieldRgFuncionario.getText());
-        f.setCpf(jFormattedTextFieldCpfFuncionario.getText());
-        f.setTituloEleitor(jFormattedTextFieldTituloEleitorFuncionario.getText());
-        f.setEstadoCivil(jFormattedTextFieldEstadoCivilFuncionario.getText());
-        f.setNumeroCarteiraTrabalho(jFormattedTextFieldCarteiraTrabalhoFuncionario.getText());
-        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-        s.beginTransaction();
-        s.save(f);
-        s.getTransaction().commit();
+        new G_Funcionario().salvaFuncionario(jTextFieldNomeFuncionario.getText(),
+                                             jFormattedTextFieldDataNascimentoFuncionario.getText(), 
+                                             jTextFieldEnderecoFuncionario.getText(), 
+                                             jFormattedTextFieldTelefoneFuncionario.getText(), 
+                                             jTextFieldEmailFuncionario.getText(), 
+                                             jFormattedTextFieldRgFuncionario.getText(), 
+                                             jFormattedTextFieldCpfFuncionario.getText(), 
+                                             jFormattedTextFieldTituloEleitorFuncionario.getText(), 
+                                             jFormattedTextFieldEstadoCivilFuncionario.getText(), 
+                                             jFormattedTextFieldCarteiraTrabalhoFuncionario.getText());
         JOptionPane.showMessageDialog(this, "Funcionário cadastrado com sucesso!","Cadastro de funcionário",JOptionPane.INFORMATION_MESSAGE);
         this.hide();
     }//GEN-LAST:event_jButtonSalvarFuncionarioActionPerformed
