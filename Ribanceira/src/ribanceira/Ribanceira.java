@@ -5,6 +5,10 @@
  */
 package ribanceira;
 
+import DAO.Funcionario;
+import controladores.G_Funcionario;
+import java.util.ArrayList;
+
 /**
  *
  * @author admin
@@ -21,7 +25,14 @@ public class Ribanceira {
         // ou
         
         new Login();
+        /*
+        ArrayList<Funcionario> listaFunc = new G_Funcionario().getListaFuncionario();
         
+        for(Funcionario f : listaFunc){
+            System.out.println("Nome:" + f.getNome());
+            System.out.println("CPF:" + f.getCpf());
+        }
+        */        
     }
     
 }

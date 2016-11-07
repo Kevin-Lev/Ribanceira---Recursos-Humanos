@@ -52,8 +52,8 @@ public class JFrameprincipal extends javax.swing.JFrame {
         jMenuConsultar_Emp = new javax.swing.JMenuItem();
         jMenuRemover_Emp = new javax.swing.JMenuItem();
         jMenuFuncionario = new javax.swing.JMenu();
-        jMenuConsultar_Fun = new javax.swing.JMenuItem();
         jMenuCadastrar_Fun = new javax.swing.JMenuItem();
+        jMenuConsultar_Fun = new javax.swing.JMenuItem();
         jMenuRemover_Fun = new javax.swing.JMenuItem();
         jMenuOcorrências = new javax.swing.JMenu();
         jMenuInsere_Oco = new javax.swing.JMenuItem();
@@ -96,21 +96,21 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
         jMenuFuncionario.setText("Funcionário");
 
-        jMenuConsultar_Fun.setText("Cadastrar");
-        jMenuConsultar_Fun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuConsultar_FunActionPerformed(evt);
-            }
-        });
-        jMenuFuncionario.add(jMenuConsultar_Fun);
-
-        jMenuCadastrar_Fun.setText("Consultar");
+        jMenuCadastrar_Fun.setText("Cadastrar");
         jMenuCadastrar_Fun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuCadastrar_FunActionPerformed(evt);
             }
         });
         jMenuFuncionario.add(jMenuCadastrar_Fun);
+
+        jMenuConsultar_Fun.setText("Consultar");
+        jMenuConsultar_Fun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConsultar_FunActionPerformed(evt);
+            }
+        });
+        jMenuFuncionario.add(jMenuConsultar_Fun);
 
         jMenuRemover_Fun.setText("Remover");
         jMenuRemover_Fun.addActionListener(new java.awt.event.ActionListener() {
@@ -193,11 +193,10 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
     private void jMenuConsultar_FunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultar_FunActionPerformed
         // TODO add your handling code here:
-        this.setTitle("Ribanceira RH - Cadastrar Funcionário");
-        JPanel panelCadastrarFuncionario = new JPanelCadastrarFuncionario();
-        jPanelRoot.add(panelCadastrarFuncionario);
+        this.setTitle("Ribanceira RH - Consultar Funcionário");
+        JPanel panelConsultarFuncionario = new JPanelConsultarFuncionario(0);
+        jPanelRoot.add(panelConsultarFuncionario);
         card.next(jPanelRoot);
-        this.setTitle("Ribanceira RH");
     }//GEN-LAST:event_jMenuConsultar_FunActionPerformed
 
     private void jMenuInsere_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInsere_OcoActionPerformed
@@ -233,6 +232,10 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
     private void jMenuCadastrar_FunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastrar_FunActionPerformed
         // TODO add your handling code here:
+        this.setTitle("Ribanceira RH - Cadastrar Funcionário");
+        JPanel panelCadastrarFuncionario = new JPanelCadastrarFuncionario();
+        jPanelRoot.add(panelCadastrarFuncionario);
+        card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuCadastrar_FunActionPerformed
 
     private void jMenuRemover_FunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRemover_FunActionPerformed

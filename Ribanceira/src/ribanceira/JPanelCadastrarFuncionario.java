@@ -193,7 +193,7 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
 
     private void jButtonCancelarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarFuncionarioActionPerformed
         // TODO add your handling code here:
-        this.hide();
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonCancelarFuncionarioActionPerformed
 
     private void jButtonSalvarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarFuncionarioActionPerformed
@@ -209,7 +209,7 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
                                              jFormattedTextFieldEstadoCivilFuncionario.getText(), 
                                              jFormattedTextFieldCarteiraTrabalhoFuncionario.getText());
         JOptionPane.showMessageDialog(this, "Funcionário cadastrado com sucesso!","Cadastro de funcionário",JOptionPane.INFORMATION_MESSAGE);
-        this.hide();
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonSalvarFuncionarioActionPerformed
 
 

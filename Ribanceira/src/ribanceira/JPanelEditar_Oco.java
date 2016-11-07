@@ -5,6 +5,12 @@
  */
 package ribanceira;
 
+import DAO.Funcionario;
+import controladores.G_Funcionario;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author kevin
@@ -14,7 +20,12 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
     /**
      * Creates new form JPanelEditar_Oco
      */
+    
+    ArrayList<Funcionario> listaFuncionario;
+    Funcionario funcionario;
+    
     public JPanelEditar_Oco() {
+
         initComponents();
     }
 
@@ -47,13 +58,19 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabelNomeFun_Oco.setText("Nome do funcionário:");
+        jPanel1.add(jLabelNomeFun_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 153, 39));
 
         jLabelEmpresa_Oco.setText("Empresa:");
+        jPanel1.add(jLabelEmpresa_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 68, 75, 39));
 
         jLabelTipo_Oco.setText("Tipo de ocorrência:");
+        jPanel1.add(jLabelTipo_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 166, 153, 39));
 
         jLabelValor_Oco.setText("Valor de acréscimo ao salário:");
+        jPanel1.add(jLabelValor_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 242, -1, 40));
 
         jButtonSalvar_Oco.setText("Salvar ocorrência");
         jButtonSalvar_Oco.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +78,7 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
                 jButtonSalvar_OcoActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSalvar_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(577, 311, -1, -1));
 
         jButtonCancelar_Oco.setText("Cancelar");
         jButtonCancelar_Oco.addActionListener(new java.awt.event.ActionListener() {
@@ -68,8 +86,12 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
                 jButtonCancelar_OcoActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonCancelar_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 311, -1, -1));
 
         jTextFieldValor_Oco.setText("0");
+        jPanel1.add(jTextFieldValor_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 252, 66, -1));
+        jPanel1.add(jTextFieldNomeFun_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 20, 403, -1));
+        jPanel1.add(jTextFieldEmpresa_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 77, 403, -1));
 
         jButtonSelectFun_Oco.setText("...");
         jButtonSelectFun_Oco.addActionListener(new java.awt.event.ActionListener() {
@@ -77,8 +99,10 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
                 jButtonSelectFun_OcoActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSelectFun_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 19, -1, -1));
 
         jLabelData_Oco.setText("Data da ocorrência:");
+        jPanel1.add(jLabelData_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 131, -1, -1));
 
         jTextFieldDia_Oco.setText("     DD");
         jTextFieldDia_Oco.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +110,7 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
                 jTextFieldDia_OcoActionPerformed(evt);
             }
         });
+        jPanel1.add(jTextFieldDia_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 128, 65, -1));
 
         jTextFieldAno_Oco.setText("  AAAA");
         jTextFieldAno_Oco.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +118,7 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
                 jTextFieldAno_OcoActionPerformed(evt);
             }
         });
+        jPanel1.add(jTextFieldAno_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 128, 65, -1));
 
         jTextFieldMes_Oco.setText("    MM");
         jTextFieldMes_Oco.addActionListener(new java.awt.event.ActionListener() {
@@ -100,106 +126,19 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
                 jTextFieldMes_OcoActionPerformed(evt);
             }
         });
+        jPanel1.add(jTextFieldMes_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 128, 65, -1));
 
         jRadioButton1.setText("Falta");
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 174, -1, -1));
 
         jRadioButton2.setText("Hora extra");
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 174, -1, -1));
 
         jCheckBox1.setText("Justificada");
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 207, -1, -1));
 
         jButton1.setText("Excluir Ocorrência");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonCancelar_Oco)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonSalvar_Oco))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabelNomeFun_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabelEmpresa_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextFieldNomeFun_Oco, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-                                            .addComponent(jTextFieldEmpresa_Oco)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jTextFieldDia_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jTextFieldMes_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(17, 17, 17)
-                                                .addComponent(jTextFieldAno_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabelTipo_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton2)
-                                        .addGap(37, 37, 37)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCheckBox1)
-                                            .addComponent(jRadioButton1))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonSelectFun_Oco)
-                                .addGap(71, 71, 71))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelValor_Oco)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldValor_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelData_Oco)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNomeFun_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNomeFun_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSelectFun_Oco))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelEmpresa_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldEmpresa_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelData_Oco)
-                    .addComponent(jTextFieldDia_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldAno_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldMes_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTipo_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelValor_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldValor_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSalvar_Oco)
-                    .addComponent(jButtonCancelar_Oco)
-                    .addComponent(jButton1))
-                .addContainerGap())
-        );
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 311, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -233,6 +172,8 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
 
     private void jButtonSelectFun_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectFun_OcoActionPerformed
         // TODO add your handling code here:
+        //jInternalFrameSelecionaFuncionario.setVisible(true);
+        
     }//GEN-LAST:event_jButtonSelectFun_OcoActionPerformed
 
     private void jTextFieldDia_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDia_OcoActionPerformed
