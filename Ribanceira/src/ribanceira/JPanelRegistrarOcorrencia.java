@@ -5,6 +5,9 @@
  */
 package ribanceira;
 
+import controladores.G_Ocorrencia;
+import DAO.Funcionario;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Kevin Levrone
@@ -14,9 +17,10 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
     /**
      * Creates new form JPanelRegistrarOcorrencia
      */
-    public JPanelRegistrarOcorrencia() {
+    Funcionario func;
+    public JPanelRegistrarOcorrencia(Funcionario f) {
         initComponents();
-        
+           func = f;    
     }
 
     /**
@@ -42,9 +46,9 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
         jTextFieldDia_Oco = new javax.swing.JTextField();
         jTextFieldAno_Oco = new javax.swing.JTextField();
         jTextFieldMes_Oco = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        jRadioButtonFalta = new javax.swing.JRadioButton();
+        jRadioButtonHoraextra = new javax.swing.JRadioButton();
+        jCheckBoxJustificado = new javax.swing.JCheckBox();
 
         jLabelNomeFun_Oco.setText("Nome do funcionário:");
 
@@ -100,11 +104,11 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
             }
         });
 
-        jRadioButton1.setText("Falta");
+        jRadioButtonFalta.setText("Falta");
 
-        jRadioButton2.setText("Hora extra");
+        jRadioButtonHoraextra.setText("Hora extra");
 
-        jCheckBox1.setText("Justificada");
+        jCheckBoxJustificado.setText("Justificada");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -138,11 +142,11 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabelTipo_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2)
+                                .addComponent(jRadioButtonHoraextra)
                                 .addGap(37, 37, 37)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox1)
-                                    .addComponent(jRadioButton1))
+                                    .addComponent(jCheckBoxJustificado)
+                                    .addComponent(jRadioButtonFalta))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonSelectFun_Oco)
@@ -178,10 +182,10 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTipo_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(jRadioButtonFalta)
+                    .addComponent(jRadioButtonHoraextra))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(jCheckBoxJustificado)
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelValor_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,6 +200,26 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
 
     private void jButtonSalvar_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvar_OcoActionPerformed
         // TODO add your handling code here:
+      new G_Ocorrencia().SalvaOcorrencia(jTextFieldNomeFun_Oco.get());
+                                        /* jTextFieldDia_Oco.getText() + "/" + jTextFieldMes_Oco.getText() "/" + jTextFieldAno_Oco.getText());
+                                         if(jRadioButtonHoraextra.isSelected()){
+                                             jRadioButtonHoraextra.getText();
+                                         }
+                                         else if(jRadioButtonFalta.isSelected()){
+                                             jRadioButtonFalta.getText();
+                                         },
+                                         if(jCheckBoxJustificado.isSelected()){
+                                               1;
+                                         }
+                                         else{
+                                               0;
+                                         };*/ 
+                                         
+             JOptionPane.showMessageDialog(this, "Ocorrência cadastrada com sucesso!","Registro de Ocorrência",JOptionPane.INFORMATION_MESSAGE);
+             this.hide();
+            
+    
+                                         
     }//GEN-LAST:event_jButtonSalvar_OcoActionPerformed
 
     private void jButtonCancelar_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelar_OcoActionPerformed
@@ -209,6 +233,7 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
 
     private void jTextFieldDia_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDia_OcoActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextFieldDia_OcoActionPerformed
 
     private void jTextFieldAno_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAno_OcoActionPerformed
@@ -224,14 +249,14 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
     private javax.swing.JButton jButtonCancelar_Oco;
     private javax.swing.JButton jButtonSalvar_Oco;
     private javax.swing.JButton jButtonSelectFun_Oco;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBoxJustificado;
     private javax.swing.JLabel jLabelData_Oco;
     private javax.swing.JLabel jLabelEmpresa_Oco;
     private javax.swing.JLabel jLabelNomeFun_Oco;
     private javax.swing.JLabel jLabelTipo_Oco;
     private javax.swing.JLabel jLabelValor_Oco;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButtonFalta;
+    private javax.swing.JRadioButton jRadioButtonHoraextra;
     private javax.swing.JTextField jTextFieldAno_Oco;
     private javax.swing.JTextField jTextFieldDia_Oco;
     private javax.swing.JTextField jTextFieldEmpresa_Oco;
