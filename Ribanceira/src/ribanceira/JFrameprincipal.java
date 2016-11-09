@@ -61,6 +61,15 @@ public class JFrameprincipal extends javax.swing.JFrame {
         jMenuAvisos = new javax.swing.JMenu();
         jMenuGerar_Alerta = new javax.swing.JMenuItem();
         jMenuConsultar_Alerta = new javax.swing.JMenuItem();
+        jMenuConvencaoColetiva = new javax.swing.JMenu();
+        jMenuItemBuscarConvencaoColetiva = new javax.swing.JMenuItem();
+        jMenuItemImportarConvencaoColetiva = new javax.swing.JMenuItem();
+        jMenuItemExportarConvencaoColetiva = new javax.swing.JMenuItem();
+        jMenuSindicato = new javax.swing.JMenu();
+        jMenuItemManterSindicato = new javax.swing.JMenuItem();
+        jMenuContrato = new javax.swing.JMenu();
+        jMenuItemCadastrarContrato = new javax.swing.JMenuItem();
+        jMenuItemConsultarContrato = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -162,6 +171,56 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuAvisos);
 
+        jMenuConvencaoColetiva.setText("Convenção Coletiva");
+
+        jMenuItemBuscarConvencaoColetiva.setText("Buscar");
+        jMenuItemBuscarConvencaoColetiva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBuscarConvencaoColetivaActionPerformed(evt);
+            }
+        });
+        jMenuConvencaoColetiva.add(jMenuItemBuscarConvencaoColetiva);
+
+        jMenuItemImportarConvencaoColetiva.setText("Importar");
+        jMenuConvencaoColetiva.add(jMenuItemImportarConvencaoColetiva);
+
+        jMenuItemExportarConvencaoColetiva.setText("Exportar");
+        jMenuConvencaoColetiva.add(jMenuItemExportarConvencaoColetiva);
+
+        jMenuBar1.add(jMenuConvencaoColetiva);
+
+        jMenuSindicato.setText("Sindicato");
+
+        jMenuItemManterSindicato.setText("Manter");
+        jMenuItemManterSindicato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemManterSindicatoActionPerformed(evt);
+            }
+        });
+        jMenuSindicato.add(jMenuItemManterSindicato);
+
+        jMenuBar1.add(jMenuSindicato);
+
+        jMenuContrato.setText("Contrato");
+
+        jMenuItemCadastrarContrato.setText("Cadastrar");
+        jMenuItemCadastrarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadastrarContratoActionPerformed(evt);
+            }
+        });
+        jMenuContrato.add(jMenuItemCadastrarContrato);
+
+        jMenuItemConsultarContrato.setText("Consultar");
+        jMenuItemConsultarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConsultarContratoActionPerformed(evt);
+            }
+        });
+        jMenuContrato.add(jMenuItemConsultarContrato);
+
+        jMenuBar1.add(jMenuContrato);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,7 +231,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelRoot, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+            .addComponent(jPanelRoot, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
         );
 
         pack();
@@ -182,11 +241,8 @@ public class JFrameprincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         this.setTitle("Ribanceira RH - Cadastrar Empresa");
-        
         JPanel panelCadastrarEmpresa = new JPanelCadastrarEmpresa();
-        
         jPanelRoot.add(panelCadastrarEmpresa);
-        
         card.next(jPanelRoot);
         
     }//GEN-LAST:event_jMenuItemCadastrar_EmpActionPerformed
@@ -194,7 +250,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
     private void jMenuConsultar_FunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultar_FunActionPerformed
         // TODO add your handling code here:
         this.setTitle("Ribanceira RH - Consultar Funcionário");
-        JPanel panelConsultarFuncionario = new JPanelConsultarFuncionario(0);
+        JPanel panelConsultarFuncionario = new JPanelConsultarFuncionario();
         jPanelRoot.add(panelConsultarFuncionario);
         card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuConsultar_FunActionPerformed
@@ -263,6 +319,63 @@ public class JFrameprincipal extends javax.swing.JFrame {
         
          card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuConsultar_AlertaActionPerformed
+/*
+    private void jMenuBuscarConvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuBuscarConvActionPerformed
+        // TODO add your handling code here:
+        this.setTitle("Ribanceira RH - Buscar Convenção Coletiva");
+        JPanel panelConvencaoColetiva = new JPanelConvencaoColetivaSindicato();
+        jPanelRoot.add(panelConvencaoColetiva);
+        card.next(jPanelRoot);
+        
+    }//GEN-LAST:event_jMenuBuscarConvActionPerformed
+
+    private void jMenuImportarConvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuImportarConvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuImportarConvActionPerformed
+
+    private void jMenuManterSindicatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuManterSindicatoActionPerformed
+        // TODO add your handling code here:
+        this.setTitle("Ribanceira RH - Buscar Sindicato");
+        
+        JPanel panelBuscarSindicato = new JPanelManterSindicatos();
+        
+        jPanelRoot.add(panelBuscarSindicato);
+        
+        card.next(jPanelRoot);
+        
+    }//GEN-LAST:event_jMenuManterSindicatoActionPerformed
+*/
+    private void jMenuItemManterSindicatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManterSindicatoActionPerformed
+        // TODO add your handling code here:
+        this.setTitle("Ribanceira RH - Manter Sindicato");
+        JPanel panelManterSindicato = new JPanelManterSindicatos();
+        jPanelRoot.add(panelManterSindicato);
+        card.next(jPanelRoot);
+    }//GEN-LAST:event_jMenuItemManterSindicatoActionPerformed
+
+    private void jMenuItemBuscarConvencaoColetivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarConvencaoColetivaActionPerformed
+        // TODO add your handling code here
+        this.setTitle("Ribanceira RH - Buscar Convenção Coletiva");
+        JPanel panelConvencaoColetiva = new JPanelConvencaoColetivaSindicato();
+        jPanelRoot.add(panelConvencaoColetiva);
+        card.next(jPanelRoot);
+    }//GEN-LAST:event_jMenuItemBuscarConvencaoColetivaActionPerformed
+
+    private void jMenuItemCadastrarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrarContratoActionPerformed
+        // TODO add your handling code here:
+        this.setTitle("Ribanceira RH - Cadastrar Contrato");
+        JPanel panelCadastrarContrato = new JPanelCadastrarContrato();
+        jPanelRoot.add(panelCadastrarContrato);
+        card.next(jPanelRoot);
+    }//GEN-LAST:event_jMenuItemCadastrarContratoActionPerformed
+
+    private void jMenuItemConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultarContratoActionPerformed
+        // TODO add your handling code here:
+        this.setTitle("Ribanceira RH - Consultar Contrato");
+        JPanel panelConsultarContrato = new JPanelConsultarContrato();
+        jPanelRoot.add(panelConsultarContrato);
+        card.next(jPanelRoot);
+    }//GEN-LAST:event_jMenuItemConsultarContratoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,14 +420,23 @@ public class JFrameprincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuConsultar_Alerta;
     private javax.swing.JMenuItem jMenuConsultar_Emp;
     private javax.swing.JMenuItem jMenuConsultar_Fun;
+    private javax.swing.JMenu jMenuContrato;
+    private javax.swing.JMenu jMenuConvencaoColetiva;
     private javax.swing.JMenu jMenuEmpresa;
     private javax.swing.JMenu jMenuFuncionario;
     private javax.swing.JMenuItem jMenuGerar_Alerta;
     private javax.swing.JMenuItem jMenuInsere_Oco;
+    private javax.swing.JMenuItem jMenuItemBuscarConvencaoColetiva;
+    private javax.swing.JMenuItem jMenuItemCadastrarContrato;
     private javax.swing.JMenuItem jMenuItemCadastrar_Emp;
+    private javax.swing.JMenuItem jMenuItemConsultarContrato;
+    private javax.swing.JMenuItem jMenuItemExportarConvencaoColetiva;
+    private javax.swing.JMenuItem jMenuItemImportarConvencaoColetiva;
+    private javax.swing.JMenuItem jMenuItemManterSindicato;
     private javax.swing.JMenu jMenuOcorrências;
     private javax.swing.JMenuItem jMenuRemover_Emp;
     private javax.swing.JMenuItem jMenuRemover_Fun;
+    private javax.swing.JMenu jMenuSindicato;
     private javax.swing.JPanel jPanelRoot;
     // End of variables declaration//GEN-END:variables
 }

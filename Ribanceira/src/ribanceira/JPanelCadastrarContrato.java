@@ -29,7 +29,7 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
     boolean abonoPecuniario = false;
     boolean valeTransporte = false;
     boolean valeRefeicao = false;
-    
+
     public JPanelCadastrarContrato() {
         initComponents();
 
@@ -37,9 +37,9 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
         for (Funcionario f : listaFuncionarios) {
             jComboBoxListaFuncionarios.addItem(f.getNome());
         }
-        
+
         listaEmpresas = new G_Empresa().getListaEmpresa();
-        for(Empresa e : listaEmpresas){
+        for (Empresa e : listaEmpresas) {
             jComboBoxListaEmpresas.addItem(e.getNomeEmpresa());
         }
 
@@ -125,10 +125,15 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
             }
         });
         jTextFieldComissaoContrato.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jTextFieldComissaoContratoInputMethodTextChanged(evt);
             }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+        });
+        jTextFieldComissaoContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldComissaoContratoActionPerformed(evt);
             }
         });
 
@@ -294,28 +299,28 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
         // TODO add your handling code here:
         Empresa emp;
         Funcionario func;
-        
+
         emp = listaEmpresas.get(jComboBoxListaEmpresas.getSelectedIndex());
         func = listaFuncionarios.get(jComboBoxListaFuncionarios.getSelectedIndex());
-        
+
         new G_Contrato().salvaContrato(emp,
-                                       func, 
-                                       Float.parseFloat(jTextFieldCargaHorariaContrato.getText()), 
-                                       Float.parseFloat(jTextFieldHorasExtrasContrato.getText()),
-                                       Float.parseFloat(jTextFieldComissaoContrato.getText()),
-                                       Float.parseFloat(jTextFieldDuracaoContrato.getText()),
-                                       experiencia, 
-                                       Integer.parseInt(jTextFieldFeriasContrato.getText()), 
-                                       abonoPecuniario, 
-                                       valeTransporte, 
-                                       valeRefeicao);
-        JOptionPane.showMessageDialog(this, "Contrato cadastrado com sucesso!","Cadastro de contrato",JOptionPane.INFORMATION_MESSAGE);
+                func,
+                Float.parseFloat(jTextFieldCargaHorariaContrato.getText()),
+                Float.parseFloat(jTextFieldHorasExtrasContrato.getText()),
+                Float.parseFloat(jTextFieldComissaoContrato.getText()),
+                Float.parseFloat(jTextFieldDuracaoContrato.getText()),
+                experiencia,
+                Integer.parseInt(jTextFieldFeriasContrato.getText()),
+                abonoPecuniario,
+                valeTransporte,
+                valeRefeicao);
+        JOptionPane.showMessageDialog(this, "Contrato cadastrado com sucesso!", "Cadastro de contrato", JOptionPane.INFORMATION_MESSAGE);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonSalvarContratoActionPerformed
 
     private void jComboBoxExperienciaContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxExperienciaContratoMouseClicked
         // TODO add your handling code here:
-        if(jComboBoxExperienciaContrato.getSelectedItem() == "Sim") {
+        if (jComboBoxExperienciaContrato.getSelectedItem() == "Sim") {
             experiencia = true;
         } else {
             experiencia = false;
@@ -324,7 +329,7 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
 
     private void jComboBoxAbonoPecuniarioContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxAbonoPecuniarioContratoMouseClicked
         // TODO add your handling code here:
-        if(jComboBoxAbonoPecuniarioContrato.getSelectedItem() == "Sim") {
+        if (jComboBoxAbonoPecuniarioContrato.getSelectedItem() == "Sim") {
             abonoPecuniario = true;
         } else {
             abonoPecuniario = false;
@@ -333,7 +338,7 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
 
     private void jComboBoxValeTransporteContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxValeTransporteContratoMouseClicked
         // TODO add your handling code here:
-        if(jComboBoxValeTransporteContrato.getSelectedItem() == "Sim") {
+        if (jComboBoxValeTransporteContrato.getSelectedItem() == "Sim") {
             valeTransporte = true;
         } else {
             valeTransporte = false;
@@ -342,7 +347,7 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
 
     private void jComboBoxValeRefeicaoContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxValeRefeicaoContratoMouseClicked
         // TODO add your handling code here:
-        if(jComboBoxValeRefeicaoContrato.getSelectedItem() == "Sim") {
+        if (jComboBoxValeRefeicaoContrato.getSelectedItem() == "Sim") {
             valeRefeicao = true;
         } else {
             valeRefeicao = false;
@@ -356,12 +361,15 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
 
     private void jTextFieldComissaoContratoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldComissaoContratoFocusLost
         // TODO add your handling code here:
-        jTextFieldComissaoContrato.setText("Formato: 0.00");
     }//GEN-LAST:event_jTextFieldComissaoContratoFocusLost
 
     private void jTextFieldComissaoContratoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextFieldComissaoContratoInputMethodTextChanged
         // TODO add your handling code here:        
     }//GEN-LAST:event_jTextFieldComissaoContratoInputMethodTextChanged
+
+    private void jTextFieldComissaoContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldComissaoContratoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldComissaoContratoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
