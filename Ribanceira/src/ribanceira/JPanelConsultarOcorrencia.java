@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Kevin
+ * @author Kevin Levrone
  */
 public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
 
@@ -21,9 +21,9 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
      */
     
     CardLayout card;
-    private javax.swing.JPanel jPanelRaiz;
-    private javax.swing.JFrame jFrameRaiz;
-    
+   // private javax.swing.JPanel jPanelRaiz;
+    //private javax.swing.JFrame jFrameRaiz;
+    private javax.swing.JPanel jPanelRoot;
     public JPanelConsultarOcorrencia() {
         initComponents();
         
@@ -49,17 +49,17 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
         jTableTabela_Oco.setAutoCreateRowSorter(true);
         jTableTabela_Oco.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Funcionário", "Empresa", "Ocorrência", "Data", "Justificada"
+                "Funcionário", "Ocorrência", "Data", "Justificada"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -67,13 +67,6 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(jTableTabela_Oco);
-        if (jTableTabela_Oco.getColumnModel().getColumnCount() > 0) {
-            jTableTabela_Oco.getColumnModel().getColumn(0).setHeaderValue("Funcionário");
-            jTableTabela_Oco.getColumnModel().getColumn(1).setHeaderValue("Empresa");
-            jTableTabela_Oco.getColumnModel().getColumn(2).setHeaderValue("Ocorrência");
-            jTableTabela_Oco.getColumnModel().getColumn(3).setHeaderValue("Data");
-            jTableTabela_Oco.getColumnModel().getColumn(4).setHeaderValue("Justificada");
-        }
 
         jButtonEditar_Oco.setText("Editar ocorrência");
         jButtonEditar_Oco.addActionListener(new java.awt.event.ActionListener() {
@@ -127,9 +120,9 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
         // TODO add your handling code here:
         JPanel panelEditar_Oco = new JPanelEditar_Oco();
         
-         jPanelRaiz.add(panelEditar_Oco);
+         jPanelRoot.add(panelEditar_Oco);
         
-         card.next(jPanelRaiz); 
+         card.next(jPanelRoot); 
         
     }//GEN-LAST:event_jButtonEditar_OcoActionPerformed
 

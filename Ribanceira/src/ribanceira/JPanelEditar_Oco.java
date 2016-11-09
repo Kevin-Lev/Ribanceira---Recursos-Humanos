@@ -21,12 +21,16 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
      * Creates new form JPanelEditar_Oco
      */
     
-    ArrayList<Funcionario> listaFuncionario;
-    Funcionario funcionario;
+    ArrayList<Funcionario> listaFuncionarios;
     
     public JPanelEditar_Oco() {
 
         initComponents();
+        
+         listaFuncionarios = new G_Funcionario().getListaFuncionario();
+        for(Funcionario f : listaFuncionarios){
+            jComboBoxFunEdoco.addItem(f.getNome());
+        }
     }
 
     /**
@@ -40,15 +44,11 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabelNomeFun_Oco = new javax.swing.JLabel();
-        jLabelEmpresa_Oco = new javax.swing.JLabel();
         jLabelTipo_Oco = new javax.swing.JLabel();
         jLabelValor_Oco = new javax.swing.JLabel();
         jButtonSalvar_Oco = new javax.swing.JButton();
         jButtonCancelar_Oco = new javax.swing.JButton();
         jTextFieldValor_Oco = new javax.swing.JTextField();
-        jTextFieldNomeFun_Oco = new javax.swing.JTextField();
-        jTextFieldEmpresa_Oco = new javax.swing.JTextField();
-        jButtonSelectFun_Oco = new javax.swing.JButton();
         jLabelData_Oco = new javax.swing.JLabel();
         jTextFieldDia_Oco = new javax.swing.JTextField();
         jTextFieldAno_Oco = new javax.swing.JTextField();
@@ -57,14 +57,12 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
         jRadioButton2 = new javax.swing.JRadioButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
+        jComboBoxFunEdoco = new javax.swing.JComboBox<>();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelNomeFun_Oco.setText("Nome do funcionário:");
-        jPanel1.add(jLabelNomeFun_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 153, 39));
-
-        jLabelEmpresa_Oco.setText("Empresa:");
-        jPanel1.add(jLabelEmpresa_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 68, 75, 39));
+        jPanel1.add(jLabelNomeFun_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 153, 50));
 
         jLabelTipo_Oco.setText("Tipo de ocorrência:");
         jPanel1.add(jLabelTipo_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 166, 153, 39));
@@ -89,20 +87,10 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
         jPanel1.add(jButtonCancelar_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 311, -1, -1));
 
         jTextFieldValor_Oco.setText("0");
-        jPanel1.add(jTextFieldValor_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 252, 66, -1));
-        jPanel1.add(jTextFieldNomeFun_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 20, 403, -1));
-        jPanel1.add(jTextFieldEmpresa_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 77, 403, -1));
-
-        jButtonSelectFun_Oco.setText("...");
-        jButtonSelectFun_Oco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSelectFun_OcoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonSelectFun_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 19, -1, -1));
+        jPanel1.add(jTextFieldValor_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 66, -1));
 
         jLabelData_Oco.setText("Data da ocorrência:");
-        jPanel1.add(jLabelData_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 131, -1, -1));
+        jPanel1.add(jLabelData_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 77, -1, 30));
 
         jTextFieldDia_Oco.setText("     DD");
         jTextFieldDia_Oco.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +98,7 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
                 jTextFieldDia_OcoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldDia_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 128, 65, -1));
+        jPanel1.add(jTextFieldDia_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 65, -1));
 
         jTextFieldAno_Oco.setText("  AAAA");
         jTextFieldAno_Oco.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +106,7 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
                 jTextFieldAno_OcoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldAno_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 128, 65, -1));
+        jPanel1.add(jTextFieldAno_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 65, -1));
 
         jTextFieldMes_Oco.setText("    MM");
         jTextFieldMes_Oco.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +114,7 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
                 jTextFieldMes_OcoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldMes_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 128, 65, -1));
+        jPanel1.add(jTextFieldMes_Oco, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 65, -1));
 
         jRadioButton1.setText("Falta");
         jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 174, -1, -1));
@@ -139,6 +127,9 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
 
         jButton1.setText("Excluir Ocorrência");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 311, -1, -1));
+
+        jComboBoxFunEdoco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBoxFunEdoco, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 220, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -164,17 +155,13 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
 
     private void jButtonSalvar_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvar_OcoActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonSalvar_OcoActionPerformed
 
     private void jButtonCancelar_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelar_OcoActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonCancelar_OcoActionPerformed
-
-    private void jButtonSelectFun_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectFun_OcoActionPerformed
-        // TODO add your handling code here:
-        //jInternalFrameSelecionaFuncionario.setVisible(true);
-        
-    }//GEN-LAST:event_jButtonSelectFun_OcoActionPerformed
 
     private void jTextFieldDia_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDia_OcoActionPerformed
         // TODO add your handling code here:
@@ -193,10 +180,9 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCancelar_Oco;
     private javax.swing.JButton jButtonSalvar_Oco;
-    private javax.swing.JButton jButtonSelectFun_Oco;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JComboBox<String> jComboBoxFunEdoco;
     private javax.swing.JLabel jLabelData_Oco;
-    private javax.swing.JLabel jLabelEmpresa_Oco;
     private javax.swing.JLabel jLabelNomeFun_Oco;
     private javax.swing.JLabel jLabelTipo_Oco;
     private javax.swing.JLabel jLabelValor_Oco;
@@ -205,9 +191,7 @@ public class JPanelEditar_Oco extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextFieldAno_Oco;
     private javax.swing.JTextField jTextFieldDia_Oco;
-    private javax.swing.JTextField jTextFieldEmpresa_Oco;
     private javax.swing.JTextField jTextFieldMes_Oco;
-    private javax.swing.JTextField jTextFieldNomeFun_Oco;
     private javax.swing.JTextField jTextFieldValor_Oco;
     // End of variables declaration//GEN-END:variables
 }
