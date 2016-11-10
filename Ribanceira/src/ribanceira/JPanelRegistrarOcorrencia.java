@@ -55,7 +55,6 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
         jLabelTipo_Oco = new javax.swing.JLabel();
         jLabelValor_Oco = new javax.swing.JLabel();
         jButtonSalvar_Oco = new javax.swing.JButton();
-        jButtonCancelar_Oco = new javax.swing.JButton();
         jLabelData_Oco = new javax.swing.JLabel();
         jTextFieldDia_Oco = new javax.swing.JTextField();
         jTextFieldAno_Oco = new javax.swing.JTextField();
@@ -81,30 +80,26 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
             }
         });
 
-        jButtonCancelar_Oco.setText("Cancelar");
-        jButtonCancelar_Oco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelar_OcoActionPerformed(evt);
-            }
-        });
-
         jLabelData_Oco.setText("Data da ocorrência:");
 
-        jTextFieldDia_Oco.setText("     DD");
+        jTextFieldDia_Oco.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldDia_Oco.setText("DD");
         jTextFieldDia_Oco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldDia_OcoActionPerformed(evt);
             }
         });
 
-        jTextFieldAno_Oco.setText("  AAAA");
+        jTextFieldAno_Oco.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldAno_Oco.setText("AAAA");
         jTextFieldAno_Oco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldAno_OcoActionPerformed(evt);
             }
         });
 
-        jTextFieldMes_Oco.setText("    MM");
+        jTextFieldMes_Oco.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldMes_Oco.setText("MM");
         jTextFieldMes_Oco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldMes_OcoActionPerformed(evt);
@@ -124,8 +119,6 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonCancelar_Oco)
-                        .addGap(18, 18, 18)
                         .addComponent(jButtonSalvar_Oco))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -189,31 +182,24 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
                     .addComponent(jLabelValor_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFormattedTextFieldValorOco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancelar_Oco)
-                    .addComponent(jButtonSalvar_Oco))
+                .addComponent(jButtonSalvar_Oco)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvar_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvar_OcoActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
       new G_Ocorrencia().SalvaOcorrencia(listaFuncionarios.get(jComboBoxListaFuncionarios.getSelectedIndex()),
                                          jTextFieldDia_Oco.getText() + "/" + jTextFieldMes_Oco.getText() + "/" + jTextFieldAno_Oco.getText(),
                                          jTextFieldTipoOco.getText(),
                                          jCheckBoxJustificado.isSelected(),
-                                         jFormattedTextFieldValorOco.getAlignmentY());
+                                         Float.parseFloat(jFormattedTextFieldValorOco.getText()));
              JOptionPane.showMessageDialog(this, "Ocorrência cadastrada com sucesso!","Registro de Ocorrência",JOptionPane.INFORMATION_MESSAGE);
-             this.hide();
+             this.setVisible(false);
             
     
                                          
     }//GEN-LAST:event_jButtonSalvar_OcoActionPerformed
-
-    private void jButtonCancelar_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelar_OcoActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jButtonCancelar_OcoActionPerformed
 
     private void jTextFieldDia_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDia_OcoActionPerformed
         // TODO add your handling code here:
@@ -230,7 +216,6 @@ public class JPanelRegistrarOcorrencia extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelar_Oco;
     private javax.swing.JButton jButtonSalvar_Oco;
     private javax.swing.JCheckBox jCheckBoxJustificado;
     private javax.swing.JComboBox<String> jComboBoxListaEmpresas;

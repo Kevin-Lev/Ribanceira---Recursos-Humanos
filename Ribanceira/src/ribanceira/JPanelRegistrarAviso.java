@@ -48,7 +48,6 @@ public class JPanelRegistrarAviso extends javax.swing.JPanel {
         jTextFieldMesRescisao = new javax.swing.JTextField();
         jTextFieldAnoRescisao = new javax.swing.JTextField();
         jButtonSalvarAviso = new javax.swing.JButton();
-        jButtonCancelarAviso = new javax.swing.JButton();
         jLabelFunAviso = new javax.swing.JLabel();
         jComboBoxFunAviso = new javax.swing.JComboBox<>();
         jCheckBoxJustAviso = new javax.swing.JCheckBox();
@@ -61,23 +60,27 @@ public class JPanelRegistrarAviso extends javax.swing.JPanel {
 
         jLabelMotivo.setText("Motivo de aviso:");
 
+        jTextFieldDiaEmissão.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldDiaEmissão.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldDiaEmissãoActionPerformed(evt);
             }
         });
 
+        jTextFieldMesEmissao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jTextFieldAnoEmissao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jTextFieldDiaRescisão.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jTextFieldMesRescisao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jTextFieldAnoRescisao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         jButtonSalvarAviso.setText("Salvar");
         jButtonSalvarAviso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalvarAvisoActionPerformed(evt);
-            }
-        });
-
-        jButtonCancelarAviso.setText("Cancelar");
-        jButtonCancelarAviso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarAvisoActionPerformed(evt);
             }
         });
 
@@ -101,8 +104,6 @@ public class JPanelRegistrarAviso extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonCancelarAviso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonSalvarAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
             .addGroup(layout.createSequentialGroup()
@@ -165,9 +166,7 @@ public class JPanelRegistrarAviso extends javax.swing.JPanel {
                             .addComponent(jLabelMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(56, 56, 56)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonCancelarAviso)
-                            .addComponent(jButtonSalvarAviso)))
+                        .addComponent(jButtonSalvarAviso))
                     .addComponent(jCheckBoxJustAviso))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
@@ -186,11 +185,6 @@ public class JPanelRegistrarAviso extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButtonSalvarAvisoActionPerformed
 
-    private void jButtonCancelarAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarAvisoActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jButtonCancelarAvisoActionPerformed
-
     private void jTextFieldDiaEmissãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDiaEmissãoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDiaEmissãoActionPerformed
@@ -201,7 +195,6 @@ public class JPanelRegistrarAviso extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelarAviso;
     private javax.swing.JButton jButtonSalvarAviso;
     private javax.swing.JCheckBox jCheckBoxJustAviso;
     private javax.swing.JComboBox<String> jComboBoxFunAviso;

@@ -23,25 +23,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="515" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="392" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,8 +48,6 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButtonExcluirAviso" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButtonCancelarEdit_Aviso" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButtonSalvarEdit_Aviso" min="-2" pref="82" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
@@ -70,20 +60,8 @@
                           </Group>
                           <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jTextFieldDiaEmissão" min="-2" pref="43" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldMesEmissao" min="-2" pref="43" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldAnoEmissao" min="-2" pref="49" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jTextFieldDiaRescisão" min="-2" pref="43" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldMesRescisao" min="-2" pref="43" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldAnoRescisao" min="-2" pref="49" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jTextFieldDataEmissão" min="-2" pref="159" max="-2" attributes="0"/>
+                              <Component id="jTextFieldDataRescisão" min="-2" pref="157" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -93,14 +71,12 @@
                               <Component id="jLabelFunAviso" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jCheckBoxJustAviso" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jComboBoxFunAviso" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jScrollPane1" max="32767" attributes="0"/>
+                              <Component id="jTextFieldFunAvisoEdi" max="32767" attributes="0"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jCheckBoxJustAviso" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="129" max="32767" attributes="0"/>
@@ -113,21 +89,17 @@
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelDataAviso" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="jTextFieldDiaEmissão" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldMesEmissao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldAnoEmissao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldDataEmissão" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelDataRescisão" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="jTextFieldDiaRescisão" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldMesRescisao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldAnoRescisao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldDataRescisão" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" pref="24" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelFunAviso" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="jComboBoxFunAviso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldFunAvisoEdi" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -138,7 +110,6 @@
                           </Group>
                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButtonCancelarEdit_Aviso" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonSalvarEdit_Aviso" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonExcluirAviso" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -166,20 +137,12 @@
             <Property name="text" type="java.lang.String" value="Motivo de aviso:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldDiaEmiss&#xe3;o">
+        <Component class="javax.swing.JTextField" name="jTextFieldDataEmiss&#xe3;o">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldDiaEmiss&#xe3;oActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldDataEmiss&#xe3;oActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldMesEmissao">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldAnoEmissao">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldDiaRescis&#xe3;o">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldMesRescisao">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldAnoRescisao">
+        <Component class="javax.swing.JTextField" name="jTextFieldDataRescis&#xe3;o">
         </Component>
         <Component class="javax.swing.JButton" name="jButtonSalvarEdit_Aviso">
           <Properties>
@@ -189,26 +152,10 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSalvarEdit_AvisoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonCancelarEdit_Aviso">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cancelar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelarEdit_AvisoActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabelFunAviso">
           <Properties>
             <Property name="text" type="java.lang.String" value=" Funcion&#xe1;rio :"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBoxFunAviso">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxFunAvisoActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxJustAviso">
           <Properties>
@@ -237,6 +184,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExcluirAvisoActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldFunAvisoEdi">
         </Component>
       </SubComponents>
     </Container>

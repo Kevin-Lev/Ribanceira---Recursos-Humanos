@@ -22,10 +22,8 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
      * Creates new form JPanelConsultarAviso
      */
     ArrayList<AvisoPrevio> listaAvisos;
-    int op;
-    public JPanelConsultarAviso(int i) {
+    public JPanelConsultarAviso() {
         initComponents();
-        op = i;
         DefaultTableModel tableModel = (DefaultTableModel) jTableAvisosRegistrados.getModel();
         tableModel.setNumRows(0);
         listaAvisos = new G_Aviso().getListaAvisos();
@@ -33,6 +31,7 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
             tableModel.addRow(new Object[]{a.getDataAviso(), a.getDataRescisao(), a.getMotivo(), a.isJustificado(), a.getFuncionario()});
         }
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,7 +46,6 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAvisosRegistrados = new javax.swing.JTable();
         jButtonEditarAviso = new javax.swing.JButton();
-        jButtonVoltarCon_Aviso = new javax.swing.JButton();
 
         jLabelAvisosRegistrados.setText("Avisos registrados:");
 
@@ -79,13 +77,6 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
             }
         });
 
-        jButtonVoltarCon_Aviso.setText("Voltar");
-        jButtonVoltarCon_Aviso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVoltarCon_AvisoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,8 +94,6 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
                         .addGap(0, 54, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonVoltarCon_Aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jButtonEditarAviso)))
                 .addContainerGap())
         );
@@ -116,40 +105,26 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonEditarAviso)
-                    .addComponent(jButtonVoltarCon_Aviso))
+                .addComponent(jButtonEditarAviso)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonVoltarCon_AvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarCon_AvisoActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jButtonVoltarCon_AvisoActionPerformed
 
     private void jButtonEditarAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarAvisoActionPerformed
         // TODO add your handling code here:
          if (jTableAvisosRegistrados.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Selecione um aviso!");
-        } else {
-            switch (op) {
-                case 0:
-                    new JFrameEditarAviso(listaAvisos.get(jTableAvisosRegistrados.getSelectedRow()));
-                    break;
-                case 1:
-                    
-                    break;
-            }
-
-        }
+         }   
+         else {
+            new JFrameEditarAviso(listaAvisos.get(jTableAvisosRegistrados.getSelectedRow()));
+               
+         }
         
     }//GEN-LAST:event_jButtonEditarAvisoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEditarAviso;
-    private javax.swing.JButton jButtonVoltarCon_Aviso;
     private javax.swing.JLabel jLabelAvisosRegistrados;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAvisosRegistrados;

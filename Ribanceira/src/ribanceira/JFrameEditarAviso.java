@@ -5,6 +5,7 @@
  */
 package ribanceira;
 
+import DAO.AvisoPrevio;
 import DAO.Funcionario;
 import controladores.G_Aviso;
 import java.util.ArrayList;
@@ -19,9 +20,28 @@ public class JFrameEditarAviso extends javax.swing.JFrame {
     /**
      * Creates new form JFrameEditarAviso
      */
-    ArrayList<Funcionario> listaFuncionarios;
-    public JFrameEditarAviso() {
+    AvisoPrevio aviso;
+    //ArrayList<Funcionario> listaFuncionarios;
+    Funcionario func;
+
+    public JFrameEditarAviso(AvisoPrevio a) {
         initComponents();
+
+        //func = f;
+        aviso = a;
+
+        jTextFieldDataEmissão.setText(a.getDataAviso());
+        jTextFieldDataRescisão.setText(a.getDataRescisao());
+        jTextAreaMotivo.setText(a.getMotivo());
+        jTextFieldFunAvisoEdi.setText(a.getFuncionario().getNome());
+
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+    }
+
+
+    private JFrameEditarAviso() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -37,20 +57,15 @@ public class JFrameEditarAviso extends javax.swing.JFrame {
         jLabelDataAviso = new javax.swing.JLabel();
         jLabelDataRescisão = new javax.swing.JLabel();
         jLabelMotivo = new javax.swing.JLabel();
-        jTextFieldDiaEmissão = new javax.swing.JTextField();
-        jTextFieldMesEmissao = new javax.swing.JTextField();
-        jTextFieldAnoEmissao = new javax.swing.JTextField();
-        jTextFieldDiaRescisão = new javax.swing.JTextField();
-        jTextFieldMesRescisao = new javax.swing.JTextField();
-        jTextFieldAnoRescisao = new javax.swing.JTextField();
+        jTextFieldDataEmissão = new javax.swing.JTextField();
+        jTextFieldDataRescisão = new javax.swing.JTextField();
         jButtonSalvarEdit_Aviso = new javax.swing.JButton();
-        jButtonCancelarEdit_Aviso = new javax.swing.JButton();
         jLabelFunAviso = new javax.swing.JLabel();
-        jComboBoxFunAviso = new javax.swing.JComboBox<>();
         jCheckBoxJustAviso = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaMotivo = new javax.swing.JTextArea();
         jButtonExcluirAviso = new javax.swing.JButton();
+        jTextFieldFunAvisoEdi = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,9 +75,9 @@ public class JFrameEditarAviso extends javax.swing.JFrame {
 
         jLabelMotivo.setText("Motivo de aviso:");
 
-        jTextFieldDiaEmissão.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDataEmissão.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDiaEmissãoActionPerformed(evt);
+                jTextFieldDataEmissãoActionPerformed(evt);
             }
         });
 
@@ -73,20 +88,7 @@ public class JFrameEditarAviso extends javax.swing.JFrame {
             }
         });
 
-        jButtonCancelarEdit_Aviso.setText("Cancelar");
-        jButtonCancelarEdit_Aviso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarEdit_AvisoActionPerformed(evt);
-            }
-        });
-
         jLabelFunAviso.setText(" Funcionário :");
-
-        jComboBoxFunAviso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxFunAvisoActionPerformed(evt);
-            }
-        });
 
         jCheckBoxJustAviso.setText("Justificado");
 
@@ -109,8 +111,6 @@ public class JFrameEditarAviso extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButtonExcluirAviso)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCancelarEdit_Aviso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonSalvarEdit_Aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -121,30 +121,19 @@ public class JFrameEditarAviso extends javax.swing.JFrame {
                             .addComponent(jLabelDataRescisão))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextFieldDiaEmissão, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldMesEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(jTextFieldAnoEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextFieldDiaRescisão, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldMesRescisao, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldAnoRescisao, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextFieldDataEmissão, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDataRescisão, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelMotivo)
                             .addComponent(jLabelFunAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBoxJustAviso))
-                            .addComponent(jComboBoxFunAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jTextFieldFunAvisoEdi))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBoxJustAviso)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -153,19 +142,15 @@ public class JFrameEditarAviso extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDataAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldDiaEmissão, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldMesEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldAnoEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDataEmissão, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDataRescisão, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldDiaRescisão, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldMesRescisao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldAnoRescisao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDataRescisão, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFunAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxFunAviso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldFunAvisoEdi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -174,7 +159,6 @@ public class JFrameEditarAviso extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(56, 56, 56)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonCancelarEdit_Aviso)
                             .addComponent(jButtonSalvarEdit_Aviso)
                             .addComponent(jButtonExcluirAviso)))
                     .addComponent(jCheckBoxJustAviso))
@@ -185,59 +169,41 @@ public class JFrameEditarAviso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldDiaEmissãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDiaEmissãoActionPerformed
+    private void jTextFieldDataEmissãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDataEmissãoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDiaEmissãoActionPerformed
+    }//GEN-LAST:event_jTextFieldDataEmissãoActionPerformed
 
     private void jButtonSalvarEdit_AvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarEdit_AvisoActionPerformed
         // TODO add your handling code here:
-        new G_Aviso().EditarAviso(listaFuncionarios.get(jComboBoxFunAviso.getSelectedIndex()),
-            jTextFieldDiaEmissão.getText() + "/" + jTextFieldMesEmissao.getText() + "/" + jTextFieldAnoEmissao.getText(),
-            jTextFieldDiaRescisão.getText() + "/" + jTextFieldMesRescisao.getText() + "/" + jTextFieldAnoRescisao.getText(),
-            jCheckBoxJustAviso.isSelected(),
-            jTextAreaMotivo.getText());
-        JOptionPane.showMessageDialog(this, "Aviso editado com sucesso!","Editar Aviso",JOptionPane.INFORMATION_MESSAGE);
+        aviso.setDataAviso(jTextFieldDataEmissão.getText());
+        aviso.setDataRescisao(jTextFieldDataRescisão.getText());
+        aviso.setFuncionario(aviso.getFuncionario() /*func*/);
+        aviso.setJustificado(jCheckBoxJustAviso.isSelected());
+        new G_Aviso().EditarAviso(aviso);
+        //new G_Aviso().EditarAviso(aviso);
+        JOptionPane.showMessageDialog(this, "Aviso editado com sucesso!", "Editar Aviso", JOptionPane.INFORMATION_MESSAGE);
         this.setVisible(false);
 
     }//GEN-LAST:event_jButtonSalvarEdit_AvisoActionPerformed
 
-    private void jButtonCancelarEdit_AvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarEdit_AvisoActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jButtonCancelarEdit_AvisoActionPerformed
-
-    private void jComboBoxFunAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFunAvisoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxFunAvisoActionPerformed
-
     private void jButtonExcluirAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirAvisoActionPerformed
         // TODO add your handling code here:
-        new G_Aviso().ExcluirAviso(listaFuncionarios.get(jComboBoxFunAviso.getSelectedIndex()),
-            jTextFieldDiaEmissão.getText() + "/" + jTextFieldMesEmissao.getText() + "/" + jTextFieldAnoEmissao.getText(),
-            jTextFieldDiaRescisão.getText() + "/" + jTextFieldMesRescisao.getText() + "/" + jTextFieldAnoRescisao.getText(),
-            jCheckBoxJustAviso.isSelected(),
-            jTextAreaMotivo.getText());
-        JOptionPane.showMessageDialog(this, "Aviso excluido com sucesso!","Excluir Aviso",JOptionPane.INFORMATION_MESSAGE);
+        new G_Aviso().ExcluirAviso(aviso);
+        JOptionPane.showMessageDialog(this, "Aviso excluido com sucesso!", "Excluir Aviso", JOptionPane.INFORMATION_MESSAGE);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonExcluirAvisoActionPerformed
 
@@ -277,11 +243,9 @@ public class JFrameEditarAviso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelarEdit_Aviso;
     private javax.swing.JButton jButtonExcluirAviso;
     private javax.swing.JButton jButtonSalvarEdit_Aviso;
     private javax.swing.JCheckBox jCheckBoxJustAviso;
-    private javax.swing.JComboBox<String> jComboBoxFunAviso;
     private javax.swing.JLabel jLabelDataAviso;
     private javax.swing.JLabel jLabelDataRescisão;
     private javax.swing.JLabel jLabelFunAviso;
@@ -289,11 +253,8 @@ public class JFrameEditarAviso extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaMotivo;
-    private javax.swing.JTextField jTextFieldAnoEmissao;
-    private javax.swing.JTextField jTextFieldAnoRescisao;
-    private javax.swing.JTextField jTextFieldDiaEmissão;
-    private javax.swing.JTextField jTextFieldDiaRescisão;
-    private javax.swing.JTextField jTextFieldMesEmissao;
-    private javax.swing.JTextField jTextFieldMesRescisao;
+    private javax.swing.JTextField jTextFieldDataEmissão;
+    private javax.swing.JTextField jTextFieldDataRescisão;
+    private javax.swing.JTextField jTextFieldFunAvisoEdi;
     // End of variables declaration//GEN-END:variables
 }

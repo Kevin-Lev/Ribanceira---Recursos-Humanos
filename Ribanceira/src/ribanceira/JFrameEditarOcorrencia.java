@@ -6,9 +6,11 @@
 package ribanceira;
 
 import DAO.Funcionario;
+import DAO.Ocorrencia;
 import controladores.G_Funcionario;
 import controladores.G_Ocorrencia;
 import java.util.ArrayList;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,18 +18,27 @@ import javax.swing.JOptionPane;
  * @author kevin
  */
 public class JFrameEditarOcorrencia extends javax.swing.JFrame {
-
-    ArrayList<Funcionario> listaFuncionarios;
     /**
      * Creates new form JFrameEditarOcorrencia
      */
-    public JFrameEditarOcorrencia() {
+    
+    Ocorrencia ocorrencia;
+    //ArrayList<Funcionario> listaFuncionarios;
+    public JFrameEditarOcorrencia(Ocorrencia ocor) {
         initComponents();
         
-        listaFuncionarios = new G_Funcionario().getListaFuncionario();
-        for (Funcionario f : listaFuncionarios) {
-            jComboBoxListaFuncionarios.addItem(f.getNome());
-        }
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        
+        ocorrencia = ocor;
+        jTextFieldFunEdiOco.setText(ocorrencia.getFuncionario().getNome());
+        jTextFieldData_Oco.setText(ocorrencia.getDataOcorrencia());
+        jTextFieldTipoOco.setText(ocorrencia.getTipo());
+        jFormattedTextFieldValorOco.setText(String.valueOf(ocorrencia.getValor()));
+    }
+
+    private JFrameEditarOcorrencia() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -46,17 +57,14 @@ public class JFrameEditarOcorrencia extends javax.swing.JFrame {
         jLabelTipo_Oco = new javax.swing.JLabel();
         jLabelValor_Oco = new javax.swing.JLabel();
         jButtonSalvarEdi_Oco = new javax.swing.JButton();
-        jButtonCancelarEdi_Oco = new javax.swing.JButton();
         jLabelData_Oco = new javax.swing.JLabel();
-        jTextFieldDia_Oco = new javax.swing.JTextField();
-        jTextFieldAno_Oco = new javax.swing.JTextField();
-        jTextFieldMes_Oco = new javax.swing.JTextField();
+        jTextFieldData_Oco = new javax.swing.JTextField();
         jCheckBoxJustificado = new javax.swing.JCheckBox();
-        jComboBoxListaFuncionarios = new javax.swing.JComboBox<>();
         jComboBoxListaEmpresas = new javax.swing.JComboBox<>();
         jFormattedTextFieldValorOco = new javax.swing.JFormattedTextField();
         jTextFieldTipoOco = new javax.swing.JTextField();
         jButtonExcluirOcorrencia = new javax.swing.JButton();
+        jTextFieldFunEdiOco = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,39 +83,24 @@ public class JFrameEditarOcorrencia extends javax.swing.JFrame {
             }
         });
 
-        jButtonCancelarEdi_Oco.setText("Cancelar");
-        jButtonCancelarEdi_Oco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarEdi_OcoActionPerformed(evt);
-            }
-        });
-
         jLabelData_Oco.setText("Data da ocorrência:");
 
-        jTextFieldDia_Oco.setText("     DD");
-        jTextFieldDia_Oco.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldData_Oco.setText("   DD/MM/AAAA");
+        jTextFieldData_Oco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDia_OcoActionPerformed(evt);
-            }
-        });
-
-        jTextFieldAno_Oco.setText("  AAAA");
-        jTextFieldAno_Oco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldAno_OcoActionPerformed(evt);
-            }
-        });
-
-        jTextFieldMes_Oco.setText("    MM");
-        jTextFieldMes_Oco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldMes_OcoActionPerformed(evt);
+                jTextFieldData_OcoActionPerformed(evt);
             }
         });
 
         jCheckBoxJustificado.setText("Justificada");
 
         jComboBoxListaEmpresas.setEnabled(false);
+
+        jFormattedTextFieldValorOco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldValorOcoActionPerformed(evt);
+            }
+        });
 
         jButtonExcluirOcorrencia.setText("Excluir Ocorrência");
         jButtonExcluirOcorrencia.addActionListener(new java.awt.event.ActionListener() {
@@ -126,8 +119,6 @@ public class JFrameEditarOcorrencia extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButtonExcluirOcorrencia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCancelarEdi_Oco)
-                        .addGap(18, 18, 18)
                         .addComponent(jButtonSalvarEdi_Oco))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -137,15 +128,11 @@ public class JFrameEditarOcorrencia extends javax.swing.JFrame {
                                     .addComponent(jLabelEmpresa_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxListaEmpresas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldFunEdiOco)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jTextFieldDia_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldMes_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(17, 17, 17)
-                                        .addComponent(jTextFieldAno_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jComboBoxListaFuncionarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxListaEmpresas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(jTextFieldData_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 220, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabelTipo_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -170,7 +157,7 @@ public class JFrameEditarOcorrencia extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNomeFun_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxListaFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldFunEdiOco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelEmpresa_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,9 +165,7 @@ public class JFrameEditarOcorrencia extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelData_Oco)
-                    .addComponent(jTextFieldDia_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldAno_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldMes_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldData_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTipo_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,7 +177,6 @@ public class JFrameEditarOcorrencia extends javax.swing.JFrame {
                     .addComponent(jFormattedTextFieldValorOco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancelarEdi_Oco)
                     .addComponent(jButtonSalvarEdi_Oco)
                     .addComponent(jButtonExcluirOcorrencia))
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -243,44 +227,35 @@ public class JFrameEditarOcorrencia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSalvarEdi_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarEdi_OcoActionPerformed
-        // TODO add your handling code here:
-        new G_Ocorrencia().EditarOcorrencia(listaFuncionarios.get(jComboBoxListaFuncionarios.getSelectedIndex()),
-            jTextFieldDia_Oco.getText() + "/" + jTextFieldMes_Oco.getText() + "/" + jTextFieldAno_Oco.getText(),
-            jTextFieldTipoOco.getText(),
-            jCheckBoxJustificado.isSelected(),
-            jFormattedTextFieldValorOco.getAlignmentY());
-        JOptionPane.showMessageDialog(this, "Ocorrência Editada com sucesso!","Editar Ocorrência",JOptionPane.INFORMATION_MESSAGE);
-        this.hide();
-    }//GEN-LAST:event_jButtonSalvarEdi_OcoActionPerformed
-
-    private void jButtonCancelarEdi_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarEdi_OcoActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jButtonCancelarEdi_OcoActionPerformed
-
-    private void jTextFieldDia_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDia_OcoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDia_OcoActionPerformed
-
-    private void jTextFieldAno_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAno_OcoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldAno_OcoActionPerformed
-
-    private void jTextFieldMes_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMes_OcoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldMes_OcoActionPerformed
-
     private void jButtonExcluirOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirOcorrenciaActionPerformed
         // TODO add your handling code here:
-        new G_Ocorrencia().ExcluirOcorrencia(listaFuncionarios.get(jComboBoxListaFuncionarios.getSelectedIndex()),
-            jTextFieldDia_Oco.getText() + "/" + jTextFieldMes_Oco.getText() + "/" + jTextFieldAno_Oco.getText(),
-            jTextFieldTipoOco.getText(),
-            jCheckBoxJustificado.isSelected(),
-            jFormattedTextFieldValorOco.getAlignmentY());
+        ocorrencia.setDataOcorrencia(jTextFieldData_Oco.getText());
+        ocorrencia.setTipo(jTextFieldTipoOco.getText());
+        ocorrencia.setJustificado(jCheckBoxJustificado.isSelected());
+        ocorrencia.setValor(Float.parseFloat(jFormattedTextFieldValorOco.getText()));
+        new G_Ocorrencia().ExcluirOcorrencia(ocorrencia);
         JOptionPane.showMessageDialog(this, "Ocorrência Excluida com sucesso!","Excluir Ocorrência",JOptionPane.INFORMATION_MESSAGE);
-        this.hide();
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonExcluirOcorrenciaActionPerformed
+
+    private void jFormattedTextFieldValorOcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldValorOcoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldValorOcoActionPerformed
+
+    private void jTextFieldData_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldData_OcoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldData_OcoActionPerformed
+
+    private void jButtonSalvarEdi_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarEdi_OcoActionPerformed
+        // TODO add your handling code here:
+        ocorrencia.setDataOcorrencia(jTextFieldData_Oco.getText());
+        ocorrencia.setTipo(jTextFieldTipoOco.getText());
+        ocorrencia.setJustificado(jCheckBoxJustificado.isSelected());
+        ocorrencia.setValor(Float.parseFloat(jFormattedTextFieldValorOco.getText()));
+        new G_Ocorrencia().EditarOcorrencia(ocorrencia);
+        JOptionPane.showMessageDialog(this, "Ocorrência Editada com sucesso!","Editar Ocorrência",JOptionPane.INFORMATION_MESSAGE);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonSalvarEdi_OcoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,12 +293,10 @@ public class JFrameEditarOcorrencia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelarEdi_Oco;
     private javax.swing.JButton jButtonExcluirOcorrencia;
     private javax.swing.JButton jButtonSalvarEdi_Oco;
     private javax.swing.JCheckBox jCheckBoxJustificado;
     private javax.swing.JComboBox<String> jComboBoxListaEmpresas;
-    private javax.swing.JComboBox<String> jComboBoxListaFuncionarios;
     private javax.swing.JFormattedTextField jFormattedTextFieldValorOco;
     private javax.swing.JLabel jLabelData_Oco;
     private javax.swing.JLabel jLabelEmpresa_Oco;
@@ -332,9 +305,8 @@ public class JFrameEditarOcorrencia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelValor_Oco;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextFieldAno_Oco;
-    private javax.swing.JTextField jTextFieldDia_Oco;
-    private javax.swing.JTextField jTextFieldMes_Oco;
+    private javax.swing.JTextField jTextFieldData_Oco;
+    private javax.swing.JTextField jTextFieldFunEdiOco;
     private javax.swing.JTextField jTextFieldTipoOco;
     // End of variables declaration//GEN-END:variables
 }

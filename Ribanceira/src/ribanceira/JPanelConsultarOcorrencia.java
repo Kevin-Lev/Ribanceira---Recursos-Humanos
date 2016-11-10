@@ -28,19 +28,19 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
     CardLayout card;
    // private javax.swing.JPanel jPanelRaiz;
     //private javax.swing.JFrame jFrameRaiz;
-    private javax.swing.JPanel jPanelRoot;
-    int op;
-    public JPanelConsultarOcorrencia(int i) {
+    //private javax.swing.JPanel jPanelRoot;
+ 
+    public JPanelConsultarOcorrencia() {
         initComponents();
-         op = i;
         DefaultTableModel tableModel = (DefaultTableModel) jTableTabelaOco.getModel();
         tableModel.setNumRows(0);
         listaOcorrencias = new G_Ocorrencia().getListaOcorrencia();
         for (Ocorrencia o : listaOcorrencias) {
-            tableModel.addRow(new Object[]{o.getFuncionario(), o.getTipo(), o.getDataOcorrencia(), o.isJustificado()});
+            tableModel.addRow(new Object[]{o.getFuncionario().getNome(), o.getTipo(), o.getDataOcorrencia(), o.isJustificado()});
         }
     
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,7 +55,6 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableTabelaOco = new javax.swing.JTable();
         jButtonEditar_Oco = new javax.swing.JButton();
-        jButtonVoltar_Oco = new javax.swing.JButton();
 
         jLabelLista_Oco.setText("Lista de Ocorrências:");
 
@@ -88,13 +87,6 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
             }
         });
 
-        jButtonVoltar_Oco.setText("Voltar");
-        jButtonVoltar_Oco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVoltar_OcoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,8 +96,6 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonVoltar_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jButtonEditar_Oco, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,9 +112,7 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonEditar_Oco)
-                    .addComponent(jButtonVoltar_Oco))
+                .addComponent(jButtonEditar_Oco)
                 .addGap(11, 11, 11))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -134,30 +122,16 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
         if (jTableTabelaOco.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Selecione uma ocorrência!");
         } else {
-            switch (op) {
-                case 0:
-                    new JFrameEditarOcorrencia(listaOcorrencias.get(jTableTabelaOco.getSelectedRow()));
-                    break;
-                case 1:
-                    
-                    break;
-            }
+            new JFrameEditarOcorrencia(listaOcorrencias.get(jTableTabelaOco.getSelectedRow()));
+                
 
         }
         
     }//GEN-LAST:event_jButtonEditar_OcoActionPerformed
 
-    private void jButtonVoltar_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltar_OcoActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false); 
-         
-        
-    }//GEN-LAST:event_jButtonVoltar_OcoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEditar_Oco;
-    private javax.swing.JButton jButtonVoltar_Oco;
     private javax.swing.JLabel jLabelLista_Oco;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableTabelaOco;
