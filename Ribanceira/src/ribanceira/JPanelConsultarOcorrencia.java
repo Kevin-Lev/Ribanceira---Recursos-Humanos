@@ -6,8 +6,13 @@
 package ribanceira;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import DAO.Ocorrencia;
+import controladores.G_Ocorrencia;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,7 +20,7 @@ import javax.swing.JPanel;
  */
 public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
 
-
+    ArrayList<Ocorrencia> listaOcorrencias;
     /**
      * Creates new form JPanelConsultarOcorrencia
      */
@@ -24,9 +29,17 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
    // private javax.swing.JPanel jPanelRaiz;
     //private javax.swing.JFrame jFrameRaiz;
     private javax.swing.JPanel jPanelRoot;
-    public JPanelConsultarOcorrencia() {
+    int op;
+    public JPanelConsultarOcorrencia(int i) {
         initComponents();
-        
+         op = i;
+        DefaultTableModel tableModel = (DefaultTableModel) jTableTabelaOco.getModel();
+        tableModel.setNumRows(0);
+        listaOcorrencias = new G_Ocorrencia().getListaOcorrencia();
+        for (Ocorrencia o : listaOcorrencias) {
+            tableModel.addRow(new Object[]{o.getFuncionario(), o.getTipo(), o.getDataOcorrencia(), o.isJustificado()});
+        }
+    
     }
 
     /**
@@ -40,14 +53,14 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
 
         jLabelLista_Oco = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableTabela_Oco = new javax.swing.JTable();
+        jTableTabelaOco = new javax.swing.JTable();
         jButtonEditar_Oco = new javax.swing.JButton();
         jButtonVoltar_Oco = new javax.swing.JButton();
 
         jLabelLista_Oco.setText("Lista de Ocorrências:");
 
-        jTableTabela_Oco.setAutoCreateRowSorter(true);
-        jTableTabela_Oco.setModel(new javax.swing.table.DefaultTableModel(
+        jTableTabelaOco.setAutoCreateRowSorter(true);
+        jTableTabelaOco.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -66,7 +79,7 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTableTabela_Oco);
+        jScrollPane1.setViewportView(jTableTabelaOco);
 
         jButtonEditar_Oco.setText("Editar ocorrência");
         jButtonEditar_Oco.addActionListener(new java.awt.event.ActionListener() {
@@ -118,11 +131,19 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
 
     private void jButtonEditar_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditar_OcoActionPerformed
         // TODO add your handling code here:
-        JPanel panelEditar_Oco = new JPanelEditar_Oco();
-        
-         jPanelRoot.add(panelEditar_Oco);
-        
-         card.next(jPanelRoot); 
+        if (jTableTabelaOco.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione uma ocorrência!");
+        } else {
+            switch (op) {
+                case 0:
+                    new JFrameEditarOcorrencia(listaOcorrencias.get(jTableTabelaOco.getSelectedRow()));
+                    break;
+                case 1:
+                    
+                    break;
+            }
+
+        }
         
     }//GEN-LAST:event_jButtonEditar_OcoActionPerformed
 
@@ -139,6 +160,6 @@ public class JPanelConsultarOcorrencia extends javax.swing.JPanel {
     private javax.swing.JButton jButtonVoltar_Oco;
     private javax.swing.JLabel jLabelLista_Oco;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableTabela_Oco;
+    private javax.swing.JTable jTableTabelaOco;
     // End of variables declaration//GEN-END:variables
 }

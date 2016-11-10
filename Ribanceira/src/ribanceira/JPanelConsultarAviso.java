@@ -5,17 +5,33 @@
  */
 package ribanceira;
 
+import DAO.AvisoPrevio;
+import controladores.G_Aviso;
+import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 /**
  *
- * @author kevin
+ * @author Kevin Levrone
  */
-public class JPanelConsultarAviso extends javax.swing.JPanel {
 
+ 
+public class JPanelConsultarAviso extends javax.swing.JPanel {
+    
     /**
      * Creates new form JPanelConsultarAviso
      */
-    public JPanelConsultarAviso() {
+    ArrayList<AvisoPrevio> listaAvisos;
+    int op;
+    public JPanelConsultarAviso(int i) {
         initComponents();
+        op = i;
+        DefaultTableModel tableModel = (DefaultTableModel) jTableAvisosRegistrados.getModel();
+        tableModel.setNumRows(0);
+        listaAvisos = new G_Aviso().getListaAvisos();
+        for (AvisoPrevio a : listaAvisos) {
+            tableModel.addRow(new Object[]{a.getDataAviso(), a.getDataRescisao(), a.getMotivo(), a.isJustificado(), a.getFuncionario()});
+        }
     }
 
     /**
@@ -37,17 +53,17 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
 
         jTableAvisosRegistrados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Data de emissão", "Data da Rescisão", "Funcionario", " Empresa"
+                "Data de emissão", "Data da Rescisão", "Motivo", "Justificado", "Funcionário"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -57,6 +73,11 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTableAvisosRegistrados);
 
         jButtonEditarAviso.setText("Editar Aviso");
+        jButtonEditarAviso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarAvisoActionPerformed(evt);
+            }
+        });
 
         jButtonVoltarCon_Aviso.setText("Voltar");
         jButtonVoltarCon_Aviso.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +127,24 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_jButtonVoltarCon_AvisoActionPerformed
+
+    private void jButtonEditarAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarAvisoActionPerformed
+        // TODO add your handling code here:
+         if (jTableAvisosRegistrados.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um aviso!");
+        } else {
+            switch (op) {
+                case 0:
+                    new JFrameEditarAviso(listaAvisos.get(jTableAvisosRegistrados.getSelectedRow()));
+                    break;
+                case 1:
+                    
+                    break;
+            }
+
+        }
+        
+    }//GEN-LAST:event_jButtonEditarAvisoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
