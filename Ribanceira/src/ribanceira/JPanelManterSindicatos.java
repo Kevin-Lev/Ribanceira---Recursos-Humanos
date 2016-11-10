@@ -5,6 +5,14 @@
  */
 package ribanceira;
 
+import DAO.Sindicato;
+import controladores.G_Convencao;
+import controladores.G_Sindicato;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author christian
@@ -14,8 +22,20 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
     /**
      * Creates new form JPanelManterSindicatos
      */
-    public JPanelManterSindicatos() {
+    
+    ArrayList<Sindicato> listaSindicato;
+    CardLayout card;
+    Sindicato sindicato;
+    
+    public JPanelManterSindicatos(int i) {
         initComponents();
+        jTabbedPaneManterSindicato.setSelectedIndex(i);
+        DefaultTableModel tableModel = (DefaultTableModel) jTableBuscaSindicato.getModel();
+        tableModel.setNumRows(0);
+        listaSindicato = new G_Sindicato().getListSindicato();
+        for (Sindicato s : listaSindicato) {
+            tableModel.addRow(new Object[]{s.getNome(), s.getCodigo(), s.getEndereco(), s.getTelefone()});
+        }
     }
 
     /**
@@ -29,233 +49,332 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
 
         jMenu1 = new javax.swing.JMenu();
         jTabbedPaneManterSindicato = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        jPanelBuscar = new javax.swing.JPanel();
         jTextFieldBuscarPor = new javax.swing.JTextField();
         jLabelBuscarPor = new javax.swing.JLabel();
-        jComboBoxBuscarpor = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jListBuscarPor = new javax.swing.JList<>();
         jButtonAlterarSindicato = new javax.swing.JButton();
         jButtonExcluirSindicato = new javax.swing.JButton();
         jButtonCadastrarSindicato = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableBuscaSindicato = new javax.swing.JTable();
+        jButtonAtualizarList = new javax.swing.JButton();
+        jPanelCadastrar = new javax.swing.JPanel();
         jLabelNomeSindicato = new javax.swing.JLabel();
         jTextFieldNomeSindicato = new javax.swing.JTextField();
-        jLabelTipoSindicato = new javax.swing.JLabel();
-        jComboBoxTipoSindicato = new javax.swing.JComboBox<>();
+        jLabelRamoAtividade = new javax.swing.JLabel();
         jLabelCodigoEntidade = new javax.swing.JLabel();
         jTextFieldCodigoEntidade = new javax.swing.JTextField();
-        jLabelAgenciaCaixa = new javax.swing.JLabel();
-        jComboBoxAgenciaCaixa = new javax.swing.JComboBox<>();
-        jButton5 = new javax.swing.JButton();
+        jLabelEndereco = new javax.swing.JLabel();
+        jButtonSalvarCadastro = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        jTextFieldEndereco = new javax.swing.JTextField();
+        jLabelTelefone = new javax.swing.JLabel();
+        jTextFieldTelefon = new javax.swing.JTextField();
+        jTextFieldRamoAtividade = new javax.swing.JTextField();
+        jPanelAlterar = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabelNomeSindicato1 = new javax.swing.JLabel();
         jTextFieldNomeSindicato1 = new javax.swing.JTextField();
-        jLabelTipoSindicato1 = new javax.swing.JLabel();
-        jComboBoxTipoSindicato1 = new javax.swing.JComboBox<>();
         jLabelCodigoEntidade1 = new javax.swing.JLabel();
         jTextFieldCodigoEntidade1 = new javax.swing.JTextField();
-        jLabelAgenciaCaixa1 = new javax.swing.JLabel();
-        jComboBoxAgenciaCaixa1 = new javax.swing.JComboBox<>();
         jButtonCancelar1 = new javax.swing.JButton();
         jButtonSalvar1 = new javax.swing.JButton();
         jButtonExcluirSindicato1 = new javax.swing.JButton();
+        jLabelEndereco1 = new javax.swing.JLabel();
+        jTextFieldEndereco1 = new javax.swing.JTextField();
+        jLabelTelefone1 = new javax.swing.JLabel();
+        jTextFieldTelefon1 = new javax.swing.JTextField();
+        jLabelRamoAtividade1 = new javax.swing.JLabel();
+        jTextFieldRamoAtividade1 = new javax.swing.JTextField();
+        jLabelNomeSindicato2 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
         jTextFieldBuscarPor.setText("Digite aqui o que deseja buscar");
+        jTextFieldBuscarPor.setEnabled(false);
+        jTextFieldBuscarPor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldBuscarPorActionPerformed(evt);
+            }
+        });
 
         jLabelBuscarPor.setText("Buscar por: ");
 
-        jComboBoxBuscarpor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jListBuscarPor.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jListBuscarPor);
-
         jButtonAlterarSindicato.setText("Alterar");
+        jButtonAlterarSindicato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarSindicatoActionPerformed(evt);
+            }
+        });
 
         jButtonExcluirSindicato.setText("Excluir sindicato");
+        jButtonExcluirSindicato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirSindicatoActionPerformed(evt);
+            }
+        });
 
         jButtonCadastrarSindicato.setText("Cadastrar novo sindicato");
+        jButtonCadastrarSindicato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarSindicatoActionPerformed(evt);
+            }
+        });
 
         jButtonSair.setText("Sair");
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSairActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jTableBuscaSindicato.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Código", "Endereço", "Telefone"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableBuscaSindicato.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(jTableBuscaSindicato);
+        if (jTableBuscaSindicato.getColumnModel().getColumnCount() > 0) {
+            jTableBuscaSindicato.getColumnModel().getColumn(0).setResizable(false);
+            jTableBuscaSindicato.getColumnModel().getColumn(1).setResizable(false);
+            jTableBuscaSindicato.getColumnModel().getColumn(2).setResizable(false);
+            jTableBuscaSindicato.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jButtonAtualizarList.setText("Atualizar Lista");
+        jButtonAtualizarList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtualizarListActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelBuscarLayout = new javax.swing.GroupLayout(jPanelBuscar);
+        jPanelBuscar.setLayout(jPanelBuscarLayout);
+        jPanelBuscarLayout.setHorizontalGroup(
+            jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBuscarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelBuscarPor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBoxBuscarpor, 0, 137, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldBuscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelBuscarLayout.createSequentialGroup()
                         .addComponent(jButtonExcluirSindicato)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAtualizarList)
+                        .addGap(27, 27, 27)
                         .addComponent(jButtonCadastrarSindicato)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jButtonSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButtonAlterarSindicato))
-                        .addGap(24, 24, 24))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonAlterarSindicato))
+                    .addComponent(jScrollPane2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBuscarLayout.createSequentialGroup()
+                        .addComponent(jLabelBuscarPor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldBuscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelBuscarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelBuscarLayout.setVerticalGroup(
+            jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBuscarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldBuscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelBuscarPor)
-                    .addComponent(jComboBoxBuscarpor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelBuscarPor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAlterarSindicato)
                     .addComponent(jButtonExcluirSindicato)
-                    .addComponent(jButtonCadastrarSindicato))
-                .addGap(18, 18, 18)
+                    .addComponent(jButtonCadastrarSindicato)
+                    .addComponent(jButtonAtualizarList))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonSair)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        jTabbedPaneManterSindicato.addTab("Buscar", jPanel1);
+        jTabbedPaneManterSindicato.addTab("Buscar", jPanelBuscar);
 
         jLabelNomeSindicato.setText("Nome do sindicato:");
 
-        jTextFieldNomeSindicato.setText("Digite o nome do sindicato");
-
-        jLabelTipoSindicato.setText("Tipo de sindicato:");
-
-        jComboBoxTipoSindicato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxTipoSindicato.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNomeSindicato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxTipoSindicatoActionPerformed(evt);
+                jTextFieldNomeSindicatoActionPerformed(evt);
             }
         });
+
+        jLabelRamoAtividade.setText("Ramo de  atividade:");
 
         jLabelCodigoEntidade.setText("Código da Entidade:");
 
         jTextFieldCodigoEntidade.setText("Digite o código da entidade");
+        jTextFieldCodigoEntidade.setEnabled(false);
 
-        jLabelAgenciaCaixa.setText("Agência na Caixa:");
+        jLabelEndereco.setText("Endereço:");
 
-        jComboBoxAgenciaCaixa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxAgenciaCaixa.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalvarCadastro.setText("Salvar");
+        jButtonSalvarCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxAgenciaCaixaActionPerformed(evt);
+                jButtonSalvarCadastroActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Salvar");
-
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jLabelTelefone.setText("Telefone:");
+
+        jTextFieldRamoAtividade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldRamoAtividadeActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelCadastrarLayout = new javax.swing.GroupLayout(jPanelCadastrar);
+        jPanelCadastrar.setLayout(jPanelCadastrarLayout);
+        jPanelCadastrarLayout.setHorizontalGroup(
+            jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCadastrarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCadastrarLayout.createSequentialGroup()
                         .addComponent(jLabelNomeSindicato)
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldNomeSindicato))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCadastrarLayout.createSequentialGroup()
+                        .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelCodigoEntidade)
-                            .addComponent(jLabelTipoSindicato)
-                            .addComponent(jLabelAgenciaCaixa))
+                            .addComponent(jLabelRamoAtividade)
+                            .addComponent(jLabelEndereco))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldCodigoEntidade, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jComboBoxTipoSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jComboBoxAgenciaCaixa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldCodigoEntidade, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                            .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                            .addComponent(jTextFieldRamoAtividade, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCadastrarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonSalvarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCadastrarLayout.createSequentialGroup()
+                        .addComponent(jLabelTelefone)
+                        .addGap(82, 82, 82)
+                        .addComponent(jTextFieldTelefon, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanelCadastrarLayout.setVerticalGroup(
+            jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCadastrarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNomeSindicato)
                     .addComponent(jTextFieldNomeSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTipoSindicato)
-                    .addComponent(jComboBoxTipoSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelRamoAtividade)
+                    .addComponent(jTextFieldRamoAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCodigoEntidade)
                     .addComponent(jTextFieldCodigoEntidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAgenciaCaixa)
-                    .addComponent(jComboBoxAgenciaCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelEndereco)
+                    .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTelefone)
+                    .addComponent(jTextFieldTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSalvarCadastro)
                     .addComponent(jButtonCancelar))
                 .addContainerGap())
         );
 
-        jTabbedPaneManterSindicato.addTab("Cadastrar", jPanel2);
+        jTabbedPaneManterSindicato.addTab("Cadastrar", jPanelCadastrar);
 
         jLabelNomeSindicato1.setText("Nome do sindicato:");
 
-        jTextFieldNomeSindicato1.setText("Digite o nome do sindicato");
-
-        jLabelTipoSindicato1.setText("Tipo de sindicato:");
-
-        jComboBoxTipoSindicato1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxTipoSindicato1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNomeSindicato1.setEnabled(false);
+        jTextFieldNomeSindicato1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxTipoSindicato1ActionPerformed(evt);
+                jTextFieldNomeSindicato1ActionPerformed(evt);
             }
         });
 
         jLabelCodigoEntidade1.setText("Código da Entidade:");
 
-        jTextFieldCodigoEntidade1.setText("Digite o código da entidade");
+        jTextFieldCodigoEntidade1.setEnabled(false);
 
-        jLabelAgenciaCaixa1.setText("Agência na Caixa:");
-
-        jComboBoxAgenciaCaixa1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxAgenciaCaixa1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCancelar1.setText("Cancelar");
+        jButtonCancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxAgenciaCaixa1ActionPerformed(evt);
+                jButtonCancelar1ActionPerformed(evt);
             }
         });
 
-        jButtonCancelar1.setText("Cancelar");
-
         jButtonSalvar1.setText("Salvar");
+        jButtonSalvar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvar1ActionPerformed(evt);
+            }
+        });
 
         jButtonExcluirSindicato1.setText("Excluir sindicato");
+        jButtonExcluirSindicato1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirSindicato1ActionPerformed(evt);
+            }
+        });
+
+        jLabelEndereco1.setText("Endereço:");
+
+        jTextFieldEndereco1.setToolTipText("");
+
+        jLabelTelefone1.setText("Telefone:");
+
+        jTextFieldTelefon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTelefon1ActionPerformed(evt);
+            }
+        });
+
+        jLabelRamoAtividade1.setText("Ramo de  atividade:");
+
+        jTextFieldRamoAtividade1.setEnabled(false);
+        jTextFieldRamoAtividade1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldRamoAtividade1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -265,27 +384,31 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabelNomeSindicato1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldNomeSindicato1))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelCodigoEntidade1)
-                            .addComponent(jLabelTipoSindicato1)
-                            .addComponent(jLabelAgenciaCaixa1))
+                        .addComponent(jLabelCodigoEntidade1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldCodigoEntidade1, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jComboBoxTipoSindicato1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jComboBoxAgenciaCaixa1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jTextFieldCodigoEntidade1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jButtonExcluirSindicato1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonCancelar1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabelEndereco1)
+                        .addGap(78, 78, 78)
+                        .addComponent(jTextFieldEndereco1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabelTelefone1)
+                        .addGap(82, 82, 82)
+                        .addComponent(jTextFieldTelefon1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelNomeSindicato1)
+                            .addComponent(jLabelRamoAtividade1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldRamoAtividade1)
+                            .addComponent(jTextFieldNomeSindicato1))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -295,19 +418,23 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNomeSindicato1)
                     .addComponent(jTextFieldNomeSindicato1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTipoSindicato1)
-                    .addComponent(jComboBoxTipoSindicato1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldRamoAtividade1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelRamoAtividade1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelCodigoEntidade1)
                     .addComponent(jTextFieldCodigoEntidade1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldEndereco1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEndereco1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAgenciaCaixa1)
-                    .addComponent(jComboBoxAgenciaCaixa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                    .addComponent(jTextFieldTelefon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTelefone1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar1)
                     .addComponent(jButtonSalvar1)
@@ -315,63 +442,194 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        jLabelNomeSindicato2.setText("Nome do sindicato:");
+
+        javax.swing.GroupLayout jPanelAlterarLayout = new javax.swing.GroupLayout(jPanelAlterar);
+        jPanelAlterar.setLayout(jPanelAlterarLayout);
+        jPanelAlterarLayout.setHorizontalGroup(
+            jPanelAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelAlterarLayout.createSequentialGroup()
+                    .addGap(203, 203, 203)
+                    .addComponent(jLabelNomeSindicato2)
+                    .addContainerGap(215, Short.MAX_VALUE)))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 254, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        jPanelAlterarLayout.setVerticalGroup(
+            jPanelAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelAlterarLayout.createSequentialGroup()
+                    .addGap(162, 162, 162)
+                    .addComponent(jLabelNomeSindicato2)
+                    .addContainerGap(102, Short.MAX_VALUE)))
         );
 
-        jTabbedPaneManterSindicato.addTab("Alterar", jPanel3);
+        jTabbedPaneManterSindicato.addTab("Alterar", jPanelAlterar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPaneManterSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPaneManterSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 555, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneManterSindicato)
+            .addComponent(jTabbedPaneManterSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBoxTipoSindicatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoSindicatoActionPerformed
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxTipoSindicatoActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
-    private void jComboBoxAgenciaCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAgenciaCaixaActionPerformed
+    private void jButtonCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelar1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxAgenciaCaixaActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonCancelar1ActionPerformed
 
-    private void jComboBoxTipoSindicato1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoSindicato1ActionPerformed
+    private void jButtonCadastrarSindicatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarSindicatoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxTipoSindicato1ActionPerformed
+        jTabbedPaneManterSindicato.setSelectedIndex(1);
+        
+        new G_Sindicato().cadastrarSindicato(jTextFieldNomeSindicato.getText(),
+                                             jTextFieldRamoAtividade.getText(), 
+                                             jTextFieldEndereco.getText(),
+                                             jTextFieldTelefon.getText());
+        JOptionPane.showMessageDialog(this, "Sindicato cadastrado com sucesso!","Cadastro de Sindicato",JOptionPane.INFORMATION_MESSAGE);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonCadastrarSindicatoActionPerformed
 
-    private void jComboBoxAgenciaCaixa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAgenciaCaixa1ActionPerformed
+    private void jTextFieldBuscarPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBuscarPorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxAgenciaCaixa1ActionPerformed
+    }//GEN-LAST:event_jTextFieldBuscarPorActionPerformed
+
+    private void jTextFieldNomeSindicatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeSindicatoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextFieldNomeSindicatoActionPerformed
+
+    private void jButtonSalvarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarCadastroActionPerformed
+        // TODO add your handling code here:
+        if (!jTextFieldNomeSindicato.getText().equals("") && !jTextFieldRamoAtividade.getText().equals("")) {
+            
+            new G_Sindicato().cadastrarSindicato(jTextFieldNomeSindicato.getText(),
+                                                 jTextFieldRamoAtividade.getText(), 
+                                                 jTextFieldEndereco.getText(),
+                                                 jTextFieldTelefon.getText());
+            JOptionPane.showMessageDialog(this, "Sindicato cadastrado com sucesso!","Cadastro de Sindicato",JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+        }
+        
+        else {
+            
+            JOptionPane.showMessageDialog(this, "Error - Falta de dados à inserir","Erro ao alterar",JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_jButtonSalvarCadastroActionPerformed
+
+    private void jTextFieldRamoAtividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRamoAtividadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldRamoAtividadeActionPerformed
+
+    private void jTextFieldRamoAtividade1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRamoAtividade1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldRamoAtividade1ActionPerformed
+
+    private void jButtonAtualizarListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarListActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tableModel = (DefaultTableModel) jTableBuscaSindicato.getModel();
+        tableModel.setNumRows(0);
+        listaSindicato = new G_Sindicato().getListSindicato();
+        for (Sindicato s : listaSindicato) {
+            tableModel.addRow(new Object[]{s.getNome(), s.getCodigo(), s.getEndereco(), s.getTelefone()});
+        }
+    }//GEN-LAST:event_jButtonAtualizarListActionPerformed
+
+    private void jButtonSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvar1ActionPerformed
+        // TODO add your handling code here:
+        if (!jTextFieldTelefon1.getText().equals("") && !jTextFieldEndereco1.getText().equals("")) {
+            sindicato.setTelefone(jTextFieldTelefon1.getText());
+            sindicato.setEndereco(jTextFieldEndereco1.getText());
+            new G_Sindicato().alterarSindicato(sindicato);
+
+            JOptionPane.showMessageDialog(this, "Sindicato alterado com sucesso!","Alteração de Sindicato",JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+        }
+        
+        else {
+            
+            JOptionPane.showMessageDialog(this, "Error - Falta de dados à inserir","Erro ao alterar",JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_jButtonSalvar1ActionPerformed
+
+    private void jButtonAlterarSindicatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarSindicatoActionPerformed
+        // TODO add your handling code here:
+        try {
+            
+            sindicato = listaSindicato.get(jTableBuscaSindicato.getSelectedRow());
+            jTabbedPaneManterSindicato.setSelectedIndex(2);
+
+            jTextFieldNomeSindicato1.setText(sindicato.getNome());
+            jTextFieldRamoAtividade1.setText(sindicato.getRamoAtividade());
+            jTextFieldEndereco1.setText(sindicato.getEndereco());
+            jTextFieldTelefon1.setText(sindicato.getTelefone());
+        }
+        
+        catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(this, "Error - Falta de dados à inserir","Erro ao alterar",JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_jButtonAlterarSindicatoActionPerformed
+
+    private void jTextFieldNomeSindicato1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeSindicato1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeSindicato1ActionPerformed
+
+    private void jTextFieldTelefon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefon1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTelefon1ActionPerformed
+
+    private void jButtonExcluirSindicato1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirSindicato1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonExcluirSindicato1ActionPerformed
+
+    private void jButtonExcluirSindicatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirSindicatoActionPerformed
+        // TODO add your handling code here:
+        try{
+            
+            sindicato = listaSindicato.get(jTableBuscaSindicato.getSelectedRow());
+
+            jTextFieldNomeSindicato1.setText(sindicato.getNome());
+            jTextFieldRamoAtividade1.setText(sindicato.getRamoAtividade());
+            jTextFieldEndereco1.setText(sindicato.getEndereco());
+            jTextFieldTelefon1.setText(sindicato.getTelefone());
+
+            new G_Sindicato().excluirSindicato(sindicato);
+            JOptionPane.showMessageDialog(this, "Sindicato excluído com sucesso!","Exclusão de Sindicato",JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+        }
+        
+        catch(Exception e) {
+            
+            JOptionPane.showMessageDialog(this, "Error - Sindicato relacionado com uma convenção coletiva","Exclusão de Sindicato",JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_jButtonExcluirSindicatoActionPerformed
+
+    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonSairActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonAlterarSindicato;
+    private javax.swing.JButton jButtonAtualizarList;
     private javax.swing.JButton jButtonCadastrarSindicato;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonCancelar1;
@@ -379,32 +637,41 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
     private javax.swing.JButton jButtonExcluirSindicato1;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonSalvar1;
-    private javax.swing.JComboBox<String> jComboBoxAgenciaCaixa;
-    private javax.swing.JComboBox<String> jComboBoxAgenciaCaixa1;
-    private javax.swing.JComboBox<String> jComboBoxBuscarpor;
-    private javax.swing.JComboBox<String> jComboBoxTipoSindicato;
-    private javax.swing.JComboBox<String> jComboBoxTipoSindicato1;
-    private javax.swing.JLabel jLabelAgenciaCaixa;
-    private javax.swing.JLabel jLabelAgenciaCaixa1;
+    private javax.swing.JButton jButtonSalvarCadastro;
     private javax.swing.JLabel jLabelBuscarPor;
     private javax.swing.JLabel jLabelCodigoEntidade;
     private javax.swing.JLabel jLabelCodigoEntidade1;
+    private javax.swing.JLabel jLabelEndereco;
+    private javax.swing.JLabel jLabelEndereco1;
     private javax.swing.JLabel jLabelNomeSindicato;
     private javax.swing.JLabel jLabelNomeSindicato1;
-    private javax.swing.JLabel jLabelTipoSindicato;
-    private javax.swing.JLabel jLabelTipoSindicato1;
-    private javax.swing.JList<String> jListBuscarPor;
+    private javax.swing.JLabel jLabelNomeSindicato2;
+    private javax.swing.JLabel jLabelRamoAtividade;
+    private javax.swing.JLabel jLabelRamoAtividade1;
+    private javax.swing.JLabel jLabelTelefone;
+    private javax.swing.JLabel jLabelTelefone1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanelAlterar;
+    private javax.swing.JPanel jPanelBuscar;
+    private javax.swing.JPanel jPanelCadastrar;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPaneManterSindicato;
+    private javax.swing.JTable jTableBuscaSindicato;
     private javax.swing.JTextField jTextFieldBuscarPor;
     private javax.swing.JTextField jTextFieldCodigoEntidade;
     private javax.swing.JTextField jTextFieldCodigoEntidade1;
+    private javax.swing.JTextField jTextFieldEndereco;
+    private javax.swing.JTextField jTextFieldEndereco1;
     private javax.swing.JTextField jTextFieldNomeSindicato;
     private javax.swing.JTextField jTextFieldNomeSindicato1;
+    private javax.swing.JTextField jTextFieldRamoAtividade;
+    private javax.swing.JTextField jTextFieldRamoAtividade1;
+    private javax.swing.JTextField jTextFieldTelefon;
+    private javax.swing.JTextField jTextFieldTelefon1;
     // End of variables declaration//GEN-END:variables
+
+    private void setTitle(String ribanceira_RH__Cadastrar_Sindicato) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

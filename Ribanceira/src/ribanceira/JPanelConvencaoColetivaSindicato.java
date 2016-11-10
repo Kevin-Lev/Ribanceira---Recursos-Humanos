@@ -5,6 +5,14 @@
  */
 package ribanceira;
 
+import java.io.File;
+import controladores.G_Convencao;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import DAO.ConvencaoColetiva;
+import DAO.Sindicato;
+import controladores.G_Convencao;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author christian
@@ -14,8 +22,18 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
     /**
      * Creates new form ConvencaoColetivaSindicato
      */
+    ArrayList<ConvencaoColetiva> listaConvencao;
+    ArrayList<Sindicato> listaSindicato;
+    Sindicato sindicato;
+
     public JPanelConvencaoColetivaSindicato() {
         initComponents();
+
+        listaSindicato = new G_Convencao().getListSindicato();
+        for(Sindicato s : listaSindicato){
+            jComboBoxSindicato.addItem(s.getNome());
+        }
+        
     }
 
     /**
@@ -33,8 +51,7 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabelConvColetiva = new javax.swing.JLabel();
-        jTextFieldConvColetiva = new javax.swing.JTextField();
-        jButtonSelectConvColetiva = new javax.swing.JButton();
+        jComboBoxSindicato = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaEditarConvColetiva = new javax.swing.JTextArea();
         jScrollBar1 = new javax.swing.JScrollBar();
@@ -49,9 +66,6 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPaneNome = new javax.swing.JTextPane();
         jLabelNome = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPaneCodigo = new javax.swing.JTextPane();
-        jLabelCodigo = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextPaneCategoria = new javax.swing.JTextPane();
         jLabelData = new javax.swing.JLabel();
@@ -66,14 +80,13 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
 
         jTextField1.setText("jTextField1");
 
-        jLabelConvColetiva.setText("Convenção coletiva:");
+        setOpaque(false);
 
-        jTextFieldConvColetiva.setText("Digite o tipo da convenção");
+        jLabelConvColetiva.setText("Sindicato:");
 
-        jButtonSelectConvColetiva.setText("...");
-        jButtonSelectConvColetiva.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxSindicato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSelectConvColetivaActionPerformed(evt);
+                jComboBoxSindicatoActionPerformed(evt);
             }
         });
 
@@ -83,11 +96,9 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelConvColetiva, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldConvColetiva, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonSelectConvColetiva)
+                .addComponent(jLabelConvColetiva, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(jComboBoxSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -96,8 +107,7 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelConvColetiva, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(jTextFieldConvColetiva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSelectConvColetiva))
+                    .addComponent(jComboBoxSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -136,17 +146,15 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
 
         jLabelCategoria.setText("Categoria:");
 
+        jTextPaneCodigoSindicato.setEnabled(false);
         jScrollPane2.setViewportView(jTextPaneCodigoSindicato);
 
         jLabelCodigoSindicato.setText("Código Sindicato:");
 
+        jTextPaneNome.setEnabled(false);
         jScrollPane3.setViewportView(jTextPaneNome);
 
         jLabelNome.setText("Nome:");
-
-        jScrollPane4.setViewportView(jTextPaneCodigo);
-
-        jLabelCodigo.setText("Código:");
 
         jScrollPane5.setViewportView(jTextPaneCategoria);
 
@@ -168,18 +176,12 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonSalvarAlteracao))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabelCodigo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelCodigoSindicato)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2)
-                        .addGap(19, 19, 19))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelCodigoSindicato)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelNome)
@@ -195,7 +197,7 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
                                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
@@ -214,9 +216,7 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane2)
-                            .addComponent(jLabelCodigoSindicato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabelCodigoSindicato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane3)
@@ -245,16 +245,19 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSelectConvColetivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectConvColetivaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSelectConvColetivaActionPerformed
-
     private void jButtonSalvarAlteracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarAlteracaoActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        sindicato = listaSindicato.get(jComboBoxSindicato.getSelectedIndex());
+        new G_Convencao().salvarConvencao(sindicato,
+                                          //jTextPaneNome.getText(),
+                                          jTextPaneCategoria.getText(), 
+                                          jTextPaneData.getText());
+        JOptionPane.showMessageDialog(this, "Convenção coletiva cadastrado com sucesso!","Cadastro de Convenção Coletiva",JOptionPane.INFORMATION_MESSAGE);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonSalvarAlteracaoActionPerformed
 
     private void jButtonImportarConvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImportarConvActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonImportarConvActionPerformed
 
     private void jButtonExportarConvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarConvActionPerformed
@@ -263,7 +266,12 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jComboBoxSindicatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSindicatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSindicatoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -271,9 +279,8 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
     private javax.swing.JButton jButtonExportarConv;
     private javax.swing.JButton jButtonImportarConv;
     private javax.swing.JButton jButtonSalvarAlteracao;
-    private javax.swing.JButton jButtonSelectConvColetiva;
+    private javax.swing.JComboBox<String> jComboBoxSindicato;
     private javax.swing.JLabel jLabelCategoria;
-    private javax.swing.JLabel jLabelCodigo;
     private javax.swing.JLabel jLabelCodigoSindicato;
     private javax.swing.JLabel jLabelConvColetiva;
     private javax.swing.JLabel jLabelData;
@@ -286,14 +293,11 @@ public class JPanelConvencaoColetivaSindicato extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextArea jTextAreaEditarConvColetiva;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextFieldConvColetiva;
     private javax.swing.JTextPane jTextPaneCategoria;
-    private javax.swing.JTextPane jTextPaneCodigo;
     private javax.swing.JTextPane jTextPaneCodigoSindicato;
     private javax.swing.JTextPane jTextPaneData;
     private javax.swing.JTextPane jTextPaneNome;
