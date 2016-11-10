@@ -10,30 +10,29 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author admin
+ * @author Alessandra, Christian, Kevin
  */
 public class JFrameprincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrameprincipal
      */
-    
     CardLayout card;
     private javax.swing.JPanel jPanelconsul;
+
     public JFrameprincipal() {
         initComponents();
-        
+
         JPanel panelFundo = new JPanelFundo();
         card = (CardLayout) jPanelRoot.getLayout();
         jPanelRoot.add(panelFundo);
         card.show(jPanelRoot, "panelFundo");
-        
-        this.setTitle("Ribanceira - Menu Principal");     
-        this.setSize(800,600);
+
+        this.setTitle("Ribanceira - Menu Principal");
+        this.setSize(800, 600);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        
-        
+
     }
 
     /**
@@ -239,12 +238,12 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
     private void jMenuItemCadastrar_EmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrar_EmpActionPerformed
         // TODO add your handling code here:
-        
+
         this.setTitle("Ribanceira RH - Cadastrar Empresa");
         JPanel panelCadastrarEmpresa = new JPanelCadastrarEmpresa();
         jPanelRoot.add(panelCadastrarEmpresa);
         card.next(jPanelRoot);
-        
+
     }//GEN-LAST:event_jMenuItemCadastrar_EmpActionPerformed
 
     private void jMenuConsultar_FunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultar_FunActionPerformed
@@ -257,25 +256,25 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
     private void jMenuInsere_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInsere_OcoActionPerformed
         // TODO add your handling code here:
-         this.setTitle("Ribanceira RH - Registrar Ocorrência");
-        
-         JPanel panelRegistrarOcorrencia = new JPanelRegistrarOcorrencia();
-        
-         jPanelRoot.add(panelRegistrarOcorrencia);
-        
-         card.next(jPanelRoot);
+        this.setTitle("Ribanceira RH - Registrar Ocorrência");
+
+        JPanel panelRegistrarOcorrencia = new JPanelRegistrarOcorrencia();
+
+        jPanelRoot.add(panelRegistrarOcorrencia);
+
+        card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuInsere_OcoActionPerformed
 
     private void jMenuGerar_AlertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuGerar_AlertaActionPerformed
         // TODO add your handling code here:
-        this.setSize(800,450);
+        this.setSize(800, 450);
         this.setTitle("Ribanceira RH - Registrar Aviso prévio");
-        
-         JPanel panelRegistrarAviso = new JPanelRegistrarAviso();
-        
-         jPanelRoot.add(panelRegistrarAviso);
-        
-         card.next(jPanelRoot);
+
+        JPanel panelRegistrarAviso = new JPanelRegistrarAviso();
+
+        jPanelRoot.add(panelRegistrarAviso);
+
+        card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuGerar_AlertaActionPerformed
 
     private void jMenuConsultar_EmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultar_EmpActionPerformed
@@ -302,24 +301,24 @@ public class JFrameprincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setTitle("Ribanceira RH - Consulta de ocorrências");
         JPanel panelConsultar_Oco = new JPanelConsultarOcorrencia();
-        
-         jPanelconsul.add(panelConsultar_Oco);
-        
-         card.next(jPanelconsul);
+
+        jPanelRoot.add(panelConsultar_Oco);
+
+        card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuConsulta_OcoActionPerformed
 
     private void jMenuConsultar_AlertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultar_AlertaActionPerformed
         // TODO add your handling code here:
-        this.setSize(800,450);
+        this.setSize(800, 450);
         this.setTitle("Ribanceira RH - Consultar Aviso prévio");
-        
-         JPanel panelConsultarAviso = new JPanelConsultarAviso();
-        
-         jPanelRoot.add(panelConsultarAviso);
-        
-         card.next(jPanelRoot);
+
+        JPanel panelConsultarAviso = new JPanelConsultarAviso();
+
+        jPanelRoot.add(panelConsultarAviso);
+
+        card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuConsultar_AlertaActionPerformed
-/*
+    /*
     private void jMenuBuscarConvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuBuscarConvActionPerformed
         // TODO add your handling code here:
         this.setTitle("Ribanceira RH - Buscar Convenção Coletiva");
