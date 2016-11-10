@@ -59,19 +59,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButtonFecharConsultaFuncionario">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Fechar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFecharConsultaFuncionarioActionPerformed"/>
-      </Events>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="594" y="393" width="79" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="javax.swing.JButton" name="jButtonSelecionarConsultaFuncionario">
       <Properties>
         <Property name="text" type="java.lang.String" value="Selecionar"/>
@@ -81,7 +68,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="408" y="393" width="160" height="-1"/>
+          <AbsoluteConstraints x="510" y="390" width="160" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

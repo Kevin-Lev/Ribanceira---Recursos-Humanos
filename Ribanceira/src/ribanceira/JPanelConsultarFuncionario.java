@@ -5,12 +5,13 @@
  */
 package ribanceira;
 
+import DAO.Empresa;
 import DAO.Funcionario;
 import controladores.G_Funcionario;
 import java.util.ArrayList;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import ribanceira.JPanelCadastrarContrato;
 
 /**
  *
@@ -22,11 +23,10 @@ public class JPanelConsultarFuncionario extends javax.swing.JPanel {
      * Creates new form JPanelConsultarFuncionario
      */
     ArrayList<Funcionario> listaFuncionario;
-    int op;
+    ArrayList<Empresa> listaEmpresa;
 
-    public JPanelConsultarFuncionario(int i) {
+    public JPanelConsultarFuncionario() {
         initComponents();
-        op = i;
         DefaultTableModel tableModel = (DefaultTableModel) jTableFuncionario.getModel();
         tableModel.setNumRows(0);
         listaFuncionario = new G_Funcionario().getListaFuncionario();
@@ -46,7 +46,6 @@ public class JPanelConsultarFuncionario extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableFuncionario = new javax.swing.JTable();
-        jButtonFecharConsultaFuncionario = new javax.swing.JButton();
         jButtonSelecionarConsultaFuncionario = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,43 +79,22 @@ public class JPanelConsultarFuncionario extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 663, 364));
 
-        jButtonFecharConsultaFuncionario.setText("Fechar");
-        jButtonFecharConsultaFuncionario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFecharConsultaFuncionarioActionPerformed(evt);
-            }
-        });
-        add(jButtonFecharConsultaFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 393, 79, -1));
-
         jButtonSelecionarConsultaFuncionario.setText("Selecionar");
         jButtonSelecionarConsultaFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSelecionarConsultaFuncionarioActionPerformed(evt);
             }
         });
-        add(jButtonSelecionarConsultaFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 393, 160, -1));
+        add(jButtonSelecionarConsultaFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonFecharConsultaFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharConsultaFuncionarioActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jButtonFecharConsultaFuncionarioActionPerformed
 
     private void jButtonSelecionarConsultaFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarConsultaFuncionarioActionPerformed
         // TODO add your handling code here:
-        
+
         if (jTableFuncionario.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Selecione um funcionario!");
         } else {
-            switch (op) {
-                case 0:
-                    new JFrameExibeFuncionario(listaFuncionario.get(jTableFuncionario.getSelectedRow()));
-                    break;
-                case 1:
-                    
-                    break;
-            }
-
+            new JFrameExibeFuncionario(listaFuncionario.get(jTableFuncionario.getSelectedRow()));
         }
 
 
@@ -124,7 +102,6 @@ public class JPanelConsultarFuncionario extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonFecharConsultaFuncionario;
     private javax.swing.JButton jButtonSelecionarConsultaFuncionario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableFuncionario;

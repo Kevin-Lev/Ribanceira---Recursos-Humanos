@@ -45,7 +45,6 @@ public class JPanelConsultarContrato extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableContrato = new javax.swing.JTable();
-        jButtonCancelarConsultarContrato = new javax.swing.JButton();
         jButtonSelecionarConsultarContrato = new javax.swing.JButton();
 
         jTableContrato.setModel(new javax.swing.table.DefaultTableModel(
@@ -75,13 +74,6 @@ public class JPanelConsultarContrato extends javax.swing.JPanel {
             jTableContrato.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jButtonCancelarConsultarContrato.setText("Cancelar");
-        jButtonCancelarConsultarContrato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarConsultarContratoActionPerformed(evt);
-            }
-        });
-
         jButtonSelecionarConsultarContrato.setText("Selecionar");
         jButtonSelecionarConsultarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,9 +91,7 @@ public class JPanelConsultarContrato extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonSelecionarConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonCancelarConsultarContrato)))
+                        .addComponent(jButtonSelecionarConsultarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -110,31 +100,22 @@ public class JPanelConsultarContrato extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancelarConsultarContrato)
-                    .addComponent(jButtonSelecionarConsultarContrato))
+                .addComponent(jButtonSelecionarConsultarContrato)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonCancelarConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarConsultarContratoActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jButtonCancelarConsultarContratoActionPerformed
 
     private void jButtonSelecionarConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarConsultarContratoActionPerformed
         // TODO add your handling code here:
         if (jTableContrato.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Selecione um contrato!", "Consulta de contrato", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            this.setVisible(false);
             new JFrameExibeContrato(listaContrato.get(jTableContrato.getSelectedRow()));
         }
     }//GEN-LAST:event_jButtonSelecionarConsultarContratoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelarConsultarContrato;
     private javax.swing.JButton jButtonSelecionarConsultarContrato;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableContrato;

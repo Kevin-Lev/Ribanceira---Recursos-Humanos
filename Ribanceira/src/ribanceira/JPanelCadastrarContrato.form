@@ -68,22 +68,21 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="318" max="-2" attributes="0"/>
-                              <Component id="jButtonSalvarContrato" min="-2" pref="120" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButtonCancelarContrato" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Component id="jComboBoxListaFuncionarios" alignment="0" min="-2" pref="497" max="-2" attributes="0"/>
                           <Component id="jComboBoxListaEmpresas" min="-2" pref="497" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabelAbonoPecuniarioContrato" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jButtonSalvarContrato" min="-2" pref="120" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -134,12 +133,9 @@
                       <Component id="jComboBoxValeRefeicaoContrato" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonCancelarContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonSalvarContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
+              <Component id="jButtonSalvarContrato" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -199,14 +195,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Vale refei&#xe7;&#xe3;o:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonCancelarContrato">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cancelar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelarContratoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonSalvarContrato">
       <Properties>

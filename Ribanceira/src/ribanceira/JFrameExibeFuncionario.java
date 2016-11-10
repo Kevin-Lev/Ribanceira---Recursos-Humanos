@@ -24,6 +24,17 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
     public JFrameExibeFuncionario(Funcionario f) {
         initComponents();
         
+        jTextFieldNomeFuncionario.setEditable(false);
+        jTextFieldEnderecoFuncionario.setEditable(false);
+        jTextFieldEmailFuncionario.setEditable(false);
+        jFormattedTextFieldCarteiraTrabalhoFuncionario.setEditable(false);
+        jFormattedTextFieldCpfFuncionario.setEditable(false);
+        jFormattedTextFieldDataNascimentoFuncionario.setEditable(false);
+        jFormattedTextFieldEstadoCivilFuncionario.setEditable(false);
+        jFormattedTextFieldRgFuncionario.setEditable(false);
+        jFormattedTextFieldTelefoneFuncionario.setEditable(false);
+        jFormattedTextFieldTituloEleitorFuncionario.setEditable(false);
+        
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         
@@ -144,11 +155,11 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(318, Short.MAX_VALUE)
+                .addContainerGap(397, Short.MAX_VALUE)
                 .addComponent(jButtonAlterarFuncionario)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonSalvarAlteracoesFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -274,6 +285,7 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
         func.setEstadoCivil(jFormattedTextFieldEstadoCivilFuncionario.getText());
         new G_Funcionario().atualizaFuncionario(func);
         JOptionPane.showMessageDialog(this, "Funcionário atualizado com sucesso!","Atualização de funcionário",JOptionPane.INFORMATION_MESSAGE);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonSalvarAlteracoesFuncionarioActionPerformed
 
     private void jButtonAlterarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarFuncionarioActionPerformed

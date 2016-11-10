@@ -6,7 +6,9 @@
 package ribanceira;
 
 import controladores.G_Funcionario;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -19,6 +21,7 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
      */
     public JPanelCadastrarFuncionario() {
         initComponents();
+        this.setSize(800,600);
     }
 
     /**
@@ -50,7 +53,6 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
         jFormattedTextFieldTituloEleitorFuncionario = new javax.swing.JFormattedTextField();
         jFormattedTextFieldEstadoCivilFuncionario = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCarteiraTrabalhoFuncionario = new javax.swing.JFormattedTextField();
-        jButtonCancelarFuncionario = new javax.swing.JButton();
         jButtonSalvarFuncionario = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(800, 550));
@@ -80,13 +82,6 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
         jFormattedTextFieldRgFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFormattedTextFieldRgFuncionarioActionPerformed(evt);
-            }
-        });
-
-        jButtonCancelarFuncionario.setText("Cancelar");
-        jButtonCancelarFuncionario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarFuncionarioActionPerformed(evt);
             }
         });
 
@@ -128,18 +123,16 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
                         .addComponent(jFormattedTextFieldTituloEleitorFuncionario, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jFormattedTextFieldCpfFuncionario, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jFormattedTextFieldRgFuncionario, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(226, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonSalvarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCancelarFuncionario)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNomeFuncionario)
                     .addComponent(jTextFieldNomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -179,22 +172,15 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCarteiraTrabalhoFuncionario)
                     .addComponent(jFormattedTextFieldCarteiraTrabalhoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancelarFuncionario)
-                    .addComponent(jButtonSalvarFuncionario))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonSalvarFuncionario)
+                .addGap(7, 7, 7))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFormattedTextFieldRgFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldRgFuncionarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldRgFuncionarioActionPerformed
-
-    private void jButtonCancelarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarFuncionarioActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jButtonCancelarFuncionarioActionPerformed
 
     private void jButtonSalvarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarFuncionarioActionPerformed
         // TODO add your handling code here:
@@ -209,12 +195,10 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
                                              jFormattedTextFieldEstadoCivilFuncionario.getText(), 
                                              jFormattedTextFieldCarteiraTrabalhoFuncionario.getText());
         JOptionPane.showMessageDialog(this, "Funcionário cadastrado com sucesso!","Cadastro de funcionário",JOptionPane.INFORMATION_MESSAGE);
-        this.setVisible(false);
     }//GEN-LAST:event_jButtonSalvarFuncionarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelarFuncionario;
     private javax.swing.JButton jButtonSalvarFuncionario;
     private javax.swing.JFormattedTextField jFormattedTextFieldCarteiraTrabalhoFuncionario;
     private javax.swing.JFormattedTextField jFormattedTextFieldCpfFuncionario;
@@ -237,4 +221,5 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldEnderecoFuncionario;
     private javax.swing.JTextField jTextFieldNomeFuncionario;
     // End of variables declaration//GEN-END:variables
+
 }

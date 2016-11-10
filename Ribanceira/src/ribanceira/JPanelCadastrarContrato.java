@@ -65,7 +65,6 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
         jLabelAbonoPecuniarioContrato = new javax.swing.JLabel();
         jLabelValeTransporteContrato = new javax.swing.JLabel();
         jLabelValeRefeicao = new javax.swing.JLabel();
-        jButtonCancelarContrato = new javax.swing.JButton();
         jButtonSalvarContrato = new javax.swing.JButton();
         jTextFieldCargaHorariaContrato = new javax.swing.JTextField();
         jTextFieldHorasExtrasContrato = new javax.swing.JTextField();
@@ -100,13 +99,6 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
         jLabelValeTransporteContrato.setText("Vale transporte:");
 
         jLabelValeRefeicao.setText("Vale refeição:");
-
-        jButtonCancelarContrato.setText("Cancelar");
-        jButtonCancelarContrato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarContratoActionPerformed(evt);
-            }
-        });
 
         jButtonSalvarContrato.setText("Salvar");
         jButtonSalvarContrato.addActionListener(new java.awt.event.ActionListener() {
@@ -223,17 +215,16 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
                                         .addComponent(jLabelValeRefeicao)
                                         .addGap(18, 18, 18)
                                         .addComponent(jComboBoxValeRefeicaoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(318, 318, 318)
-                                .addComponent(jButtonSalvarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonCancelarContrato))
                             .addComponent(jComboBoxListaFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBoxListaEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(20, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelAbonoPecuniarioContrato)
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSalvarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,18 +265,11 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
                         .addComponent(jComboBoxValeTransporteContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelValeRefeicao)
                         .addComponent(jComboBoxValeRefeicaoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancelarContrato)
-                    .addComponent(jButtonSalvarContrato))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jButtonSalvarContrato)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonCancelarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarContratoActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jButtonCancelarContratoActionPerformed
 
     private void jComboBoxListaFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxListaFuncionariosMouseClicked
         // TODO add your handling code here:
@@ -315,7 +299,6 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
                 valeTransporte,
                 valeRefeicao);
         JOptionPane.showMessageDialog(this, "Contrato cadastrado com sucesso!", "Cadastro de contrato", JOptionPane.INFORMATION_MESSAGE);
-        this.setVisible(false);
     }//GEN-LAST:event_jButtonSalvarContratoActionPerformed
 
     private void jComboBoxExperienciaContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxExperienciaContratoMouseClicked
@@ -373,7 +356,6 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelarContrato;
     private javax.swing.JButton jButtonSalvarContrato;
     private javax.swing.JComboBox<String> jComboBoxAbonoPecuniarioContrato;
     private javax.swing.JComboBox<String> jComboBoxExperienciaContrato;

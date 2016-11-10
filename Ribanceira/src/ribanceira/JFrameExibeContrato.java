@@ -105,7 +105,6 @@ public class JFrameExibeContrato extends javax.swing.JFrame {
         jLabelNomeFuncionarioExibeContrato = new javax.swing.JLabel();
         jComboBoxValeRefeicaoExibeContrato = new javax.swing.JComboBox<>();
         jLabelNomeEmpresaExibeContrato = new javax.swing.JLabel();
-        jButtonFecharExibeContrato = new javax.swing.JButton();
         jLabelCargaHorariaExibeContrato = new javax.swing.JLabel();
         jLabelComissaoExibeContrato = new javax.swing.JLabel();
         jLabelExperienciaExibeContrato = new javax.swing.JLabel();
@@ -116,6 +115,7 @@ public class JFrameExibeContrato extends javax.swing.JFrame {
         jTextFieldNomeFuncionarioExibeContrato = new javax.swing.JTextField();
         jTextFieldCargaHorariaExibeContrato = new javax.swing.JTextField();
         jTextFieldComissaoExibeContrato = new javax.swing.JTextField();
+        jButtonFecharExibeContrato = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,13 +141,6 @@ public class JFrameExibeContrato extends javax.swing.JFrame {
 
         jLabelNomeEmpresaExibeContrato.setText("Nome empresa:");
 
-        jButtonFecharExibeContrato.setText("Fechar");
-        jButtonFecharExibeContrato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFecharExibeContratoActionPerformed(evt);
-            }
-        });
-
         jLabelCargaHorariaExibeContrato.setText("Carga horária:");
 
         jLabelComissaoExibeContrato.setText("Comissão:");
@@ -170,6 +163,13 @@ public class JFrameExibeContrato extends javax.swing.JFrame {
             }
         });
 
+        jButtonFecharExibeContrato.setText("Fechar");
+        jButtonFecharExibeContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFecharExibeContratoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,45 +186,47 @@ public class JFrameExibeContrato extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jTextFieldNomeEmpresaExibeContrato, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldNomeFuncionarioExibeContrato)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldCargaHorariaExibeContrato)
-                            .addComponent(jTextFieldComissaoExibeContrato)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButtonSalvarAlteracoesExibeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBoxExperienciaExibeContrato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxAbonoPecuniarioExibeContrato, 0, 82, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                                .addComponent(jLabelValeTransporteExibeContrato)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(96, 96, 96)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelDuracaoExibeContrato)
-                                    .addComponent(jLabelHorasExtrasExibeContrato)
-                                    .addComponent(jLabelFeriasExibeContrato)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBoxValeTransporteExibeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelValeRefeicaoExibeContrato)))
-                        .addGap(18, 18, 18)
+                                    .addComponent(jTextFieldCargaHorariaExibeContrato)
+                                    .addComponent(jTextFieldComissaoExibeContrato)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jComboBoxExperienciaExibeContrato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jComboBoxAbonoPecuniarioExibeContrato, 0, 82, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                        .addComponent(jLabelValeTransporteExibeContrato)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(96, 96, 96)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelDuracaoExibeContrato)
+                                            .addComponent(jLabelHorasExtrasExibeContrato)
+                                            .addComponent(jLabelFeriasExibeContrato)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jComboBoxValeTransporteExibeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabelValeRefeicaoExibeContrato)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldDuracaoExibeContrato)
-                                .addComponent(jTextFieldHorasExtrasExibeContrato)
-                                .addComponent(jTextFieldFeriasExibeContrato, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                            .addComponent(jComboBoxValeRefeicaoExibeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jTextFieldNomeFuncionarioExibeContrato))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonAlterarExibeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                .addComponent(jButtonFecharExibeContrato))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextFieldDuracaoExibeContrato)
+                                        .addComponent(jTextFieldHorasExtrasExibeContrato)
+                                        .addComponent(jTextFieldFeriasExibeContrato, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                                    .addComponent(jComboBoxValeRefeicaoExibeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSalvarAlteracoesExibeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonAlterarExibeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonFecharExibeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,19 +267,14 @@ public class JFrameExibeContrato extends javax.swing.JFrame {
                     .addComponent(jComboBoxValeRefeicaoExibeContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonFecharExibeContrato)
                     .addComponent(jButtonAlterarExibeContrato)
-                    .addComponent(jButtonSalvarAlteracoesExibeContrato))
+                    .addComponent(jButtonSalvarAlteracoesExibeContrato)
+                    .addComponent(jButtonFecharExibeContrato))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonFecharExibeContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharExibeContratoActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jButtonFecharExibeContratoActionPerformed
 
     private void jButtonAlterarExibeContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarExibeContratoActionPerformed
         // TODO add your handling code here:
@@ -315,6 +312,11 @@ public class JFrameExibeContrato extends javax.swing.JFrame {
         new G_Contrato().atualizaContrato(contrato);
         JOptionPane.showMessageDialog(null, "Contrato alterado com sucesso!", "Alteração de Cadastro", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonSalvarAlteracoesExibeContratoActionPerformed
+
+    private void jButtonFecharExibeContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharExibeContratoActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonFecharExibeContratoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -36,57 +36,63 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="jTextFieldNomeEmpresaExibeContrato" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTextFieldNomeFuncionarioExibeContrato" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldCargaHorariaExibeContrato" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldComissaoExibeContrato" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jButtonSalvarAlteracoesExibeContrato" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jComboBoxExperienciaExibeContrato" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jComboBoxAbonoPecuniarioExibeContrato" alignment="0" pref="82" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCargaHorariaExibeContrato" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldComissaoExibeContrato" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jComboBoxExperienciaExibeContrato" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jComboBoxAbonoPecuniarioExibeContrato" alignment="0" pref="82" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                                      <Component id="jLabelValeTransporteExibeContrato" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace pref="28" max="32767" attributes="0"/>
-                              <Component id="jLabelValeTransporteExibeContrato" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabelDuracaoExibeContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelHorasExtrasExibeContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelFeriasExibeContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxValeTransporteExibeContrato" min="-2" pref="82" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jLabelValeRefeicaoExibeContrato" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabelDuracaoExibeContrato" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelHorasExtrasExibeContrato" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelFeriasExibeContrato" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jComboBoxValeTransporteExibeContrato" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLabelValeRefeicaoExibeContrato" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextFieldDuracaoExibeContrato" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextFieldHorasExtrasExibeContrato" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextFieldFeriasExibeContrato" alignment="0" pref="150" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jButtonAlterarExibeContrato" min="-2" pref="80" max="-2" attributes="0"/>
+                              <EmptySpace pref="9" max="32767" attributes="0"/>
+                              <Component id="jButtonFecharExibeContrato" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jComboBoxValeRefeicaoExibeContrato" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTextFieldDuracaoExibeContrato" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldHorasExtrasExibeContrato" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldFeriasExibeContrato" alignment="0" pref="150" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jComboBoxValeRefeicaoExibeContrato" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <Component id="jTextFieldNomeFuncionarioExibeContrato" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButtonSalvarAlteracoesExibeContrato" min="-2" pref="150" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButtonAlterarExibeContrato" min="-2" pref="80" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButtonFecharExibeContrato" min="-2" pref="80" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -135,9 +141,9 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonFecharExibeContrato" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonAlterarExibeContrato" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonSalvarAlteracoesExibeContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonFecharExibeContrato" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -238,14 +244,6 @@
         <Property name="text" type="java.lang.String" value="Nome empresa:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonFecharExibeContrato">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Fechar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFecharExibeContratoActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabelCargaHorariaExibeContrato">
       <Properties>
         <Property name="text" type="java.lang.String" value="Carga hor&#xe1;ria:"/>
@@ -289,6 +287,14 @@
     <Component class="javax.swing.JTextField" name="jTextFieldCargaHorariaExibeContrato">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldComissaoExibeContrato">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonFecharExibeContrato">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fechar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFecharExibeContratoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
