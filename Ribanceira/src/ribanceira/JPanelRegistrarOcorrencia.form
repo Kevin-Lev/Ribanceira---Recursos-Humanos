@@ -34,9 +34,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextFieldNomeFun_Oco" pref="403" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldEmpresa_Oco" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Component id="jTextFieldDia_Oco" min="-2" pref="65" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jTextFieldMes_Oco" min="-2" pref="65" max="-2" attributes="0"/>
@@ -44,32 +42,29 @@
                                       <Component id="jTextFieldAno_Oco" min="-2" pref="65" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
+                                  <Component id="jComboBoxListaFuncionarios" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jComboBoxListaEmpresas" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelTipo_Oco" min="-2" pref="153" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jTextFieldTipoOco" min="-2" pref="148" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jRadioButtonHoraextra" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCheckBoxJustificado" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButtonFalta" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jCheckBoxJustificado" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="136" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonSelectFun_Oco" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Component id="jLabelData_Oco" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelValor_Oco" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextFieldValor_Oco" min="-2" pref="66" max="-2" attributes="0"/>
+                              <Component id="jFormattedTextFieldValorOco" min="-2" pref="73" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabelData_Oco" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -84,13 +79,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelNomeFun_Oco" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="jTextFieldNomeFun_Oco" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonSelectFun_Oco" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxListaFuncionarios" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelEmpresa_Oco" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="jTextFieldEmpresa_Oco" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabelEmpresa_Oco" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="jComboBoxListaEmpresas" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -102,22 +96,20 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelTipo_Oco" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="jRadioButtonFalta" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRadioButtonHoraextra" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldTipoOco" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCheckBoxJustificado" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jCheckBoxJustificado" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelValor_Oco" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="jTextFieldValor_Oco" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jFormattedTextFieldValorOco" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonSalvar_Oco" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonCancelar_Oco" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonSalvar_Oco" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -159,23 +151,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelar_OcoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldValor_Oco">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="0"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldNomeFun_Oco">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldEmpresa_Oco">
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonSelectFun_Oco">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="..."/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSelectFun_OcoActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabelData_Oco">
       <Properties>
         <Property name="text" type="java.lang.String" value="Data da ocorr&#xea;ncia:"/>
@@ -205,20 +180,35 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldMes_OcoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButtonFalta">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Falta"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButtonHoraextra">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Hora extra"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JCheckBox" name="jCheckBoxJustificado">
       <Properties>
         <Property name="text" type="java.lang.String" value="Justificada"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxListaFuncionarios">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxListaEmpresas">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldValorOco">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldTipoOco">
     </Component>
   </SubComponents>
 </Form>
