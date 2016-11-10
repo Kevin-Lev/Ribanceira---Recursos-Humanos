@@ -7,6 +7,7 @@
         <Menu class="javax.swing.JMenu" name="jMenuEmpresa">
           <Properties>
             <Property name="text" type="java.lang.String" value="Empresa"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCadastrar_Emp">
@@ -54,14 +55,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuConsultar_FunActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuRemover_Fun">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Remover"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuRemover_FunActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

@@ -53,7 +53,6 @@ public class JFrameprincipal extends javax.swing.JFrame {
         jMenuFuncionario = new javax.swing.JMenu();
         jMenuCadastrar_Fun = new javax.swing.JMenuItem();
         jMenuConsultar_Fun = new javax.swing.JMenuItem();
-        jMenuRemover_Fun = new javax.swing.JMenuItem();
         jMenuOcorrências = new javax.swing.JMenu();
         jMenuInsere_Oco = new javax.swing.JMenuItem();
         jMenuConsulta_Oco = new javax.swing.JMenuItem();
@@ -75,6 +74,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
         jPanelRoot.setLayout(new java.awt.CardLayout());
 
         jMenuEmpresa.setText("Empresa");
+        jMenuEmpresa.setEnabled(false);
 
         jMenuItemCadastrar_Emp.setText("Cadastrar");
         jMenuItemCadastrar_Emp.addActionListener(new java.awt.event.ActionListener() {
@@ -119,14 +119,6 @@ public class JFrameprincipal extends javax.swing.JFrame {
             }
         });
         jMenuFuncionario.add(jMenuConsultar_Fun);
-
-        jMenuRemover_Fun.setText("Remover");
-        jMenuRemover_Fun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuRemover_FunActionPerformed(evt);
-            }
-        });
-        jMenuFuncionario.add(jMenuRemover_Fun);
 
         jMenuBar1.add(jMenuFuncionario);
 
@@ -293,10 +285,6 @@ public class JFrameprincipal extends javax.swing.JFrame {
         card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuCadastrar_FunActionPerformed
 
-    private void jMenuRemover_FunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRemover_FunActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuRemover_FunActionPerformed
-
     private void jMenuConsulta_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsulta_OcoActionPerformed
         // TODO add your handling code here:
         this.setTitle("Ribanceira RH - Consulta de ocorrências");
@@ -434,7 +422,6 @@ public class JFrameprincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemManterSindicato;
     private javax.swing.JMenu jMenuOcorrências;
     private javax.swing.JMenuItem jMenuRemover_Emp;
-    private javax.swing.JMenuItem jMenuRemover_Fun;
     private javax.swing.JMenu jMenuSindicato;
     private javax.swing.JPanel jPanelRoot;
     // End of variables declaration//GEN-END:variables
