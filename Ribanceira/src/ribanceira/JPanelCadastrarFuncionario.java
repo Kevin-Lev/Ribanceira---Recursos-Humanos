@@ -54,28 +54,29 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
         jFormattedTextFieldEstadoCivilFuncionario = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCarteiraTrabalhoFuncionario = new javax.swing.JFormattedTextField();
         jButtonSalvarFuncionario = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 550));
 
-        jLabelNomeFuncionario.setText("Nome do funcionário: ");
+        jLabelNomeFuncionario.setText("Nome do funcionário: *");
 
-        jLabelDataNascimentoFuncionario.setText("Data de nascimento:");
+        jLabelDataNascimentoFuncionario.setText("Data de nascimento: *");
 
-        jLabelEnderecoFuncionario.setText("Endereço:");
+        jLabelEnderecoFuncionario.setText("Endereço: *");
 
-        jLabelTelefoneFuncionario.setText("Telefone:");
+        jLabelTelefoneFuncionario.setText("Telefone: *");
 
-        jLabelEmailFuncionario.setText("E-mail:");
+        jLabelEmailFuncionario.setText("E-mail: *");
 
-        jLabelRgFuncionario.setText("RG:");
+        jLabelRgFuncionario.setText("RG: *");
 
-        jLabelCpfFuncionario.setText("CPF:");
+        jLabelCpfFuncionario.setText("CPF: *");
 
-        jLabelTituloEleitorFuncionario.setText("Título de eleitor:");
+        jLabelTituloEleitorFuncionario.setText("Título de eleitor: *");
 
-        jLabelEstadoCivilFuncionario.setText("Estado civil:");
+        jLabelEstadoCivilFuncionario.setText("Estado civil: *");
 
-        jLabelCarteiraTrabalhoFuncionario.setText("Número da carteira de trabalho:");
+        jLabelCarteiraTrabalhoFuncionario.setText("Número da carteira de trabalho: *");
 
         jFormattedTextFieldDataNascimentoFuncionario.setToolTipText("");
 
@@ -92,47 +93,57 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel1.setText("* Campos obrigatórios");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCarteiraTrabalhoFuncionario)
-                    .addComponent(jLabelNomeFuncionario)
-                    .addComponent(jLabelDataNascimentoFuncionario)
-                    .addComponent(jLabelEnderecoFuncionario)
-                    .addComponent(jLabelTelefoneFuncionario)
-                    .addComponent(jLabelEmailFuncionario)
-                    .addComponent(jLabelRgFuncionario)
-                    .addComponent(jLabelCpfFuncionario)
-                    .addComponent(jLabelTituloEleitorFuncionario)
-                    .addComponent(jLabelEstadoCivilFuncionario))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextFieldNomeFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                        .addComponent(jTextFieldEnderecoFuncionario)
-                        .addComponent(jTextFieldEmailFuncionario))
-                    .addComponent(jFormattedTextFieldDataNascimentoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextFieldTelefoneFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jFormattedTextFieldCarteiraTrabalhoFuncionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                        .addComponent(jFormattedTextFieldEstadoCivilFuncionario, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jFormattedTextFieldTituloEleitorFuncionario, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jFormattedTextFieldCpfFuncionario, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jFormattedTextFieldRgFuncionario, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(226, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSalvarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelCarteiraTrabalhoFuncionario)
+                            .addComponent(jLabelNomeFuncionario)
+                            .addComponent(jLabelDataNascimentoFuncionario)
+                            .addComponent(jLabelEnderecoFuncionario)
+                            .addComponent(jLabelTelefoneFuncionario)
+                            .addComponent(jLabelEmailFuncionario)
+                            .addComponent(jLabelRgFuncionario)
+                            .addComponent(jLabelCpfFuncionario)
+                            .addComponent(jLabelTituloEleitorFuncionario)
+                            .addComponent(jLabelEstadoCivilFuncionario))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jFormattedTextFieldCarteiraTrabalhoFuncionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                                    .addComponent(jFormattedTextFieldEstadoCivilFuncionario, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jFormattedTextFieldTituloEleitorFuncionario, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jFormattedTextFieldCpfFuncionario, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jFormattedTextFieldRgFuncionario, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextFieldNomeFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldEnderecoFuncionario)
+                                        .addComponent(jTextFieldEmailFuncionario))
+                                    .addComponent(jFormattedTextFieldDataNascimentoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jFormattedTextFieldTelefoneFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 207, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonSalvarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(140, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNomeFuncionario)
                     .addComponent(jTextFieldNomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -171,8 +182,9 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCarteiraTrabalhoFuncionario)
-                    .addComponent(jFormattedTextFieldCarteiraTrabalhoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jFormattedTextFieldCarteiraTrabalhoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addComponent(jButtonSalvarFuncionario)
                 .addGap(7, 7, 7))
         );
@@ -207,6 +219,7 @@ public class JPanelCadastrarFuncionario extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField jFormattedTextFieldRgFuncionario;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelefoneFuncionario;
     private javax.swing.JFormattedTextField jFormattedTextFieldTituloEleitorFuncionario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCarteiraTrabalhoFuncionario;
     private javax.swing.JLabel jLabelCpfFuncionario;
     private javax.swing.JLabel jLabelDataNascimentoFuncionario;
