@@ -9,12 +9,29 @@ import DAO.Ocorrencia;
 import org.hibernate.Session;
 import Util.HibernateUtil;
 import DAO.Funcionario;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
- * @author kevin
+ * @author Kevin Levrone
  */
 public class G_Ocorrencia{
+    
+    public ArrayList<Ocorrencia> getListaOcorrencia() {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        s.beginTransaction();
+        ArrayList<Ocorrencia> listaOcorrencia = (ArrayList<Ocorrencia>) s.createQuery("From Ocorrencia").list();
+        Collections.sort(listaOcorrencia, new Comparator<Ocorrencia>() {
+            @Override
+            public int compare(Ocorrencia o1, Ocorrencia o2) {
+                return o1.getDataOcorrencia().compareTo(o2.getDataOcorrencia());
+            }
+        });
+        s.getTransaction().commit();
+        return listaOcorrencia;
+    }
     
     public void SalvaOcorrencia(Funcionario nomefun, String dataoco, String tipooco, boolean justificada, float valor){
       Session s = HibernateUtil.getSessionFactory().getCurrentSession();

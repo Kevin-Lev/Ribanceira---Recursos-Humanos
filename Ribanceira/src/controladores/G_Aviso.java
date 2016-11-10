@@ -9,12 +9,29 @@ import DAO.AvisoPrevio;
 import org.hibernate.Session;
 import Util.HibernateUtil;
 import DAO.Funcionario;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
- * @author Kevin
+ * @author Kevin Levrone
  */
 public class G_Aviso {
+    
+    public ArrayList<AvisoPrevio> getListaAvisos() {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        s.beginTransaction();
+        ArrayList<AvisoPrevio> listaAvisos = (ArrayList<AvisoPrevio>) s.createQuery("From AvisoPrevio").list();
+        Collections.sort(listaAvisos, new Comparator<AvisoPrevio>() {
+            @Override
+            public int compare(AvisoPrevio o1, AvisoPrevio o2) {
+                return o1.getDataAviso().compareTo(o2.getDataAviso());
+            }
+        });
+        s.getTransaction().commit();
+        return listaAvisos;
+    }
     
     public void SalvaAviso(Funcionario funcionario, String dataAviso, String dataRescisao, boolean justificado, String motivo){
       Session s = HibernateUtil.getSessionFactory().getCurrentSession();
