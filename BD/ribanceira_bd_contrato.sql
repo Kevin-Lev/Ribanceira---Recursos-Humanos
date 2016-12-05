@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `ribanceira_bd` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `ribanceira_bd`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: 127.0.0.1    Database: ribanceira_bd
@@ -27,14 +25,15 @@ DROP TABLE IF EXISTS `contrato`;
 CREATE TABLE `contrato` (
   `codigo` int(11) NOT NULL AUTO_INCREMENT,
   `carga_horaria` float NOT NULL,
-  `horas_extras` float NOT NULL,
-  `comissao` float NOT NULL,
-  `duracao` float NOT NULL,
+  `horas_extras` float DEFAULT NULL,
+  `comissao` float DEFAULT NULL,
+  `duracao` float DEFAULT NULL,
   `experiencia` tinyint(1) NOT NULL,
   `ferias` int(11) NOT NULL,
-  `abono_pecuniario` tinyint(1) NOT NULL,
   `vale_transporte` tinyint(1) NOT NULL,
   `vale_refeicao` tinyint(1) NOT NULL,
+  `base_salarial` float DEFAULT NULL,
+  `ativo` varchar(45) NOT NULL DEFAULT '1',
   `empresa` int(11) NOT NULL,
   `funcionario` int(11) NOT NULL,
   PRIMARY KEY (`codigo`),
@@ -42,11 +41,10 @@ CREATE TABLE `contrato` (
   KEY `experiencia_idx` (`experiencia`),
   KEY `vale_transporte_idx` (`vale_transporte`),
   KEY `vale_refeicao_idx` (`vale_refeicao`),
-  KEY `abono_pecuniario_idx` (`abono_pecuniario`),
   KEY `cont_funcionario_idx` (`funcionario`),
   CONSTRAINT `cont_funcionario` FOREIGN KEY (`funcionario`) REFERENCES `funcionario` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `contrato_ibfk_1` FOREIGN KEY (`empresa`) REFERENCES `empresa` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,6 +53,7 @@ CREATE TABLE `contrato` (
 
 LOCK TABLES `contrato` WRITE;
 /*!40000 ALTER TABLE `contrato` DISABLE KEYS */;
+INSERT INTO `contrato` VALUES (1,6,2,0.13,4,0,7,0,1,NULL,'1',1,1),(2,10,5,0.31,12,0,10,0,0,NULL,'1',4,2),(3,40,5,0.3,24,0,30,1,0,NULL,'1',1,5);
 /*!40000 ALTER TABLE `contrato` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -67,4 +66,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-06 18:33:49
+-- Dump completed on 2016-12-05 20:16:45
