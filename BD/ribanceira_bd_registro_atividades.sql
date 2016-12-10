@@ -18,47 +18,32 @@ USE `ribanceira_bd`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `contrato`
+-- Table structure for table `registro_atividades`
 --
 
-DROP TABLE IF EXISTS `contrato`;
+DROP TABLE IF EXISTS `registro_atividades`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `contrato` (
+CREATE TABLE `registro_atividades` (
   `codigo` int(11) NOT NULL AUTO_INCREMENT,
-  `carga_horaria` float NOT NULL,
+  `data` date NOT NULL,
   `hora_entrada` time(6) DEFAULT NULL,
   `hora_saida` time(6) DEFAULT NULL,
-  `horas_extras` float DEFAULT NULL,
-  `comissao` float DEFAULT NULL,
-  `duracao` float DEFAULT NULL,
-  `experiencia` tinyint(1) NOT NULL,
-  `ferias` int(11) NOT NULL,
-  `vale_transporte` tinyint(1) NOT NULL,
-  `vale_refeicao` tinyint(1) NOT NULL,
-  `base_salarial` float DEFAULT NULL,
-  `ativo` tinyint(1) NOT NULL DEFAULT '1',
-  `empresa` int(11) NOT NULL,
   `funcionario` int(11) NOT NULL,
   PRIMARY KEY (`codigo`),
-  KEY `empresa_idx` (`empresa`),
-  KEY `experiencia_idx` (`experiencia`),
-  KEY `vale_transporte_idx` (`vale_transporte`),
-  KEY `vale_refeicao_idx` (`vale_refeicao`),
-  KEY `cont_funcionario_idx` (`funcionario`),
-  CONSTRAINT `cont_funcionario` FOREIGN KEY (`funcionario`) REFERENCES `funcionario` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `contrato_ibfk_1` FOREIGN KEY (`empresa`) REFERENCES `empresa` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  KEY `ra_codigo` (`codigo`),
+  KEY `ra_funcionario` (`funcionario`),
+  CONSTRAINT `ra_codigo_funcionario` FOREIGN KEY (`funcionario`) REFERENCES `funcionario` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `contrato`
+-- Dumping data for table `registro_atividades`
 --
 
-LOCK TABLES `contrato` WRITE;
-/*!40000 ALTER TABLE `contrato` DISABLE KEYS */;
-INSERT INTO `contrato` VALUES (1,6,NULL,NULL,2,0.13,4,0,7,0,1,NULL,1,1,1),(2,10,NULL,NULL,5,0.31,12,0,10,0,0,NULL,1,4,2),(3,40,NULL,NULL,5,0.3,24,0,30,1,0,NULL,1,1,5);
-/*!40000 ALTER TABLE `contrato` ENABLE KEYS */;
+LOCK TABLES `registro_atividades` WRITE;
+/*!40000 ALTER TABLE `registro_atividades` DISABLE KEYS */;
+/*!40000 ALTER TABLE `registro_atividades` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
