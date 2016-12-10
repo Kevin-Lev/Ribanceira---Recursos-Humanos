@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `sindicato`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sindicato` (
-  `codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `ramo_atividade` varchar(45) NOT NULL,
   `endereco` varchar(50) NOT NULL,
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-06 18:33:48
+-- Dump completed on 2016-12-10 15:46:05

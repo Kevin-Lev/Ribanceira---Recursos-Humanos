@@ -25,14 +25,13 @@ DROP TABLE IF EXISTS `convencao_coletiva`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `convencao_coletiva` (
-  `codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` int(11) NOT NULL,
   `categoria` varchar(20) NOT NULL,
   `data` varchar(20) NOT NULL,
   `sindicato` int(11) NOT NULL,
   PRIMARY KEY (`codigo`),
-  KEY `sindicato_idx` (`sindicato`),
   KEY `categoria_idx` (`categoria`),
-  CONSTRAINT `sindicato` FOREIGN KEY (`sindicato`) REFERENCES `sindicato` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `conv_sindicato` FOREIGN KEY (`codigo`) REFERENCES `sindicato` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-06 18:33:48
+-- Dump completed on 2016-12-10 15:46:04
