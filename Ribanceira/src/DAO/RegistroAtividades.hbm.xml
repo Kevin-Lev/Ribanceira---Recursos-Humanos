@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 12/12/2016 09:15:59 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="ribanceira_bd" name="DAO.Ocorrencia" optimistic-lock="version" table="ocorrencia">
+  <class catalog="ribanceira_bd" name="DAO.RegistroAtividades" optimistic-lock="version" table="registro_atividades">
     <id name="codigo" type="java.lang.Integer">
       <column name="codigo"/>
       <generator class="identity"/>
@@ -10,17 +10,14 @@
     <many-to-one class="DAO.Funcionario" fetch="select" name="funcionario">
       <column name="funcionario" not-null="true"/>
     </many-to-one>
-    <property name="dataOcorrencia" type="string">
-      <column length="20" name="data_ocorrencia" not-null="true"/>
+    <property name="data" type="date">
+      <column length="10" name="data" not-null="true"/>
     </property>
-    <property name="tipo" type="string">
-      <column length="20" name="tipo" not-null="true"/>
+    <property name="horaEntrada" type="time">
+      <column length="8" name="hora_entrada"/>
     </property>
-    <property name="justificado" type="boolean">
-      <column name="justificado" not-null="true"/>
-    </property>
-    <property name="valor" type="float">
-      <column name="valor" not-null="true" precision="12" scale="0"/>
+    <property name="horaSaida" type="time">
+      <column length="8" name="hora_saida"/>
     </property>
   </class>
 </hibernate-mapping>

@@ -1,45 +1,53 @@
-<?xml version="1.0" encoding = "UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 06/11/2016 18:36:41 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/12/2016 09:15:59 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="DAO.Contrato" table="contrato" catalog="ribanceira_bd" optimistic-lock="version">
-        <id name="codigo" type="java.lang.Integer">
-            <column name="codigo" />
-            <generator class="identity" />
-        </id>
-        <many-to-one name="empresa" class="DAO.Empresa" fetch="select">
-            <column name="empresa" not-null="true" />
-        </many-to-one>
-        <many-to-one name="funcionario" class="DAO.Funcionario" fetch="select">
-            <column name="funcionario" not-null="true" />
-        </many-to-one>
-        <property name="cargaHoraria" type="float">
-            <column name="carga_horaria" precision="12" scale="0" not-null="true" />
-        </property>
-        <property name="horasExtras" type="float">
-            <column name="horas_extras" precision="12" scale="0" not-null="true" />
-        </property>
-        <property name="comissao" type="float">
-            <column name="comissao" precision="12" scale="0" not-null="true" />
-        </property>
-        <property name="duracao" type="float">
-            <column name="duracao" precision="12" scale="0" not-null="true" />
-        </property>
-        <property name="experiencia" type="boolean">
-            <column name="experiencia" not-null="true" />
-        </property>
-        <property name="ferias" type="int">
-            <column name="ferias" not-null="true" />
-        </property>
-        <property name="abonoPecuniario" type="boolean">
-            <column name="abono_pecuniario" not-null="true" />
-        </property>
-        <property name="valeTransporte" type="boolean">
-            <column name="vale_transporte" not-null="true" />
-        </property>
-        <property name="valeRefeicao" type="boolean">
-            <column name="vale_refeicao" not-null="true" />
-        </property>
-    </class>
+  <class catalog="ribanceira_bd" name="DAO.Contrato" optimistic-lock="version" table="contrato">
+    <id name="codigo" type="java.lang.Integer">
+      <column name="codigo"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="DAO.Empresa" fetch="select" name="empresa">
+      <column name="empresa" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="DAO.Funcionario" fetch="select" name="funcionario">
+      <column name="funcionario" not-null="true"/>
+    </many-to-one>
+    <property name="cargaHoraria" type="float">
+      <column name="carga_horaria" not-null="true" precision="12" scale="0"/>
+    </property>
+    <property name="horaEntrada" type="time">
+      <column length="8" name="hora_entrada"/>
+    </property>
+    <property name="horaSaida" type="time">
+      <column length="8" name="hora_saida"/>
+    </property>
+    <property name="horasExtras" type="java.lang.Float">
+      <column name="horas_extras" precision="12" scale="0"/>
+    </property>
+    <property name="comissao" type="java.lang.Float">
+      <column name="comissao" precision="12" scale="0"/>
+    </property>
+    <property name="duracao" type="java.lang.Float">
+      <column name="duracao" precision="12" scale="0"/>
+    </property>
+    <property name="experiencia" type="boolean">
+      <column name="experiencia" not-null="true"/>
+    </property>
+    <property name="ferias" type="int">
+      <column name="ferias" not-null="true"/>
+    </property>
+    <property name="valeTransporte" type="boolean">
+      <column name="vale_transporte" not-null="true"/>
+    </property>
+    <property name="valeRefeicao" type="boolean">
+      <column name="vale_refeicao" not-null="true"/>
+    </property>
+    <property name="baseSalarial" type="java.lang.Float">
+      <column name="base_salarial" precision="12" scale="0"/>
+    </property>
+    <property name="ativo" type="boolean">
+      <column name="ativo" not-null="true"/>
+    </property>
+  </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package DAO;
-// Generated 06/11/2016 18:36:40 by Hibernate Tools 4.3.1
+// Generated 12/12/2016 09:15:58 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
