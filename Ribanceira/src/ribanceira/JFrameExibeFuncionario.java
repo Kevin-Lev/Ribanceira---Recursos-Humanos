@@ -34,6 +34,7 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
         jFormattedTextFieldRgFuncionario.setEditable(false);
         jFormattedTextFieldTelefoneFuncionario.setEditable(false);
         jFormattedTextFieldTituloEleitorFuncionario.setEditable(false);
+        jTextFieldExibeFuncionarioAtivo.setEditable(false);
         
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -49,6 +50,8 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
         jFormattedTextFieldTituloEleitorFuncionario.setText(f.getTituloEleitor());
         jFormattedTextFieldEstadoCivilFuncionario.setText(f.getEstadoCivil());
         jFormattedTextFieldCarteiraTrabalhoFuncionario.setText(f.getNumeroCarteiraTrabalho());
+        if(f.isAtivo()) jTextFieldExibeFuncionarioAtivo.setText("Sim");
+        else jTextFieldExibeFuncionarioAtivo.setText("Não");
     }
 
     private JFrameExibeFuncionario() {
@@ -87,8 +90,12 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
         jLabelCarteiraTrabalhoFuncionario = new javax.swing.JLabel();
         jButtonSalvarAlteracoesFuncionario = new javax.swing.JButton();
         jButtonAlterarFuncionario = new javax.swing.JButton();
+        jLabelAtivoFuncionario = new javax.swing.JLabel();
+        jTextFieldExibeFuncionarioAtivo = new javax.swing.JTextField();
+        jButtonExcluirFuncionario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jTextFieldNomeFuncionario.setEditable(false);
 
@@ -150,16 +157,43 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
             }
         });
 
+        jLabelAtivoFuncionario.setText("Ativo:");
+
+        jTextFieldExibeFuncionarioAtivo.setEditable(false);
+        jTextFieldExibeFuncionarioAtivo.setText("Sim");
+        jTextFieldExibeFuncionarioAtivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldExibeFuncionarioAtivoActionPerformed(evt);
+            }
+        });
+
+        jButtonExcluirFuncionario.setText("Excluir");
+        jButtonExcluirFuncionario.setPreferredSize(new java.awt.Dimension(70, 23));
+        jButtonExcluirFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirFuncionarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(397, Short.MAX_VALUE)
-                .addComponent(jButtonAlterarFuncionario)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonSalvarAlteracoesFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelAtivoFuncionario)
+                        .addGap(144, 144, 144)
+                        .addComponent(jTextFieldExibeFuncionarioAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 316, Short.MAX_VALUE)
+                        .addComponent(jButtonAlterarFuncionario)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonSalvarAlteracoesFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonExcluirFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -193,11 +227,15 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(409, Short.MAX_VALUE)
+                .addGap(0, 392, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAtivoFuncionario)
+                    .addComponent(jTextFieldExibeFuncionarioAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAlterarFuncionario)
                     .addComponent(jButtonSalvarAlteracoesFuncionario)
-                    .addComponent(jButtonAlterarFuncionario))
-                .addContainerGap())
+                    .addComponent(jButtonExcluirFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -247,21 +285,17 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 688, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 471, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -296,6 +330,18 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
         jTextFieldEmailFuncionario.setEditable(true);
         jFormattedTextFieldEstadoCivilFuncionario.setEditable(true);
     }//GEN-LAST:event_jButtonAlterarFuncionarioActionPerformed
+
+    private void jTextFieldExibeFuncionarioAtivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldExibeFuncionarioAtivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldExibeFuncionarioAtivoActionPerformed
+
+    private void jButtonExcluirFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirFuncionarioActionPerformed
+        // TODO add your handling code here:
+        func.setAtivo(false);
+        new G_Funcionario().atualizaFuncionario(func);
+        JOptionPane.showMessageDialog(this, "Funcionário excluído com sucesso!","Atualização de funcionário",JOptionPane.INFORMATION_MESSAGE);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonExcluirFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,6 +380,7 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterarFuncionario;
+    private javax.swing.JButton jButtonExcluirFuncionario;
     private javax.swing.JButton jButtonSalvarAlteracoesFuncionario;
     private javax.swing.JFormattedTextField jFormattedTextFieldCarteiraTrabalhoFuncionario;
     private javax.swing.JFormattedTextField jFormattedTextFieldCpfFuncionario;
@@ -342,6 +389,7 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldRgFuncionario;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelefoneFuncionario;
     private javax.swing.JFormattedTextField jFormattedTextFieldTituloEleitorFuncionario;
+    private javax.swing.JLabel jLabelAtivoFuncionario;
     private javax.swing.JLabel jLabelCarteiraTrabalhoFuncionario;
     private javax.swing.JLabel jLabelCpfFuncionario;
     private javax.swing.JLabel jLabelDataNascimentoFuncionario;
@@ -355,6 +403,7 @@ public class JFrameExibeFuncionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldEmailFuncionario;
     private javax.swing.JTextField jTextFieldEnderecoFuncionario;
+    private javax.swing.JTextField jTextFieldExibeFuncionarioAtivo;
     private javax.swing.JTextField jTextFieldNomeFuncionario;
     // End of variables declaration//GEN-END:variables
 }
