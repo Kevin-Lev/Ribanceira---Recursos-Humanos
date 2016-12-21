@@ -29,7 +29,9 @@ public class JPanelConsultarContrato extends javax.swing.JPanel {
         listaContrato = new G_Contrato().getListaContrato();
 
         for (Contrato c : listaContrato) {
-            tableModel.addRow(new Object[]{c.getCodigo(), c.getFuncionario().getNome(), c.getEmpresa().getNomeEmpresa()});
+            if(c.isAtivo()){
+                tableModel.addRow(new Object[]{c.getCodigo(), c.getFuncionario().getNome(), c.getEmpresa().getNomeEmpresa()});
+            }
         }
         
     }

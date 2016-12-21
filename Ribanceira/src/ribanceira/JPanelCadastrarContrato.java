@@ -10,6 +10,7 @@ import DAO.Funcionario;
 import controladores.G_Contrato;
 import controladores.G_Empresa;
 import controladores.G_Funcionario;
+import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -26,7 +27,6 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
     ArrayList<Empresa> listaEmpresas;
 
     boolean experiencia = false;
-    boolean abonoPecuniario = false;
     boolean valeTransporte = false;
     boolean valeRefeicao = false;
 
@@ -35,7 +35,9 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
 
         listaFuncionarios = new G_Funcionario().getListaFuncionario();
         for (Funcionario f : listaFuncionarios) {
-            jComboBoxListaFuncionarios.addItem(f.getNome());
+            if(f.isAtivo()){
+                jComboBoxListaFuncionarios.addItem(f.getNome());
+            }
         }
 
         listaEmpresas = new G_Empresa().getListaEmpresa();
@@ -62,7 +64,7 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
         jLabelDuracaoContrato = new javax.swing.JLabel();
         jLabelExperienciaContrato = new javax.swing.JLabel();
         jLabelFeriasContrato = new javax.swing.JLabel();
-        jLabelAbonoPecuniarioContrato = new javax.swing.JLabel();
+        jLabelBaseSalarialContrato = new javax.swing.JLabel();
         jLabelValeTransporteContrato = new javax.swing.JLabel();
         jLabelValeRefeicao = new javax.swing.JLabel();
         jButtonSalvarContrato = new javax.swing.JButton();
@@ -72,30 +74,37 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
         jTextFieldDuracaoContrato = new javax.swing.JTextField();
         jTextFieldFeriasContrato = new javax.swing.JTextField();
         jComboBoxExperienciaContrato = new javax.swing.JComboBox<>();
-        jComboBoxAbonoPecuniarioContrato = new javax.swing.JComboBox<>();
         jComboBoxValeTransporteContrato = new javax.swing.JComboBox<>();
         jComboBoxValeRefeicaoContrato = new javax.swing.JComboBox<>();
         jComboBoxListaFuncionarios = new javax.swing.JComboBox<>();
         jComboBoxListaEmpresas = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabelHoraEntradaContrato = new javax.swing.JLabel();
+        jTextFieldHoraEntradaContrato = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldHoraSaidaContrato = new javax.swing.JTextField();
+        jTextFieldBaseSalarialContrato = new javax.swing.JTextField();
 
-        jLabelFuncionarioContrato.setText("Funcionario: *");
+        setPreferredSize(new java.awt.Dimension(800, 600));
+
+        jLabelFuncionarioContrato.setText("Funcionário: *");
 
         jLabelEmpresaContrato.setText("Empresa: *");
 
         jLabelCargaHorariaContrato.setText("Carga horária: *");
 
-        jLabelHorasExtrasContrato.setText("Horas extras: *");
+        jLabelHorasExtrasContrato.setText("Horas extras: ");
 
-        jLabelComissaoContrato.setText("Comissão: *");
+        jLabelComissaoContrato.setText("Comissão: ");
 
-        jLabelDuracaoContrato.setText("Duração (meses): *");
+        jLabelDuracaoContrato.setText("Duração (meses):");
 
         jLabelExperienciaContrato.setText("Experiência: *");
 
         jLabelFeriasContrato.setText("Férias (dias): *");
 
-        jLabelAbonoPecuniarioContrato.setText("Abono pecuniário: *");
+        jLabelBaseSalarialContrato.setText("Base salarial:");
 
         jLabelValeTransporteContrato.setText("Vale transporte: *");
 
@@ -137,13 +146,6 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
             }
         });
 
-        jComboBoxAbonoPecuniarioContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
-        jComboBoxAbonoPecuniarioContrato.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jComboBoxAbonoPecuniarioContratoMouseClicked(evt);
-            }
-        });
-
         jComboBoxValeTransporteContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
         jComboBoxValeTransporteContrato.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -173,6 +175,19 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel1.setText("* Campos obrigatórios");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
+        jLabel2.setText("Formato: 0.00");
+
+        jLabelHoraEntradaContrato.setText("Hora de entrada:");
+
+        jLabel3.setText("Hora de saída:");
+
+        jTextFieldBaseSalarialContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldBaseSalarialContratoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -180,9 +195,12 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelAbonoPecuniarioContrato)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonSalvarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -190,53 +208,61 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
                                     .addComponent(jLabelEmpresaContrato)
                                     .addComponent(jLabelFuncionarioContrato)
                                     .addComponent(jLabelCargaHorariaContrato)
-                                    .addComponent(jLabelComissaoContrato)
-                                    .addComponent(jLabelExperienciaContrato))
+                                    .addComponent(jLabelComissaoContrato))
                                 .addGap(38, 38, 38)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jTextFieldCargaHorariaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jTextFieldComissaoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jComboBoxExperienciaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(94, 94, 94)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabelDuracaoContrato)
-                                                    .addComponent(jLabelFeriasContrato)
-                                                    .addComponent(jLabelHorasExtrasContrato))
-                                                .addGap(18, 18, 18))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jComboBoxAbonoPecuniarioContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabelValeTransporteContrato)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jComboBoxValeTransporteContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(66, 66, 66)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jTextFieldHorasExtrasContrato)
-                                                .addComponent(jTextFieldDuracaoContrato)
-                                                .addComponent(jTextFieldFeriasContrato, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabelValeRefeicao)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jComboBoxValeRefeicaoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addComponent(jComboBoxListaFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBoxListaEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 17, Short.MAX_VALUE))
+                                    .addComponent(jComboBoxListaEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxListaFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelExperienciaContrato)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(117, 117, 117)
+                                        .addComponent(jComboBoxExperienciaContrato, 0, 0, Short.MAX_VALUE)))
+                                .addGap(75, 75, 75)
+                                .addComponent(jLabelValeTransporteContrato)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButtonSalvarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jComboBoxValeTransporteContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabelValeRefeicao)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBoxValeRefeicaoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabelBaseSalarialContrato)
+                                        .addGap(54, 54, 54)
+                                        .addComponent(jTextFieldBaseSalarialContrato)
+                                        .addGap(73, 73, 73))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jTextFieldCargaHorariaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabelHoraEntradaContrato)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextFieldHoraEntradaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jTextFieldComissaoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelDuracaoContrato)
+                                    .addComponent(jLabelHorasExtrasContrato)
+                                    .addComponent(jLabelFeriasContrato)
+                                    .addComponent(jLabel3))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldHorasExtrasContrato, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldDuracaoContrato)
+                                    .addComponent(jTextFieldFeriasContrato, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTextFieldHoraSaidaContrato))))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFuncionarioContrato)
                     .addComponent(jComboBoxListaFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -252,27 +278,46 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
                     .addComponent(jTextFieldHorasExtrasContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelComissaoContrato)
-                    .addComponent(jTextFieldComissaoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelDuracaoContrato)
-                    .addComponent(jTextFieldDuracaoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelHoraEntradaContrato)
+                    .addComponent(jTextFieldHoraEntradaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextFieldHoraSaidaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelExperienciaContrato)
-                    .addComponent(jComboBoxExperienciaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelFeriasContrato)
-                    .addComponent(jTextFieldFeriasContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelAbonoPecuniarioContrato)
-                        .addComponent(jComboBoxAbonoPecuniarioContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelValeTransporteContrato)
-                        .addComponent(jComboBoxValeTransporteContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelValeRefeicao)
-                        .addComponent(jComboBoxValeRefeicaoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addComponent(jLabelComissaoContrato)
+                        .addComponent(jLabelDuracaoContrato)
+                        .addComponent(jTextFieldDuracaoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldComissaoContrato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelBaseSalarialContrato)
+                                    .addComponent(jTextFieldBaseSalarialContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextFieldFeriasContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelFeriasContrato))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelValeTransporteContrato)
+                            .addComponent(jComboBoxValeTransporteContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelValeRefeicao)
+                            .addComponent(jComboBoxValeRefeicaoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabelExperienciaContrato))
+                            .addComponent(jComboBoxExperienciaContrato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalvarContrato)
                     .addComponent(jLabel1))
@@ -296,17 +341,18 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
         emp = listaEmpresas.get(jComboBoxListaEmpresas.getSelectedIndex());
         func = listaFuncionarios.get(jComboBoxListaFuncionarios.getSelectedIndex());
 
-        new G_Contrato().salvaContrato(emp,
-                func,
-                Float.parseFloat(jTextFieldCargaHorariaContrato.getText()),
-                Float.parseFloat(jTextFieldHorasExtrasContrato.getText()),
-                Float.parseFloat(jTextFieldComissaoContrato.getText()),
-                Float.parseFloat(jTextFieldDuracaoContrato.getText()),
-                experiencia,
-                Integer.parseInt(jTextFieldFeriasContrato.getText()),
-                abonoPecuniario,
-                valeTransporte,
-                valeRefeicao);
+        new G_Contrato().salvaContrato(emp, func,
+            Float.parseFloat(jTextFieldCargaHorariaContrato.getText()),
+            Date.valueOf(jTextFieldHoraEntradaContrato.getText()),
+            Date.valueOf(jTextFieldHoraSaidaContrato.getText()),
+            Float.parseFloat(jTextFieldHorasExtrasContrato.getText()),
+            Float.parseFloat(jTextFieldComissaoContrato.getText()),
+            Float.parseFloat(jTextFieldDuracaoContrato.getText()),
+            experiencia,
+            Integer.parseInt(jTextFieldFeriasContrato.getText()),
+            valeTransporte,
+            valeRefeicao,
+            Float.parseFloat(jTextFieldBaseSalarialContrato.getText()), true);
         JOptionPane.showMessageDialog(this, "Contrato cadastrado com sucesso!", "Cadastro de contrato", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonSalvarContratoActionPerformed
 
@@ -318,15 +364,6 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
             experiencia = false;
         }
     }//GEN-LAST:event_jComboBoxExperienciaContratoMouseClicked
-
-    private void jComboBoxAbonoPecuniarioContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxAbonoPecuniarioContratoMouseClicked
-        // TODO add your handling code here:
-        if (jComboBoxAbonoPecuniarioContrato.getSelectedItem() == "Sim") {
-            abonoPecuniario = true;
-        } else {
-            abonoPecuniario = false;
-        }
-    }//GEN-LAST:event_jComboBoxAbonoPecuniarioContratoMouseClicked
 
     private void jComboBoxValeTransporteContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxValeTransporteContratoMouseClicked
         // TODO add your handling code here:
@@ -363,17 +400,22 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldComissaoContratoActionPerformed
 
+    private void jTextFieldBaseSalarialContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBaseSalarialContratoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldBaseSalarialContratoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSalvarContrato;
-    private javax.swing.JComboBox<String> jComboBoxAbonoPecuniarioContrato;
     private javax.swing.JComboBox<String> jComboBoxExperienciaContrato;
     private javax.swing.JComboBox<String> jComboBoxListaEmpresas;
     private javax.swing.JComboBox<String> jComboBoxListaFuncionarios;
     private javax.swing.JComboBox<String> jComboBoxValeRefeicaoContrato;
     private javax.swing.JComboBox<String> jComboBoxValeTransporteContrato;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelAbonoPecuniarioContrato;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelBaseSalarialContrato;
     private javax.swing.JLabel jLabelCargaHorariaContrato;
     private javax.swing.JLabel jLabelComissaoContrato;
     private javax.swing.JLabel jLabelDuracaoContrato;
@@ -381,13 +423,17 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelExperienciaContrato;
     private javax.swing.JLabel jLabelFeriasContrato;
     private javax.swing.JLabel jLabelFuncionarioContrato;
+    private javax.swing.JLabel jLabelHoraEntradaContrato;
     private javax.swing.JLabel jLabelHorasExtrasContrato;
     private javax.swing.JLabel jLabelValeRefeicao;
     private javax.swing.JLabel jLabelValeTransporteContrato;
+    private javax.swing.JTextField jTextFieldBaseSalarialContrato;
     private javax.swing.JTextField jTextFieldCargaHorariaContrato;
     private javax.swing.JTextField jTextFieldComissaoContrato;
     private javax.swing.JTextField jTextFieldDuracaoContrato;
     private javax.swing.JTextField jTextFieldFeriasContrato;
+    private javax.swing.JTextField jTextFieldHoraEntradaContrato;
+    private javax.swing.JTextField jTextFieldHoraSaidaContrato;
     private javax.swing.JTextField jTextFieldHorasExtrasContrato;
     // End of variables declaration//GEN-END:variables
 }

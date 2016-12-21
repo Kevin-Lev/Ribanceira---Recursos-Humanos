@@ -31,7 +31,9 @@ public class JPanelConsultarFuncionario extends javax.swing.JPanel {
         tableModel.setNumRows(0);
         listaFuncionario = new G_Funcionario().getListaFuncionario();
         for (Funcionario f : listaFuncionario) {
-            tableModel.addRow(new Object[]{f.getNome(), f.getRg()});
+            if(f.isAtivo()){
+                tableModel.addRow(new Object[]{f.getNome(), f.getRg()});
+            }
         }
     }
 
