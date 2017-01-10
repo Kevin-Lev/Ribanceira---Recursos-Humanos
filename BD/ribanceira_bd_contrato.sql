@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `ribanceira_bd` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `ribanceira_bd`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: 127.0.0.1    Database: ribanceira_bd
@@ -40,6 +38,7 @@ CREATE TABLE `contrato` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `empresa` int(11) NOT NULL,
   `funcionario` int(11) NOT NULL,
+  `impostos` float DEFAULT NULL,
   PRIMARY KEY (`codigo`),
   KEY `empresa_idx` (`empresa`),
   KEY `experiencia_idx` (`experiencia`),
@@ -57,7 +56,7 @@ CREATE TABLE `contrato` (
 
 LOCK TABLES `contrato` WRITE;
 /*!40000 ALTER TABLE `contrato` DISABLE KEYS */;
-INSERT INTO `contrato` VALUES (1,6,NULL,NULL,2,0.13,4,0,7,0,1,NULL,1,1,1),(2,10,NULL,NULL,5,0.31,12,0,10,0,0,NULL,1,4,2),(3,40,NULL,NULL,5,0.3,24,0,30,1,0,NULL,1,1,5);
+INSERT INTO `contrato` VALUES (1,6,NULL,NULL,2,0.13,4,0,7,0,1,NULL,1,1,1,NULL),(2,10,NULL,NULL,5,0.31,12,0,10,0,0,NULL,1,4,2,NULL),(3,40,NULL,NULL,5,0.3,24,0,30,1,0,NULL,1,1,5,NULL);
 /*!40000 ALTER TABLE `contrato` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -70,4 +69,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-10 14:55:17
+-- Dump completed on 2017-01-09 21:44:34
