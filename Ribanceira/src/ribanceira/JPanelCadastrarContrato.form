@@ -24,88 +24,87 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="142" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButtonSalvarContrato" min="-2" pref="120" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabelExperienciaContrato1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabelEmpresaContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelFuncionarioContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelCargaHorariaContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelComissaoContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabelEmpresaContrato" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelFuncionarioContrato" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelCargaHorariaContrato" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelComissaoContrato" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jComboBoxListaEmpresas" min="-2" pref="497" max="-2" attributes="0"/>
-                                  <Component id="jComboBoxListaFuncionarios" min="-2" pref="497" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabelExperienciaContrato" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="117" pref="117" max="-2" attributes="0"/>
-                                      <Component id="jComboBoxExperienciaContrato" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                              <Component id="jLabelValeTransporteContrato" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jComboBoxValeTransporteContrato" min="-2" pref="70" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                              <Component id="jLabelValeRefeicao" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jComboBoxValeRefeicaoContrato" min="-2" pref="70" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelBaseSalarialContrato" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldBaseSalarialContrato" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jTextFieldCargaHorariaContrato" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabelHoraEntradaContrato" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldHoraEntradaContrato" min="-2" pref="150" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel2" min="-2" pref="69" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldComissaoContrato" min="-2" pref="150" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace min="-2" pref="282" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabelDuracaoContrato" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelHorasExtrasContrato" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelFeriasContrato" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelFeriasContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelValeRefeicao" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextFieldHorasExtrasContrato" pref="150" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldDuracaoContrato" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldFeriasContrato" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldHoraSaidaContrato" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jTextFieldHorasExtrasContrato" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldDuracaoContrato" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldHoraSaidaContrato" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldFeriasContrato" min="-2" pref="150" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxValeRefeicaoContrato" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="jComboBoxListaFuncionarios" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" pref="142" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButtonSalvarContrato" min="-2" pref="120" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="jTextFieldCargaHorariaContrato" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabelHoraEntradaContrato" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jTextFieldHoraEntradaContrato" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="jLabel2" min="-2" pref="69" max="-2" attributes="0"/>
+                          <Component id="jTextFieldComissaoContrato" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jTextFieldBaseSalarialContrato" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jLabelBaseSalarialContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="101" pref="101" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jComboBoxListaEmpresas" min="-2" pref="513" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jComboBoxExperienciaContrato" alignment="0" pref="150" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldImpostosContrato" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabelValeTransporteContrato" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jComboBoxValeTransporteContrato" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Component id="jLabelExperienciaContrato" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -123,73 +122,69 @@
                   <Component id="jComboBoxListaEmpresas" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelCargaHorariaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCargaHorariaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelHorasExtrasContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldHorasExtrasContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelHoraEntradaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldHoraEntradaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldHoraSaidaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelComissaoContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelDuracaoContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldDuracaoContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jTextFieldComissaoContrato" alignment="1" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabelBaseSalarialContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldBaseSalarialContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextFieldFeriasContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelFeriasContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelCargaHorariaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCargaHorariaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelValeTransporteContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxValeTransporteContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelValeRefeicao" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxValeRefeicaoContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelHoraEntradaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldHoraEntradaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabelComissaoContrato" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldComissaoContrato" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Component id="jLabelExperienciaContrato" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jComboBoxExperienciaContrato" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelHorasExtrasContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldHorasExtrasContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldHoraSaidaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelDuracaoContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDuracaoContrato" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelBaseSalarialContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldBaseSalarialContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelFeriasContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldFeriasContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelValeTransporteContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxExperienciaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelExperienciaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxValeTransporteContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelExperienciaContrato1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldImpostosContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelValeRefeicao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxValeRefeicaoContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonSalvarContrato" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -263,9 +258,6 @@
     <Component class="javax.swing.JTextField" name="jTextFieldHorasExtrasContrato">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldComissaoContrato">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Formato: 0.00"/>
-      </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldComissaoContratoFocusGained"/>
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldComissaoContratoFocusLost"/>
@@ -304,6 +296,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jComboBoxValeTransporteContratoMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxValeTransporteContratoActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -385,6 +378,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldBaseSalarialContratoActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelExperienciaContrato1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Impostos:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldImpostosContrato">
     </Component>
   </SubComponents>
 </Form>

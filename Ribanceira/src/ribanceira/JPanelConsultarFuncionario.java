@@ -50,6 +50,7 @@ public class JPanelConsultarFuncionario extends javax.swing.JPanel {
         jTableFuncionario = new javax.swing.JTable();
         jButtonSelecionarConsultaFuncionario = new javax.swing.JButton();
 
+        setMinimumSize(new java.awt.Dimension(800, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTableFuncionario.setModel(new javax.swing.table.DefaultTableModel(
@@ -79,7 +80,7 @@ public class JPanelConsultarFuncionario extends javax.swing.JPanel {
             jTableFuncionario.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 663, 364));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 760, 450));
 
         jButtonSelecionarConsultaFuncionario.setText("Selecionar");
         jButtonSelecionarConsultaFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +88,7 @@ public class JPanelConsultarFuncionario extends javax.swing.JPanel {
                 jButtonSelecionarConsultaFuncionarioActionPerformed(evt);
             }
         });
-        add(jButtonSelecionarConsultaFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 160, -1));
+        add(jButtonSelecionarConsultaFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 490, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSelecionarConsultaFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarConsultaFuncionarioActionPerformed
