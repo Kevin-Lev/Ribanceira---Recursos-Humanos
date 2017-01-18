@@ -27,8 +27,8 @@ DROP TABLE IF EXISTS `registro_atividades`;
 CREATE TABLE `registro_atividades` (
   `codigo` int(11) NOT NULL AUTO_INCREMENT,
   `data` date NOT NULL,
-  `hora_entrada` time(6) DEFAULT NULL,
-  `hora_saida` time(6) DEFAULT NULL,
+  `hora_entrada` varchar(6) DEFAULT NULL,
+  `hora_saida` varchar(6) DEFAULT NULL,
   `funcionario` int(11) NOT NULL,
   PRIMARY KEY (`codigo`),
   KEY `ra_codigo` (`codigo`),
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-10 14:55:17
+-- Dump completed on 2017-01-18 16:19:14
