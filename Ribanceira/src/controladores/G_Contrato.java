@@ -9,7 +9,6 @@ import DAO.Contrato;
 import DAO.Empresa;
 import DAO.Funcionario;
 import Util.HibernateUtil;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -21,7 +20,7 @@ import org.hibernate.Session;
  */
 public class G_Contrato {
 
-    public void salvaContrato(Empresa empresa, Funcionario funcionario, float cargaHoraria, Date horaEntrada, Date horaSaida, float horasExtras, float comissao, float duracao, boolean experiencia, int ferias, boolean valeTransporte, boolean valeRefeicao, float baseSalarial, boolean ativo) {
+    public void salvaContrato(Empresa empresa, Funcionario funcionario, float cargaHoraria, String horaEntrada, String horaSaida, float horasExtras, float comissao, float duracao, boolean experiencia, int ferias, boolean valeTransporte, boolean valeRefeicao, float baseSalarial, boolean ativo) {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
         s.save(new Contrato(empresa, funcionario, cargaHoraria, horaEntrada, horaSaida, horasExtras, comissao, duracao, experiencia, ferias, valeTransporte, valeRefeicao, baseSalarial, ativo));
