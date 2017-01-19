@@ -28,7 +28,7 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
         tableModel.setNumRows(0);
         listaAvisos = new G_Aviso().getListaAvisos();
         for (AvisoPrevio a : listaAvisos) {
-            tableModel.addRow(new Object[]{a.getDataAviso(), a.getDataRescisao(), a.getMotivo(), a.isJustificado(), a.getFuncionario()});
+            tableModel.addRow(new Object[]{a.getDataAviso(), a.getDataRescisao(), a.getMotivo(), a.isJustificado(), a.getFuncionario().getNome()});
         }
     }
 
@@ -84,18 +84,14 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabelAvisosRegistrados))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 54, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jLabelAvisosRegistrados)
+                        .addGap(0, 462, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonEditarAviso)))
                 .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,8 +99,8 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabelAvisosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonEditarAviso)
                 .addContainerGap())
         );
