@@ -376,10 +376,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
     private void jMenuItemRelatoriosGeraisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatoriosGeraisActionPerformed
         // TODO add your handling code here:
-        this.setTitle("Ribanceira RH - Relatórios Gerais");
-        JPanel panelRelatoriosGerais = new JPanelRelatoriosGerais();
-        jPanelRoot.add(panelRelatoriosGerais);
-        card.next(jPanelRoot);
+        new JFrameRelatoriosGerais();
     }//GEN-LAST:event_jMenuItemRelatoriosGeraisActionPerformed
 
     private void jMenuItemInformesRendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInformesRendimentoActionPerformed
@@ -415,6 +412,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JFrameprincipal().setVisible(true);
