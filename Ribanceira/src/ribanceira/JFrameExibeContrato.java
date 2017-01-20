@@ -356,8 +356,8 @@ public class JFrameExibeContrato extends javax.swing.JFrame {
         contrato.setFerias(Integer.parseInt(jTextFieldFeriasExibeContrato.getText()));
         contrato.setValeRefeicao(valeRefeicao);
         contrato.setValeTransporte(valeTransporte);
-        contrato.setHoraEntrada(Date.valueOf(jTextFieldHoraEntradaExibeContrato.getText()));
-        contrato.setHoraSaida(Date.valueOf(jTextFieldHoraSaidaExibeContrato.getText()));
+        contrato.setHoraEntrada(jTextFieldHoraEntradaExibeContrato.getText());
+        contrato.setHoraSaida(jTextFieldHoraSaidaExibeContrato.getText());
         contrato.setBaseSalarial(Float.parseFloat(jTextFieldBaseSalarialExibeContrato.getText()));
         new G_Contrato().atualizaContrato(contrato);
         JOptionPane.showMessageDialog(null, "Contrato alterado com sucesso!", "Alteração de Contrato", JOptionPane.INFORMATION_MESSAGE);

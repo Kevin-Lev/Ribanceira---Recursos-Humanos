@@ -1,68 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 12/12/2016 09:15:59 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/01/2017 16:25:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="ribanceira_bd" name="DAO.Funcionario" optimistic-lock="version" table="funcionario">
-    <id name="codigo" type="java.lang.Integer">
-      <column name="codigo"/>
-      <generator class="identity"/>
-    </id>
-    <property name="nome" type="string">
-      <column length="45" name="nome" not-null="true"/>
-    </property>
-    <property name="dataNascimento" type="string">
-      <column length="20" name="data_nascimento" not-null="true"/>
-    </property>
-    <property name="endereco" type="string">
-      <column length="45" name="endereco" not-null="true"/>
-    </property>
-    <property name="telefone" type="string">
-      <column length="20" name="telefone" not-null="true"/>
-    </property>
-    <property name="email" type="string">
-      <column length="45" name="email"/>
-    </property>
-    <property name="rg" type="string">
-      <column length="20" name="rg" not-null="true"/>
-    </property>
-    <property name="cpf" type="string">
-      <column length="20" name="cpf" not-null="true"/>
-    </property>
-    <property name="tituloEleitor" type="string">
-      <column length="20" name="titulo_eleitor" not-null="true"/>
-    </property>
-    <property name="estadoCivil" type="string">
-      <column length="20" name="estado_civil" not-null="true"/>
-    </property>
-    <property name="numeroCarteiraTrabalho" type="string">
-      <column length="20" name="numero_carteira_trabalho" not-null="true"/>
-    </property>
-    <property name="ativo" type="boolean">
-      <column name="ativo" not-null="true"/>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="avisoPrevios" table="aviso_previo">
-      <key>
-        <column name="funcionario" not-null="true"/>
-      </key>
-      <one-to-many class="DAO.AvisoPrevio"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="registroAtividadeses" table="registro_atividades">
-      <key>
-        <column name="funcionario" not-null="true"/>
-      </key>
-      <one-to-many class="DAO.RegistroAtividades"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="ocorrencias" table="ocorrencia">
-      <key>
-        <column name="funcionario" not-null="true"/>
-      </key>
-      <one-to-many class="DAO.Ocorrencia"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="contratos" table="contrato">
-      <key>
-        <column name="funcionario" not-null="true"/>
-      </key>
-      <one-to-many class="DAO.Contrato"/>
-    </set>
-  </class>
+    <class name="DAO.Funcionario" table="funcionario" catalog="ribanceira_bd" optimistic-lock="version">
+        <id name="codigo" type="java.lang.Integer">
+            <column name="codigo" />
+            <generator class="identity" />
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="45" not-null="true" />
+        </property>
+        <property name="dataNascimento" type="string">
+            <column name="data_nascimento" length="20" not-null="true" />
+        </property>
+        <property name="endereco" type="string">
+            <column name="endereco" length="45" not-null="true" />
+        </property>
+        <property name="telefone" type="string">
+            <column name="telefone" length="20" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="rg" type="string">
+            <column name="rg" length="20" not-null="true" />
+        </property>
+        <property name="cpf" type="string">
+            <column name="cpf" length="20" not-null="true" />
+        </property>
+        <property name="tituloEleitor" type="string">
+            <column name="titulo_eleitor" length="20" not-null="true" />
+        </property>
+        <property name="estadoCivil" type="string">
+            <column name="estado_civil" length="20" not-null="true" />
+        </property>
+        <property name="numeroCarteiraTrabalho" type="string">
+            <column name="numero_carteira_trabalho" length="20" not-null="true" />
+        </property>
+        <property name="ativo" type="boolean">
+            <column name="ativo" not-null="true" />
+        </property>
+        <set name="avisoPrevios" table="aviso_previo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="funcionario" not-null="true" />
+            </key>
+            <one-to-many class="DAO.AvisoPrevio" />
+        </set>
+        <set name="registroAtividadeses" table="registro_atividades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="funcionario" not-null="true" />
+            </key>
+            <one-to-many class="DAO.RegistroAtividades" />
+        </set>
+        <set name="ocorrencias" table="ocorrencia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="funcionario" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Ocorrencia" />
+        </set>
+        <set name="contratos" table="contrato" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="funcionario" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Contrato" />
+        </set>
+    </class>
 </hibernate-mapping>
