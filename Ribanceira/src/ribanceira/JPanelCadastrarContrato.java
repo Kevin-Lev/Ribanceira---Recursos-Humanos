@@ -391,7 +391,6 @@ public class JPanelCadastrarContrato extends javax.swing.JPanel {
 
     private void jTextFieldComissaoContratoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldComissaoContratoFocusGained
         // TODO add your handling code here:
-        jTextFieldComissaoContrato.setText("");
     }//GEN-LAST:event_jTextFieldComissaoContratoFocusGained
 
     private void jTextFieldComissaoContratoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldComissaoContratoFocusLost
