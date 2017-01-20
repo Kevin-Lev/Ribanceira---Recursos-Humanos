@@ -6,9 +6,17 @@
 package ribanceira;
 
 import DAO.AvisoPrevio;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import controladores.G_Aviso;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -46,6 +54,7 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAvisosRegistrados = new javax.swing.JTable();
         jButtonEditarAviso = new javax.swing.JButton();
+        jButtonGerarArquivo = new javax.swing.JButton();
 
         jLabelAvisosRegistrados.setText("Avisos registrados:");
 
@@ -77,6 +86,13 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
             }
         });
 
+        jButtonGerarArquivo.setText("Gerar Arquivo");
+        jButtonGerarArquivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGerarArquivoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,19 +105,23 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
                         .addGap(0, 462, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonGerarArquivo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonEditarAviso)))
                 .addContainerGap())
             .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelAvisosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonEditarAviso)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEditarAviso)
+                    .addComponent(jButtonGerarArquivo))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -118,9 +138,25 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButtonEditarAvisoActionPerformed
 
+    private void jButtonGerarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerarArquivoActionPerformed
+        Document aviso = new Document();
+        try {
+            PdfWriter.getInstance(aviso, new FileOutputStream("Aviso Prévio.pdf"));
+            
+            aviso.open();
+            aviso.add(new Paragraph("#TchauQuerida"));
+            
+        } catch (DocumentException | FileNotFoundException ex) {
+            System.out.println("Error:"+ex);
+        }finally{
+            aviso.close();
+        }
+    }//GEN-LAST:event_jButtonGerarArquivoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEditarAviso;
+    private javax.swing.JButton jButtonGerarArquivo;
     private javax.swing.JLabel jLabelAvisosRegistrados;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAvisosRegistrados;
