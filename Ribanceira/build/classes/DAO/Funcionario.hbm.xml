@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding = "UTF-8"?>
+<?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 06/11/2016 18:36:41 by Hibernate Tools 4.3.1 -->
+<!-- Generated 18/01/2017 16:25:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="DAO.Funcionario" table="funcionario" catalog="ribanceira_bd" optimistic-lock="version">
         <id name="codigo" type="java.lang.Integer">
@@ -21,7 +21,7 @@
             <column name="telefone" length="20" not-null="true" />
         </property>
         <property name="email" type="string">
-            <column name="email" length="45" not-null="true" />
+            <column name="email" length="45" />
         </property>
         <property name="rg" type="string">
             <column name="rg" length="20" not-null="true" />
@@ -38,23 +38,26 @@
         <property name="numeroCarteiraTrabalho" type="string">
             <column name="numero_carteira_trabalho" length="20" not-null="true" />
         </property>
+        <property name="ativo" type="boolean">
+            <column name="ativo" not-null="true" />
+        </property>
         <set name="avisoPrevios" table="aviso_previo" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="funcionario" not-null="true" />
             </key>
             <one-to-many class="DAO.AvisoPrevio" />
         </set>
+        <set name="registroAtividadeses" table="registro_atividades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="funcionario" not-null="true" />
+            </key>
+            <one-to-many class="DAO.RegistroAtividades" />
+        </set>
         <set name="ocorrencias" table="ocorrencia" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="funcionario" not-null="true" />
             </key>
             <one-to-many class="DAO.Ocorrencia" />
-        </set>
-        <set name="salarios" table="salario" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="funcionario" not-null="true" />
-            </key>
-            <one-to-many class="DAO.Salario" />
         </set>
         <set name="contratos" table="contrato" inverse="true" lazy="true" fetch="select">
             <key>

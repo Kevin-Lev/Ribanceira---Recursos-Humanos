@@ -24,6 +24,10 @@ public class ConvencaoColetiva  implements java.io.Serializable {
        this.data = data;
        this.sindicato_1 = sindicato_1;
     }
+
+    public ConvencaoColetiva(int codigo, Sindicato sindicato, String categoria, String data, int proporcaoSalMinimo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
     public int getCodigo() {
         return this.codigo;
