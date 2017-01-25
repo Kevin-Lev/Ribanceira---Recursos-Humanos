@@ -9,31 +9,30 @@ package DAO;
 public class ConvencaoColetiva  implements java.io.Serializable {
 
 
-     private int codigo;
+     private String codigo;
      private Sindicato sindicato;
      private String categoria;
      private String data;
-     private int sindicato_1;
+     //private int sindicato_1;
 
     public ConvencaoColetiva() {
     }
 
-    public ConvencaoColetiva(Sindicato sindicato, String categoria, String data, int sindicato_1) {
+    public ConvencaoColetiva(Sindicato sindicato, String categoria, String data) {
        this.sindicato = sindicato;
        this.categoria = categoria;
        this.data = data;
-       this.sindicato_1 = sindicato_1;
     }
 
     public ConvencaoColetiva(int codigo, Sindicato sindicato, String categoria, String data, int proporcaoSalMinimo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
-    public int getCodigo() {
+    public String getCodigo() {
         return this.codigo;
     }
     
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
     public Sindicato getSindicato() {
@@ -57,16 +56,14 @@ public class ConvencaoColetiva  implements java.io.Serializable {
     public void setData(String data) {
         this.data = data;
     }
-    public int getSindicato_1() {
-        return this.sindicato_1;
-    }
     
-    public void setSindicato_1(int sindicato_1) {
-        this.sindicato_1 = sindicato_1;
-    }
-
-
-
+//    public int getSindicato_1() {
+//        return this.sindicato_1;
+//    }
+//    
+//    public void setSindicato_1(int sindicato_1) {
+//        this.sindicato_1 = sindicato_1;
+//    }
 
 }
 
