@@ -15,9 +15,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Phrase;
 import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author Kevin Levrone
@@ -37,7 +39,9 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
         listaAvisos = new G_Aviso().getListaAvisos();
         for (AvisoPrevio a : listaAvisos) {
             tableModel.addRow(new Object[]{a.getDataAviso(), a.getDataRescisao(), a.getMotivo(), a.isJustificado(), a.getFuncionario().getNome()});
+            
         }
+        
     }
 
 
@@ -139,18 +143,54 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonEditarAvisoActionPerformed
 
     private void jButtonGerarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerarArquivoActionPerformed
-        Document aviso = new Document();
-        try {
-            PdfWriter.getInstance(aviso, new FileOutputStream("Aviso Prévio.pdf"));
-            
-            aviso.open();
-            aviso.add(new Paragraph("#TchauQuerida"));
-            
-        } catch (DocumentException | FileNotFoundException ex) {
-            System.out.println("Error:"+ex);
-        }finally{
-            aviso.close();
+        
+        if (jTableAvisosRegistrados.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um aviso!");
         }
+        else{
+            JOptionPane.showMessageDialog(null, "O aviso prévio foi gerado com sucesso!");
+        
+            Document aviso = new Document();
+            try {
+                Font font1 = new Font(Font.FontFamily.TIMES_ROMAN, 8);
+                Font font2 = new Font(Font.FontFamily.TIMES_ROMAN, 14);
+                Font font3 = new Font(Font.FontFamily.TIMES_ROMAN, 20);
+                Font font4 = new Font(Font.FontFamily.TIMES_ROMAN, 11);
+                PdfWriter.getInstance(aviso, new FileOutputStream("Aviso Prévio.pdf"));
+            
+                aviso.open();
+                Paragraph p = new Paragraph();
+                Paragraph q = new Paragraph();
+                aviso.add(new Paragraph("AVISO PRÉVIO DO EMPREGADOR", font3));
+                aviso.add(new Paragraph("Sr.(a): " ,font2));
+                aviso.add(new Paragraph(""));
+                aviso.add(new Paragraph("Comunicamos que a partir de _____"
+                +"dias após o recebimento deste comunicado de Aviso Prévio, "
+                + "não será mais necessário os seus serviços em nossa empresa, " 
+                + "ficando V.Sa. desde já comunicada nos termos do Art. 487, Item,Cap.VI,"
+                + "Título IV do Decreto Nº5.452 de 1º de Maio de 1943, em cumprimento da legislação vigente", font2));
+            
+                aviso.add(new Paragraph("Comunicamos ainda que, neste período, V.Sa.,"
+                + "terá o seu horário de trabalho reduzido em 2 horas diárias, em cumprimento a legislação"));
+                aviso.add(new Paragraph (" "));
+                aviso.add(new Paragraph("                                                                                   Atenciosamente,", font2));
+                aviso.add(new Paragraph (" "));
+                aviso.add(new Paragraph (" "));
+                aviso.add(new Paragraph ("                                                                                  ....................................................................."));
+                aviso.add(new Paragraph ("                                                                                                                                                                     Assinatura do empregador", font1));
+                aviso.add(new Paragraph(" "));
+                aviso.add(new Paragraph(" Ciente:                                                                                                Local e data do recebimento.", font4));
+                aviso.add(new Paragraph (" "));
+                aviso.add(new Paragraph (" "));
+                aviso.add(new Paragraph(".....................................................................                                   ___ de ___ de _____", font4));
+                aviso.add(new Paragraph("                          Assinatura do empregado ou responsável", font1));
+                
+            } catch (DocumentException | FileNotFoundException ex) {
+                System.out.println("Error:"+ex);
+            }finally{
+                aviso.close();
+            }
+       }
     }//GEN-LAST:event_jButtonGerarArquivoActionPerformed
 
 
