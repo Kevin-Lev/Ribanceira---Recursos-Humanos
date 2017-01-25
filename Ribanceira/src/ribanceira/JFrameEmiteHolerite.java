@@ -5,26 +5,61 @@
  */
 package ribanceira;
 
+import DAO.Contrato;
 import DAO.Funcionario;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfWriter;
+import controladores.G_Contrato;
 import controladores.G_Funcionario;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author kevin
+ * @author Kevin Levrone
  */
 public class JFrameEmiteHolerite extends javax.swing.JFrame {
 
+    ArrayList<Funcionario> listaFuncionario;
+    ArrayList<Contrato> listaContrato;
+    
     /**
      * Creates new form EmiteHolerite
      */
+    
+    private String getDateTime() {
+	DateFormat dateFormat = new SimpleDateFormat("MM/yyyy");
+	Date date = new Date();
+	return dateFormat.format(date);
+    }
+    
     public JFrameEmiteHolerite() {
         initComponents();
         
         this.setTitle("Salário - Emitir Holerite");
-        this.setSize(400,300);
-       
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        
+ 
+        listaFuncionario =  new G_Funcionario().getListaFuncionario();
+        for (Funcionario f: listaFuncionario){
+            if(f.isAtivo()){
+                jComboBoxSelecionaFun.addItem(f.getNome());
+            }
+        }
+        
+        
     }
 
     /**
@@ -43,11 +78,20 @@ public class JFrameEmiteHolerite extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabelSelecionaFuncionario.setText("Selecionar funcionário:");
+        jLabelSelecionaFuncionario.setText("Funcionário:");
 
-        jComboBoxSelecionaFun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxSelecionaFun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSelecionaFunActionPerformed(evt);
+            }
+        });
 
         jButtonEmiteHolerite.setText("Emitir Holerite");
+        jButtonEmiteHolerite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEmiteHoleriteActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +110,7 @@ public class JFrameEmiteHolerite extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelSelecionaFuncionario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxSelecionaFun, 0, 343, Short.MAX_VALUE))
+                        .addComponent(jComboBoxSelecionaFun, 0, 417, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -80,7 +124,7 @@ public class JFrameEmiteHolerite extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSelecionaFuncionario)
                     .addComponent(jComboBoxSelecionaFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEmiteHolerite)
                     .addComponent(jButtonCancelar))
@@ -94,6 +138,64 @@ public class JFrameEmiteHolerite extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jComboBoxSelecionaFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelecionaFunActionPerformed
+        // TODO add your handling code here:
+        
+           
+    }//GEN-LAST:event_jComboBoxSelecionaFunActionPerformed
+
+    private void jButtonEmiteHoleriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmiteHoleriteActionPerformed
+        // TODO add your handling code here:
+        Funcionario f;
+        f = listaFuncionario.get(jComboBoxSelecionaFun.getSelectedIndex());
+        Contrato con = new G_Contrato().getContrato(f);
+        
+        JOptionPane.showMessageDialog(null, "Holerite emitido com sucesso!");
+        
+        Document holerite = new Document();
+        try {
+          Font font1 = new Font(Font.FontFamily.TIMES_ROMAN, 8);
+          Font font2 = new Font(Font.FontFamily.TIMES_ROMAN, 14);
+          Font font3 = new Font(Font.FontFamily.TIMES_ROMAN, 20);
+          Font font4 = new Font(Font.FontFamily.TIMES_ROMAN, 11);
+          PdfWriter.getInstance(holerite, new FileOutputStream("Holerite.pdf"));
+          
+          holerite.open();
+          holerite.add(new Paragraph("----------------------------------------------------------------------------------------------------------------", font2));
+          holerite.add(new Paragraph("Recibo de Pagamento e Salário", font3));
+          holerite.add(new Paragraph(" referente ao mês/ano: " + getDateTime(), font1));
+          holerite.add(new Paragraph("Empregador ", font2));
+          holerite.add(new Paragraph("    Nome: " + f.getNome(), font4));
+          holerite.add(new Paragraph("    Endereço: " + f.getEndereco(),font4));
+          holerite.add(new Paragraph("    CNPJ: " /*+ con.getEmpresa().getCnpj()*/, font4));
+          holerite.add(new Paragraph("----------------------------------------------------------------------------------------------------------------", font2));
+          holerite.add(new Paragraph(" "));
+          holerite.add(new Paragraph(" Código                 NOME DO EMPREGADO", font2));
+          holerite.add(new Paragraph("       " + f.getCodigo() + "                                            " + f.getNome(), font4));
+          holerite.add(new Paragraph(" "));
+          holerite.add(new Paragraph("SALÁRIO BASE:                                  " /*+ con.getBaseSalarial()*/, font4)); 
+          holerite.add(new Paragraph("DESCONTO VALE TRANSPORTE:                          50,00" , font4));
+          holerite.add(new Paragraph("DESCONTO VALE REFEIÇÃO:                                50,00",  font4));
+          holerite.add(new Paragraph("DESCONTO DAS FALTAS EM DIAS:                       ",  font4));
+          holerite.add(new Paragraph("ACRÉSCIMO DAS HORAS EXTRAS:                        ",  font4));
+          holerite.add(new Paragraph("IMPOSTOS:                                                                   " + con.getImpostos(),font4));
+          holerite.add(new Paragraph(" "));
+          holerite.add(new Paragraph(" "));
+          holerite.add(new Paragraph("TOTAL DE DESCONTOS:                                ", font4));
+          holerite.add(new Paragraph("SALÁRIO LÍQUIDO:                                   ", font4));
+          holerite.add(new Paragraph("----------------------------------------------------------------------------------------------------------------", font2));
+          holerite.add(new Paragraph(" "));
+          holerite.add(new Paragraph("DECLARO TER RECEBIDO A IMPORTÂNCIA LÍQUIDA DISCRIMINADA NESTE RECIBO", font4));
+          holerite.add(new Paragraph(" "));
+          holerite.add(new Paragraph("_____/____/_______    __________________________________________________________ "));
+          holerite.add(new Paragraph("           DATA                                         ASSINATURA DO FUNCIONÁRIO", font4));
+        } catch (DocumentException | FileNotFoundException ex) {
+                System.out.println("Error:"+ex);
+            }finally{
+               holerite.close();
+        }
+    }//GEN-LAST:event_jButtonEmiteHoleriteActionPerformed
 
     /**
      * @param args the command line arguments
