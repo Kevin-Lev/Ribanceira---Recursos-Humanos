@@ -32,24 +32,24 @@ public class G_Sindicato{
         return listaSindicato;
     }
     
-    public void cadastrarSindicato(int codigo, String nome, String ramoAtividade, String endereco, String telefone){
+    public void cadastrarSindicato(String codigo, String nome, String ramoAtividade, String endereco, String telefone){
       Session s = HibernateUtil.getSessionFactory().getCurrentSession();
       s.beginTransaction();
       s.save(new Sindicato(codigo, nome, ramoAtividade, endereco, telefone));
       s.getTransaction().commit();
     }
     
-    public void EditarSindicato(int codigo, String nome, String ramoAtividade, String endereco, String telefone){
+    public void EditarSindicato(String codigo, String nome, String ramoAtividade, String endereco, String telefone){
       Session s = HibernateUtil.getSessionFactory().getCurrentSession();
       s.beginTransaction();
       s.saveOrUpdate(new Sindicato(codigo, nome, ramoAtividade, endereco, telefone));
       s.getTransaction().commit();
     }
     
-    public void ExcluirSindicato(int codigo, String nome, String ramoAtividade, String endereco, String telefone){
+    public void ExcluirSindicato(Sindicato sindicato){
       Session s = HibernateUtil.getSessionFactory().getCurrentSession();
       s.beginTransaction();
-      s.delete(new Sindicato(codigo, nome, ramoAtividade, endereco, telefone));
+      s.delete(sindicato);
       s.getTransaction().commit();
     }
     
