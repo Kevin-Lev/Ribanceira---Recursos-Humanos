@@ -6,17 +6,24 @@
 package ribanceira;
 
 import DAO.AvisoPrevio;
+import DAO.Funcionario;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import controladores.G_Aviso;
+import controladores.G_Funcionario;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
 
@@ -32,6 +39,13 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
      * Creates new form JPanelConsultarAviso
      */
     ArrayList<AvisoPrevio> listaAvisos;
+    
+    private String getDateTime() {
+	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	Date date = new Date();
+	return dateFormat.format(date);
+    }
+    
     public JPanelConsultarAviso() {
         initComponents();
         DefaultTableModel tableModel = (DefaultTableModel) jTableAvisosRegistrados.getModel();
@@ -41,6 +55,7 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
             tableModel.addRow(new Object[]{a.getDataAviso(), a.getDataRescisao(), a.getMotivo(), a.isJustificado(), a.getFuncionario().getNome()});
             
         }
+        
         
     }
 
@@ -144,6 +159,9 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
 
     private void jButtonGerarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerarArquivoActionPerformed
         
+        Funcionario f = listaAvisos.get(jTableAvisosRegistrados.getSelectedRow()).getFuncionario(); 
+        
+        
         if (jTableAvisosRegistrados.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Selecione um aviso!");
         }
@@ -162,10 +180,11 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
                 Paragraph p = new Paragraph();
                 Paragraph q = new Paragraph();
                 aviso.add(new Paragraph("AVISO PRÉVIO DO EMPREGADOR", font3));
-                aviso.add(new Paragraph("Sr.(a): " ,font2));
-                aviso.add(new Paragraph(""));
-                aviso.add(new Paragraph("Comunicamos que a partir de _____"
-                +"dias após o recebimento deste comunicado de Aviso Prévio, "
+                aviso.add(new Paragraph(" "));
+                aviso.add(new Paragraph("Sr.(a): " + f.getNome() ,font2));
+                aviso.add(new Paragraph(" "));
+                aviso.add(new Paragraph("Comunicamos que a partir de 30"
+                +" dias após o recebimento deste comunicado de Aviso Prévio, "
                 + "não será mais necessário os seus serviços em nossa empresa, " 
                 + "ficando V.Sa. desde já comunicada nos termos do Art. 487, Item,Cap.VI,"
                 + "Título IV do Decreto Nº5.452 de 1º de Maio de 1943, em cumprimento da legislação vigente", font2));
@@ -182,8 +201,8 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
                 aviso.add(new Paragraph(" Ciente:                                                                                                Local e data do recebimento.", font4));
                 aviso.add(new Paragraph (" "));
                 aviso.add(new Paragraph (" "));
-                aviso.add(new Paragraph(".....................................................................                                   ___ de ___ de _____", font4));
-                aviso.add(new Paragraph("                          Assinatura do empregado ou responsável", font1));
+                aviso.add(new Paragraph(".....................................................................                                        " + getDateTime() , font4));
+                aviso.add(new Paragraph("                     Assinatura do empregado ou responsável", font1));
                 
             } catch (DocumentException | FileNotFoundException ex) {
                 System.out.println("Error:"+ex);
