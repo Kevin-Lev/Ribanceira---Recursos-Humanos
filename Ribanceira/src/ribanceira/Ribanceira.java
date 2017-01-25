@@ -5,6 +5,10 @@
  */
 package ribanceira;
 
+import controladores.Singleton;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 
 /**
  *
@@ -15,7 +19,7 @@ public class Ribanceira {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // TODO code application logic here
         /*
         // OBSERVER
@@ -29,11 +33,11 @@ public class Ribanceira {
         r.setHoraSaida("18.00");
         */
         
-        /*
+        
         // SINGLETON
         Singleton conexaoSingleton = Singleton.getInstancia();
         Connection conexao = conexaoSingleton.getConexao();
-        */
+        
         
         new Login();
         /*
