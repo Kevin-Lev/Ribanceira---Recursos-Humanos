@@ -5,6 +5,9 @@
  */
 package ribanceira;
 
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import DAO.Contrato;
 import DAO.Empresa;
 import DAO.Funcionario;
@@ -347,9 +350,9 @@ public class JFrameRelatoriosGerais extends javax.swing.JFrame {
             jComboBoxNomeRelatorio.removeAllItems();
             jLabelCriterioFuncionarioRelatorio.setEnabled(true);
             jComboBoxCriterioFuncionarioRelatorio.setEnabled(true);
-            for (Funcionario f : listaFuncionarios) {
-                if(f.isAtivo()){
-                    jComboBoxNomeRelatorio.addItem(f.getNome());
+            for (Contrato c : listaContratos) {
+                if(c.getFuncionario().isAtivo()){
+                    jComboBoxNomeRelatorio.addItem(c.getFuncionario().getNome());
                 }
             }
             jComboBoxCriterioFuncionarioRelatorioActionPerformed(evt);
@@ -384,14 +387,10 @@ public class JFrameRelatoriosGerais extends javax.swing.JFrame {
                 jCheckBoxDado12.setVisible(true);
                 jCheckBoxDado12.setText("Impostos");
             } else if(jComboBoxCriterioFuncionarioRelatorio.getSelectedIndex() == 1) {
-                jCheckBoxDado1.setVisible(true);
-                jCheckBoxDado1.setText("Data");
-                jCheckBoxDado2.setVisible(true);
-                jCheckBoxDado2.setText("Tipo");
-                jCheckBoxDado3.setVisible(true);
-                jCheckBoxDado3.setText("Justificado");
-                jCheckBoxDado4.setVisible(true);
-                jCheckBoxDado4.setText("Valor");
+                jCheckBoxDado1.setVisible(false);
+                jCheckBoxDado2.setVisible(false);
+                jCheckBoxDado3.setVisible(false);
+                jCheckBoxDado4.setVisible(false);
                 jCheckBoxDado5.setVisible(false);
                 jCheckBoxDado6.setVisible(false);
                 jCheckBoxDado7.setVisible(false);
@@ -408,7 +407,7 @@ public class JFrameRelatoriosGerais extends javax.swing.JFrame {
         if(jComboBoxCriterioRelatorio.getSelectedIndex() == 0) {
             Document doc = new Document();
             Empresa empresa = listaEmpresa.get(jComboBoxNomeRelatorio.getSelectedIndex());
-            ArrayList<Contrato> listaContratoEmpresa = new G_Contrato().getListaContrato(empresa);
+            Set<Contrato> listaContratoEmpresa = empresa.getContratos();
             String nomeArquivo = empresa.getNomeEmpresa() + new Date().getTime() + ".pdf";
             
             if(jRadioButtonAtivoRelatorio.isSelected()) {
@@ -417,16 +416,9 @@ public class JFrameRelatoriosGerais extends javax.swing.JFrame {
                     doc.open();
                     doc.add(new Paragraph("RELATÓRIO: Lista de funcionário de " + empresa.getNomeEmpresa()));
                     doc.add(new Paragraph("CNPJ: " + empresa.getCnpj()));                    
-                    doc.add(new Paragraph(" "));     
-                } catch (DocumentException | FileNotFoundException ex) {
-                    System.out.println("Error: " + ex);
-                }
-                for(Contrato c : listaContratoEmpresa) {
-                    if(c.getFuncionario().isAtivo()) {
-                        try {
-                            System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2");
-                            PdfWriter.getInstance(doc, new FileOutputStream(nomeArquivo));
-                            doc.open();
+                    doc.add(new Paragraph("---------------------------------------------------------------------------------------------------------------------------------")); 
+                    for(Contrato c : listaContratoEmpresa) {
+                        if(c.getFuncionario().isAtivo()) {
                             doc.add(new Paragraph("Nome: " + c.getFuncionario().getNome()));
                             if(jCheckBoxDado2.isSelected()) {
                                 doc.add(new Paragraph("Data de nascimento: " + c.getFuncionario().getDataNascimento()));
@@ -450,76 +442,83 @@ public class JFrameRelatoriosGerais extends javax.swing.JFrame {
                                 doc.add(new Paragraph("Carteira de trabalho: " + c.getFuncionario().getNumeroCarteiraTrabalho()));
                             }
                             doc.add(new Paragraph("---------------------------------------------------------------------------------------------------------------------------------"));
-                        } catch (DocumentException | FileNotFoundException ex) {
-                            System.out.println("Error: " + ex);
-                        }  
+                        }
                     }
+                } catch (DocumentException | FileNotFoundException ex) {
+                    System.out.println("Error: " + ex);
+                } finally {
+                    doc.close();
+                }
+                try {
+                    Desktop.getDesktop().open(new File(nomeArquivo));
+                } catch (IOException ex) {
+                    System.out.println("Error: " + ex);
                 }
             }
-            else {
+            else { // funcionários não ativos
                 try {
                     PdfWriter.getInstance(doc, new FileOutputStream(nomeArquivo));
                     doc.open();
                     doc.add(new Paragraph("RELATÓRIO: Lista de funcionário de " + empresa.getNomeEmpresa()));
                     doc.add(new Paragraph("CNPJ: " + empresa.getCnpj()));                    
-                    doc.add(new Paragraph(" "));     
-                } catch (DocumentException | FileNotFoundException ex) {
-                    System.out.println("Error: " + ex);
-                }
-                for(Contrato c : listaContratos) {
-                    if(c.getEmpresa().equals(empresa)) {
-                        if(!c.getFuncionario().isAtivo()) {
-                            try {
-                                PdfWriter.getInstance(doc, new FileOutputStream(nomeArquivo));
-                                doc.open();
-                                doc.add(new Paragraph("Nome: " + c.getFuncionario().getNome()));
-                                if(jCheckBoxDado2.isSelected()) {
-                                    doc.add(new Paragraph("Data de nascimento: " + c.getFuncionario().getDataNascimento()));
-                                }
-                                if(jCheckBoxDado3.isSelected()) {
-                                    doc.add(new Paragraph("Endereço: " + c.getFuncionario().getEndereco()));
-                                }
-                                if(jCheckBoxDado4.isSelected()) {
-                                    doc.add(new Paragraph("Telefone: " + c.getFuncionario().getTelefone()));
-                                }
-                                if(jCheckBoxDado5.isSelected()) {
-                                    doc.add(new Paragraph("E-mail: " + c.getFuncionario().getEmail()));
-                                }
-                                if(jCheckBoxDado6.isSelected()) {
-                                    doc.add(new Paragraph("RG: " + c.getFuncionario().getRg()));
-                                }
-                                if(jCheckBoxDado7.isSelected()) {
-                                    doc.add(new Paragraph("CPF: " + c.getFuncionario().getCpf()));
-                                }
-                                if(jCheckBoxDado8.isSelected()) {
-                                    doc.add(new Paragraph("Carteira de trabalho: " + c.getFuncionario().getNumeroCarteiraTrabalho()));
-                                }
-                                doc.add(new Paragraph("---------------------------------------------------------------------------------------------------------------------------------"));
-                            } catch (DocumentException | FileNotFoundException ex) {
-                                System.out.println("Error: " + ex);
-                            }  
+                    doc.add(new Paragraph(" "));    
+                    for(Contrato c : listaContratos) {
+                        if(c.getEmpresa().equals(empresa)) {
+                            if(!c.getFuncionario().isAtivo()) {
+                                try {
+                                    PdfWriter.getInstance(doc, new FileOutputStream(nomeArquivo));
+                                    doc.open();
+                                    doc.add(new Paragraph("Nome: " + c.getFuncionario().getNome()));
+                                    if(jCheckBoxDado2.isSelected()) {
+                                        doc.add(new Paragraph("Data de nascimento: " + c.getFuncionario().getDataNascimento()));
+                                    }
+                                    if(jCheckBoxDado3.isSelected()) {
+                                        doc.add(new Paragraph("Endereço: " + c.getFuncionario().getEndereco()));
+                                    }
+                                    if(jCheckBoxDado4.isSelected()) {
+                                        doc.add(new Paragraph("Telefone: " + c.getFuncionario().getTelefone()));
+                                    }
+                                    if(jCheckBoxDado5.isSelected()) {
+                                        doc.add(new Paragraph("E-mail: " + c.getFuncionario().getEmail()));
+                                    }
+                                    if(jCheckBoxDado6.isSelected()) {
+                                        doc.add(new Paragraph("RG: " + c.getFuncionario().getRg()));
+                                    }
+                                    if(jCheckBoxDado7.isSelected()) {
+                                        doc.add(new Paragraph("CPF: " + c.getFuncionario().getCpf()));
+                                    }
+                                    if(jCheckBoxDado8.isSelected()) {
+                                        doc.add(new Paragraph("Carteira de trabalho: " + c.getFuncionario().getNumeroCarteiraTrabalho()));
+                                    }
+                                    doc.add(new Paragraph("---------------------------------------------------------------------------------------------------------------------------------"));
+                                } catch (DocumentException | FileNotFoundException ex) {
+                                    System.out.println("Error: " + ex);
+                                }  
+                            }
                         }
                     }
+                } catch (DocumentException | FileNotFoundException ex) {
+                    System.out.println("Error: " + ex);
+                } finally {
+                    doc.close();
                 }
-            }
-            doc.close();
-            try {
-                Desktop.getDesktop().open(new File(nomeArquivo));
-            } catch (IOException ex) {
-                System.out.println("Error: " + ex);
+                try {
+                    Desktop.getDesktop().open(new File(nomeArquivo));
+                } catch (IOException ex) {
+                    System.out.println("Error: " + ex);
+                }   
             }
         }
         else { // imprimir relatório de dados do funcionário
-            Funcionario funcionario = listaFuncionarios.get(jComboBoxNomeRelatorio.getSelectedIndex());
-            Contrato contrato = new G_Contrato().getContrato(funcionario);
-            String nomeArquivo = funcionario.getNome() + new Date().getTime() + ".pdf";
+            Contrato contrato = listaContratos.get(jComboBoxNomeRelatorio.getSelectedIndex());
+            String nomeArquivo = contrato.getFuncionario().getNome() + new Date().getTime() + ".pdf";
             Document doc = new Document();
             
             if(jComboBoxCriterioFuncionarioRelatorio.getSelectedIndex() == 0) {
                 try {
                     PdfWriter.getInstance(doc, new FileOutputStream(nomeArquivo));
                     doc.open();
-                    doc.add(new Paragraph("RELATÓRIO: Dados do contrato de " + funcionario.getNome() + "inscrito sob o CPF: " + funcionario.getCpf()));
+                    doc.add(new Paragraph("RELATÓRIO: Dados do contrato de " + contrato.getFuncionario().getNome() + "inscrito sob o CPF: " + contrato.getFuncionario().getCpf()));
                     doc.add(new Paragraph("com a empresa: " + contrato.getEmpresa().getNomeEmpresa()));                    
                     doc.add(new Paragraph(" "));                    
                     if(jCheckBoxDado1.isSelected()) {
@@ -581,49 +580,49 @@ public class JFrameRelatoriosGerais extends javax.swing.JFrame {
                     }
                 } catch (DocumentException | FileNotFoundException ex) {
                     System.out.println("Error: " + ex);
+                } finally {
+                    doc.close();
+                }
+                try {
+                    Desktop.getDesktop().open(new File(nomeArquivo));
+                } catch (IOException ex) {
+                    System.out.println("Error: " + ex);
                 }
             }
             else {
-                ArrayList<Ocorrencia> listaOcorrencia = new G_Ocorrencia().getListaOcorrenciaFuncionario(funcionario);
+                Set<Ocorrencia> listaOcorrencia = contrato.getFuncionario().getOcorrencias();
                 try {
                     PdfWriter.getInstance(doc, new FileOutputStream(nomeArquivo));
                     doc.open();
-                    doc.add(new Paragraph("RELATÓRIO: Ocorrências de " + funcionario.getNome() + "inscrito sob o CPF: " + funcionario.getCpf()));
+                    doc.add(new Paragraph("RELATÓRIO: Ocorrências de " + contrato.getFuncionario().getNome() + " inscrito sob o CPF: " + contrato.getFuncionario().getCpf()));
                     doc.add(new Paragraph("com a empresa: " + contrato.getEmpresa().getNomeEmpresa()));                    
                     doc.add(new Paragraph(" "));
                     for(Ocorrencia ocorrencia : listaOcorrencia) {
-                        if(jCheckBoxDado1.isSelected()) {
-                            doc.add(new Paragraph("Data: " + ocorrencia.getDataOcorrencia()));  
+                        String just;
+                        if(ocorrencia.isJustificado()) {
+                            just = "Sim";
                         }
-                        if(jCheckBoxDado2.isSelected()) {
-                            doc.add(new Paragraph("Tipo: " + ocorrencia.getTipo()));
+                        else {
+                            just = "Não";
                         }
-                        if(jCheckBoxDado3.isSelected()) {
-                            String just;
-                            if(ocorrencia.isJustificado()) {
-                                just = "Sim";
-                            }
-                            else {
-                                just = "Não";
-                            }
-                            doc.add(new Paragraph("Justificado " + just));
-                        }
-                        if(jCheckBoxDado4.isSelected()) {
-                            doc.add(new Paragraph("Valor: " + Float.toString(ocorrencia.getValor())));
-                        }
+                        doc.add(new Paragraph("Data: " + ocorrencia.getDataOcorrencia()));  
+                        doc.add(new Paragraph("Tipo: " + ocorrencia.getTipo()));
+                        doc.add(new Paragraph("Justificado " + just));
+                        doc.add(new Paragraph("Valor: " + Float.toString(ocorrencia.getValor())));
                         doc.add(new Paragraph("---------------------------------------------------------------------------------------------------------------------------------"));
                     }
                 } catch (DocumentException | FileNotFoundException ex) {
                     System.out.println("Error: " + ex);
+                } finally {
+                    doc.close();
+                }
+                try {
+                    Desktop.getDesktop().open(new File(nomeArquivo));
+                } catch (IOException ex) {
+                    System.out.println("Error: " + ex);
                 }
             }
             
-            doc.close();
-            try {
-                Desktop.getDesktop().open(new File(nomeArquivo));
-            } catch (IOException ex) {
-                System.out.println("Error: " + ex);
-            }
         }
     }//GEN-LAST:event_jButtonGerarRelatorioActionPerformed
 

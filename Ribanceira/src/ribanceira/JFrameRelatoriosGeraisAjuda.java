@@ -93,7 +93,7 @@ public class JFrameRelatoriosGeraisAjuda extends javax.swing.JFrame {
         jLabel14.setText("Senão, se o critério de relatório estiver em \"Funcionário\" e o critério do funcionário estiver em Contrato, terá outro.");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel15.setText("Ou, caso esteja em \"Funcionário\" e \"Ocorrências\" terá outro conjunto de dados diferente.");
+        jLabel15.setText("Ou, caso esteja em \"Funcionário\" e \"Ocorrências\" não terá conjunto de dados.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
