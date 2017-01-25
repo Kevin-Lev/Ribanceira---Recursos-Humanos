@@ -41,6 +41,34 @@ public class G_Contrato {
         return listaContrato;
     }
     
+    public Contrato getContrato(Funcionario f) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        s.beginTransaction();
+        Contrato c = new Contrato();
+        ArrayList<Contrato> listaContrato = (ArrayList<Contrato>) s.createQuery("From Contrato").list();
+        for(Contrato c1 : listaContrato) {
+            if(c1.getFuncionario().equals(f)) {
+                c = c1;
+            }
+        }
+        s.getTransaction().commit();
+        return c;
+    }
+    
+    public ArrayList<Contrato> getListaContrato(Empresa e) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        s.beginTransaction();
+        ArrayList<Contrato> listaContrato = (ArrayList<Contrato>) s.createQuery("From Contrato").list();
+        ArrayList<Contrato> listaContratoEmpresa = new ArrayList<Contrato>();
+        for(Contrato c1 : listaContrato) {
+            if(c1.getEmpresa().equals(e)) {
+                listaContratoEmpresa.add(c1);
+            }
+        }
+        s.getTransaction().commit();
+        return listaContratoEmpresa;
+    }
+    
     public void atualizaContrato(Contrato c) {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
