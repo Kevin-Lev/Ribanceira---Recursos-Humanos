@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author christian
+ * @author Christian T. Nakata
  */
 public class JPanelManterSindicatos extends javax.swing.JPanel {
 
@@ -49,6 +49,27 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
 
         jMenu1 = new javax.swing.JMenu();
         jTabbedPaneManterSindicato = new javax.swing.JTabbedPane();
+        jPanelBuscar = new javax.swing.JPanel();
+        jButtonAlterarSindicato = new javax.swing.JButton();
+        jButtonExcluirSindicato = new javax.swing.JButton();
+        jButtonCadastrarSindicato = new javax.swing.JButton();
+        jButtonSair = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableBuscaSindicato = new javax.swing.JTable();
+        jButtonAtualizarList = new javax.swing.JButton();
+        jPanelCadastrar = new javax.swing.JPanel();
+        jLabelNomeSindicato = new javax.swing.JLabel();
+        jTextFieldNomeSindicato = new javax.swing.JTextField();
+        jLabelRamoAtividade = new javax.swing.JLabel();
+        jLabelCodigoEntidade = new javax.swing.JLabel();
+        jTextFieldCodigoEntidade = new javax.swing.JTextField();
+        jLabelEndereco = new javax.swing.JLabel();
+        jButtonSalvarCadastro = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+        jTextFieldEndereco = new javax.swing.JTextField();
+        jLabelTelefone = new javax.swing.JLabel();
+        jTextFieldTelefon = new javax.swing.JTextField();
+        jTextFieldRamoAtividade = new javax.swing.JTextField();
         jPanelAlterar = new javax.swing.JPanel();
         jPanelCadastrar1 = new javax.swing.JPanel();
         jLabelNomeSindicato3 = new javax.swing.JLabel();
@@ -63,29 +84,215 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
         jLabelTelefone2 = new javax.swing.JLabel();
         jTextFieldTelefon2 = new javax.swing.JTextField();
         jTextFieldRamoAtividade2 = new javax.swing.JTextField();
-        jPanelCadastrar = new javax.swing.JPanel();
-        jLabelNomeSindicato = new javax.swing.JLabel();
-        jTextFieldNomeSindicato = new javax.swing.JTextField();
-        jLabelRamoAtividade = new javax.swing.JLabel();
-        jLabelCodigoEntidade = new javax.swing.JLabel();
-        jTextFieldCodigoEntidade = new javax.swing.JTextField();
-        jLabelEndereco = new javax.swing.JLabel();
-        jButtonSalvarCadastro = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
-        jTextFieldEndereco = new javax.swing.JTextField();
-        jLabelTelefone = new javax.swing.JLabel();
-        jTextFieldTelefon = new javax.swing.JTextField();
-        jTextFieldRamoAtividade = new javax.swing.JTextField();
-        jPanelBuscar = new javax.swing.JPanel();
-        jButtonAlterarSindicato = new javax.swing.JButton();
-        jButtonExcluirSindicato = new javax.swing.JButton();
-        jButtonCadastrarSindicato = new javax.swing.JButton();
-        jButtonSair = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTableBuscaSindicato = new javax.swing.JTable();
-        jButtonAtualizarList = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
+
+        jButtonAlterarSindicato.setText("Alterar");
+        jButtonAlterarSindicato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlterarSindicatoActionPerformed(evt);
+            }
+        });
+
+        jButtonExcluirSindicato.setText("Excluir sindicato");
+        jButtonExcluirSindicato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirSindicatoActionPerformed(evt);
+            }
+        });
+
+        jButtonCadastrarSindicato.setText("Cadastrar novo sindicato");
+        jButtonCadastrarSindicato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarSindicatoActionPerformed(evt);
+            }
+        });
+
+        jButtonSair.setText("Sair");
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSairActionPerformed(evt);
+            }
+        });
+
+        jTableBuscaSindicato.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Código", "Endereço", "Telefone"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableBuscaSindicato.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(jTableBuscaSindicato);
+        if (jTableBuscaSindicato.getColumnModel().getColumnCount() > 0) {
+            jTableBuscaSindicato.getColumnModel().getColumn(0).setResizable(false);
+            jTableBuscaSindicato.getColumnModel().getColumn(1).setResizable(false);
+            jTableBuscaSindicato.getColumnModel().getColumn(2).setResizable(false);
+            jTableBuscaSindicato.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jButtonAtualizarList.setText("Atualizar Lista");
+        jButtonAtualizarList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtualizarListActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelBuscarLayout = new javax.swing.GroupLayout(jPanelBuscar);
+        jPanelBuscar.setLayout(jPanelBuscarLayout);
+        jPanelBuscarLayout.setHorizontalGroup(
+            jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBuscarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelBuscarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+                    .addGroup(jPanelBuscarLayout.createSequentialGroup()
+                        .addComponent(jButtonExcluirSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jButtonAtualizarList, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonCadastrarSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jButtonAlterarSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12))
+        );
+        jPanelBuscarLayout.setVerticalGroup(
+            jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBuscarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAlterarSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonExcluirSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCadastrarSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAtualizarList, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(69, 69, 69)
+                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jTabbedPaneManterSindicato.addTab("Buscar", jPanelBuscar);
+
+        jLabelNomeSindicato.setText("Nome do sindicato:");
+
+        jTextFieldNomeSindicato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNomeSindicatoActionPerformed(evt);
+            }
+        });
+
+        jLabelRamoAtividade.setText("Ramo de  atividade:");
+
+        jLabelCodigoEntidade.setText("Código da Entidade:");
+
+        jLabelEndereco.setText("Endereço:");
+
+        jButtonSalvarCadastro.setText("Salvar");
+        jButtonSalvarCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarCadastroActionPerformed(evt);
+            }
+        });
+
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+
+        jLabelTelefone.setText("Telefone:");
+
+        jTextFieldRamoAtividade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldRamoAtividadeActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelCadastrarLayout = new javax.swing.GroupLayout(jPanelCadastrar);
+        jPanelCadastrar.setLayout(jPanelCadastrarLayout);
+        jPanelCadastrarLayout.setHorizontalGroup(
+            jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCadastrarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCadastrarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(jButtonSalvarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCadastrarLayout.createSequentialGroup()
+                        .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelCodigoEntidade)
+                            .addComponent(jLabelNomeSindicato)
+                            .addComponent(jLabelRamoAtividade)
+                            .addComponent(jLabelEndereco)
+                            .addComponent(jLabelTelefone))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldTelefon)
+                            .addComponent(jTextFieldEndereco)
+                            .addComponent(jTextFieldRamoAtividade)
+                            .addComponent(jTextFieldNomeSindicato)
+                            .addGroup(jPanelCadastrarLayout.createSequentialGroup()
+                                .addComponent(jTextFieldCodigoEntidade, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        jPanelCadastrarLayout.setVerticalGroup(
+            jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCadastrarLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCodigoEntidade)
+                    .addComponent(jTextFieldCodigoEntidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldNomeSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNomeSindicato))
+                .addGap(29, 29, 29)
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldRamoAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelRamoAtividade))
+                .addGap(35, 35, 35)
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEndereco))
+                .addGap(26, 26, 26)
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTelefone))
+                .addGap(178, 178, 178)
+                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSalvarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jTabbedPaneManterSindicato.addTab("Cadastrar", jPanelCadastrar);
 
         jLabelNomeSindicato3.setText("Nome do sindicato:");
 
@@ -212,213 +419,6 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
 
         jTabbedPaneManterSindicato.addTab("Alterar", jPanelAlterar);
 
-        jLabelNomeSindicato.setText("Nome do sindicato:");
-
-        jTextFieldNomeSindicato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNomeSindicatoActionPerformed(evt);
-            }
-        });
-
-        jLabelRamoAtividade.setText("Ramo de  atividade:");
-
-        jLabelCodigoEntidade.setText("Código da Entidade:");
-
-        jLabelEndereco.setText("Endereço:");
-
-        jButtonSalvarCadastro.setText("Salvar");
-        jButtonSalvarCadastro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalvarCadastroActionPerformed(evt);
-            }
-        });
-
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
-            }
-        });
-
-        jLabelTelefone.setText("Telefone:");
-
-        jTextFieldRamoAtividade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldRamoAtividadeActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelCadastrarLayout = new javax.swing.GroupLayout(jPanelCadastrar);
-        jPanelCadastrar.setLayout(jPanelCadastrarLayout);
-        jPanelCadastrarLayout.setHorizontalGroup(
-            jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCadastrarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCadastrarLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jButtonSalvarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCadastrarLayout.createSequentialGroup()
-                        .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelCodigoEntidade)
-                            .addComponent(jLabelNomeSindicato)
-                            .addComponent(jLabelRamoAtividade)
-                            .addComponent(jLabelEndereco)
-                            .addComponent(jLabelTelefone))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldTelefon)
-                            .addComponent(jTextFieldEndereco)
-                            .addComponent(jTextFieldRamoAtividade)
-                            .addComponent(jTextFieldNomeSindicato)
-                            .addGroup(jPanelCadastrarLayout.createSequentialGroup()
-                                .addComponent(jTextFieldCodigoEntidade, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
-        );
-        jPanelCadastrarLayout.setVerticalGroup(
-            jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCadastrarLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCodigoEntidade)
-                    .addComponent(jTextFieldCodigoEntidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNomeSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNomeSindicato))
-                .addGap(29, 29, 29)
-                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldRamoAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelRamoAtividade))
-                .addGap(35, 35, 35)
-                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEndereco))
-                .addGap(26, 26, 26)
-                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelTelefone))
-                .addGap(178, 178, 178)
-                .addGroup(jPanelCadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSalvarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jTabbedPaneManterSindicato.addTab("Cadastrar", jPanelCadastrar);
-
-        jButtonAlterarSindicato.setText("Alterar");
-        jButtonAlterarSindicato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAlterarSindicatoActionPerformed(evt);
-            }
-        });
-
-        jButtonExcluirSindicato.setText("Excluir sindicato");
-        jButtonExcluirSindicato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonExcluirSindicatoActionPerformed(evt);
-            }
-        });
-
-        jButtonCadastrarSindicato.setText("Cadastrar novo sindicato");
-        jButtonCadastrarSindicato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarSindicatoActionPerformed(evt);
-            }
-        });
-
-        jButtonSair.setText("Sair");
-        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSairActionPerformed(evt);
-            }
-        });
-
-        jTableBuscaSindicato.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nome", "Código", "Endereço", "Telefone"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTableBuscaSindicato.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(jTableBuscaSindicato);
-        if (jTableBuscaSindicato.getColumnModel().getColumnCount() > 0) {
-            jTableBuscaSindicato.getColumnModel().getColumn(0).setResizable(false);
-            jTableBuscaSindicato.getColumnModel().getColumn(1).setResizable(false);
-            jTableBuscaSindicato.getColumnModel().getColumn(2).setResizable(false);
-            jTableBuscaSindicato.getColumnModel().getColumn(3).setResizable(false);
-        }
-
-        jButtonAtualizarList.setText("Atualizar Lista");
-        jButtonAtualizarList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAtualizarListActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelBuscarLayout = new javax.swing.GroupLayout(jPanelBuscar);
-        jPanelBuscar.setLayout(jPanelBuscarLayout);
-        jPanelBuscarLayout.setHorizontalGroup(
-            jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBuscarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelBuscarLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
-                    .addGroup(jPanelBuscarLayout.createSequentialGroup()
-                        .addComponent(jButtonExcluirSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jButtonAtualizarList, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCadastrarSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jButtonAlterarSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12))
-        );
-        jPanelBuscarLayout.setVerticalGroup(
-            jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelBuscarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAlterarSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonExcluirSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCadastrarSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAtualizarList, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69)
-                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jTabbedPaneManterSindicato.addTab("Buscar", jPanelBuscar);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -429,6 +429,8 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPaneManterSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        jTabbedPaneManterSindicato.getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
