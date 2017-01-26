@@ -1,23 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 12/12/2016 09:15:59 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 25, 2017 8:24:35 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="ribanceira_bd" name="DAO.ConvencaoColetiva" optimistic-lock="version" table="convencao_coletiva">
-    <id name="codigo" type="int">
-      <column name="codigo"/>
-      <generator class="foreign">
-        <param name="property">sindicato</param>
-      </generator>
-    </id>
-    <one-to-one class="DAO.Sindicato" constrained="true" name="sindicato"/>
-    <property name="categoria" type="string">
-      <column length="20" name="categoria" not-null="true"/>
-    </property>
-    <property name="data" type="string">
-      <column length="20" name="data" not-null="true"/>
-    </property>
-    <property name="sindicato_1" type="int">
-      <column name="sindicato" not-null="true"/>
-    </property>
-  </class>
+    <class name="DAO.ConvencaoColetiva" table="convencao_coletiva" catalog="ribanceira_bd" optimistic-lock="version">
+        <id name="codigo" type="string">
+            <column name="codigo" length="20" />
+            <generator class="foreign">
+                <param name="property">sindicato</param>
+            </generator>
+        </id>
+        <one-to-one name="sindicato" class="DAO.Sindicato" constrained="true"></one-to-one>
+        <property name="categoria" type="string">
+            <column name="categoria" length="20" not-null="true" />
+        </property>
+        <property name="data" type="string">
+            <column name="data" length="20" not-null="true" />
+        </property>
+        <property name="sindicato_1" type="string">
+            <column name="sindicato" length="20" not-null="true" />
+        </property>
+    </class>
 </hibernate-mapping>

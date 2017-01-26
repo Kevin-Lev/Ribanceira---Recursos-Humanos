@@ -1,5 +1,5 @@
 package DAO;
-// Generated 12/12/2016 09:15:58 by Hibernate Tools 4.3.1
+// Generated Jan 25, 2017 8:24:35 PM by Hibernate Tools 4.3.1
 
 
 
@@ -8,24 +8,21 @@ package DAO;
  */
 public class ConvencaoColetiva  implements java.io.Serializable {
 
-
      private String codigo;
      private Sindicato sindicato;
      private String categoria;
      private String data;
-     //private int sindicato_1;
+     private String proporcaoSalMinimo;
 
     public ConvencaoColetiva() {
     }
 
-    public ConvencaoColetiva(Sindicato sindicato, String categoria, String data) {
+    public ConvencaoColetiva(String codigo, Sindicato sindicato, String categoria, String data, String proporcaoSalMinimo) {
+       this.codigo = codigo;
        this.sindicato = sindicato;
        this.categoria = categoria;
        this.data = data;
-    }
-
-    public ConvencaoColetiva(int codigo, Sindicato sindicato, String categoria, String data, int proporcaoSalMinimo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       this.proporcaoSalMinimo = proporcaoSalMinimo;
     }
    
     public String getCodigo() {
@@ -56,14 +53,16 @@ public class ConvencaoColetiva  implements java.io.Serializable {
     public void setData(String data) {
         this.data = data;
     }
+    public String getSindicato_1() {
+        return this.proporcaoSalMinimo;
+    }
     
-//    public int getSindicato_1() {
-//        return this.sindicato_1;
-//    }
-//    
-//    public void setSindicato_1(int sindicato_1) {
-//        this.sindicato_1 = sindicato_1;
-//    }
+    public void setSindicato_1(String proporcaoSalMinimo) {
+        this.proporcaoSalMinimo = proporcaoSalMinimo;
+    }
+
+
+
 
 }
 
