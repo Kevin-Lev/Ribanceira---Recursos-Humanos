@@ -12,17 +12,24 @@ public class ConvencaoColetiva  implements java.io.Serializable {
      private String sindicato;
      private String categoria;
      private String data;
-     //private String sindicato_1;
+     private String sindicato_1;
      private String proporcaoSalMinimo;
 
     public ConvencaoColetiva() {
     }
 
+    public ConvencaoColetiva(String sindicato, String categoria, String data, String sindicato_1, String proporcaoSalMinimo) {
+       this.sindicato = sindicato;
+       this.categoria = categoria;
+       this.data = data;
+       this.proporcaoSalMinimo = proporcaoSalMinimo;
+    }
+    
     public ConvencaoColetiva(String sindicato, String categoria, String data, String proporcaoSalMinimo) {
        this.sindicato = sindicato;
        this.categoria = categoria;
        this.data = data;
-       //this.sindicato_1 = sindicato_1;
+       this.sindicato_1 = sindicato_1;
        this.proporcaoSalMinimo = proporcaoSalMinimo;
     }
    
@@ -54,13 +61,15 @@ public class ConvencaoColetiva  implements java.io.Serializable {
     public void setData(String data) {
         this.data = data;
     }
-//    public String getSindicato_1() {
-//        return this.sindicato_1;
-//    }
-//    
-//    public void setSindicato_1(String sindicato_1) {
-//        this.sindicato_1 = sindicato_1;
-//    }
+    
+    public String getSindicato_1() {
+        return this.sindicato_1;
+    }
+    
+    public void setSindicato_1(String sindicato_1) {
+        this.sindicato_1 = sindicato_1;
+    }
+    
     public String getProporcaoSalMinimo() {
         return this.proporcaoSalMinimo;
     }
