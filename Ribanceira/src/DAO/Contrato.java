@@ -1,5 +1,5 @@
 package DAO;
-// Generated 18/01/2017 16:25:51 by Hibernate Tools 4.3.1
+// Generated Jan 26, 2017 3:47:47 PM by Hibernate Tools 4.3.1
 
 
 
@@ -30,20 +30,14 @@ public class Contrato  implements java.io.Serializable {
     }
 
 	
-    public Contrato(Empresa empresa, Funcionario funcionario, float cargaHoraria, String horaEntrada, String horaSaida, float horasExtras, float comissao, float duracao, boolean experiencia, int ferias, boolean valeTransporte, boolean valeRefeicao, float baseSalarial, boolean ativo) {
+    public Contrato(Empresa empresa, Funcionario funcionario, float cargaHoraria, boolean experiencia, int ferias, boolean valeTransporte, boolean valeRefeicao, boolean ativo) {
         this.empresa = empresa;
         this.funcionario = funcionario;
         this.cargaHoraria = cargaHoraria;
-        this.horaEntrada = horaEntrada;
-        this.horaSaida = horaSaida;
-        this.horasExtras = horasExtras;
-        this.comissao = comissao;
-        this.duracao = duracao;
         this.experiencia = experiencia;
         this.ferias = ferias;
         this.valeTransporte = valeTransporte;
         this.valeRefeicao = valeRefeicao;
-        this.baseSalarial = baseSalarial;
         this.ativo = ativo;
     }
     public Contrato(Empresa empresa, Funcionario funcionario, float cargaHoraria, String horaEntrada, String horaSaida, Float horasExtras, Float comissao, Float duracao, boolean experiencia, int ferias, boolean valeTransporte, boolean valeRefeicao, Float baseSalarial, boolean ativo, Float impostos) {

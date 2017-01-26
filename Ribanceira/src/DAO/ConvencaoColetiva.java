@@ -1,5 +1,5 @@
 package DAO;
-// Generated 12/12/2016 09:15:58 by Hibernate Tools 4.3.1
+// Generated Jan 26, 2017 3:47:47 PM by Hibernate Tools 4.3.1
 
 
 
@@ -8,35 +8,36 @@ package DAO;
  */
 public class ConvencaoColetiva  implements java.io.Serializable {
 
-
-     private int codigo;
-     private Sindicato sindicato;
+     private String codigo;
+     private String sindicato;
      private String categoria;
      private String data;
-     private int sindicato_1;
+     //private String sindicato_1;
+     private String proporcaoSalMinimo;
 
     public ConvencaoColetiva() {
     }
 
-    public ConvencaoColetiva(Sindicato sindicato, String categoria, String data, int sindicato_1) {
+    public ConvencaoColetiva(String sindicato, String categoria, String data, String proporcaoSalMinimo) {
        this.sindicato = sindicato;
        this.categoria = categoria;
        this.data = data;
-       this.sindicato_1 = sindicato_1;
+       //this.sindicato_1 = sindicato_1;
+       this.proporcaoSalMinimo = proporcaoSalMinimo;
     }
    
-    public int getCodigo() {
+    public String getCodigo() {
         return this.codigo;
     }
     
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-    public Sindicato getSindicato() {
+    public String getSindicato() {
         return this.sindicato;
     }
     
-    public void setSindicato(Sindicato sindicato) {
+    public void setSindicato(String sindicato) {
         this.sindicato = sindicato;
     }
     public String getCategoria() {
@@ -53,12 +54,19 @@ public class ConvencaoColetiva  implements java.io.Serializable {
     public void setData(String data) {
         this.data = data;
     }
-    public int getSindicato_1() {
-        return this.sindicato_1;
+//    public String getSindicato_1() {
+//        return this.sindicato_1;
+//    }
+//    
+//    public void setSindicato_1(String sindicato_1) {
+//        this.sindicato_1 = sindicato_1;
+//    }
+    public String getProporcaoSalMinimo() {
+        return this.proporcaoSalMinimo;
     }
     
-    public void setSindicato_1(int sindicato_1) {
-        this.sindicato_1 = sindicato_1;
+    public void setProporcaoSalMinimo(String proporcaoSalMinimo) {
+        this.proporcaoSalMinimo = proporcaoSalMinimo;
     }
 
 

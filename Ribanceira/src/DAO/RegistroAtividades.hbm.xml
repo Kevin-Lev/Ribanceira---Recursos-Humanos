@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20/01/2017 14:31:11 by Hibernate Tools 4.3.1 -->
+<!-- Generated Jan 26, 2017 3:47:47 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="DAO.RegistroAtividades" table="registro_atividades" catalog="ribanceira_bd" optimistic-lock="version">
         <id name="codigo" type="java.lang.Integer">
@@ -14,11 +14,11 @@
         <property name="data" type="date">
             <column name="data" length="10" not-null="true" />
         </property>
-        <property name="horaEntrada" type="time">
-            <column name="hora_entrada" length="8" />
+        <property name="horaEntrada" type="string">
+            <column name="hora_entrada" length="6" />
         </property>
-        <property name="horaSaida" type="time">
-            <column name="hora_saida" length="8" />
+        <property name="horaSaida" type="string">
+            <column name="hora_saida" length="6" />
         </property>
     </class>
 </hibernate-mapping>

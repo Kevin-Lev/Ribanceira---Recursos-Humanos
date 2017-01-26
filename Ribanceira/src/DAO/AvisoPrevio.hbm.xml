@@ -1,26 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 12/12/2016 09:15:59 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 26, 2017 3:47:47 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="ribanceira_bd" name="DAO.AvisoPrevio" optimistic-lock="version" table="aviso_previo">
-    <id name="codigo" type="java.lang.Integer">
-      <column name="codigo"/>
-      <generator class="identity"/>
-    </id>
-    <many-to-one class="DAO.Funcionario" fetch="select" name="funcionario">
-      <column name="funcionario" not-null="true"/>
-    </many-to-one>
-    <property name="dataAviso" type="string">
-      <column length="20" name="data_aviso" not-null="true"/>
-    </property>
-    <property name="dataRescisao" type="string">
-      <column length="20" name="data_rescisao" not-null="true"/>
-    </property>
-    <property name="justificado" type="boolean">
-      <column name="justificado" not-null="true"/>
-    </property>
-    <property name="motivo" type="string">
-      <column length="45" name="motivo" not-null="true"/>
-    </property>
-  </class>
+    <class name="DAO.AvisoPrevio" table="aviso_previo" catalog="ribanceira_bd" optimistic-lock="version">
+        <id name="codigo" type="java.lang.Integer">
+            <column name="codigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="funcionario" class="DAO.Funcionario" fetch="select">
+            <column name="funcionario" not-null="true" />
+        </many-to-one>
+        <property name="dataAviso" type="string">
+            <column name="data_aviso" length="20" not-null="true" />
+        </property>
+        <property name="dataRescisao" type="string">
+            <column name="data_rescisao" length="20" not-null="true" />
+        </property>
+        <property name="justificado" type="boolean">
+            <column name="justificado" not-null="true" />
+        </property>
+        <property name="motivo" type="string">
+            <column name="motivo" length="45" not-null="true" />
+        </property>
+    </class>
 </hibernate-mapping>

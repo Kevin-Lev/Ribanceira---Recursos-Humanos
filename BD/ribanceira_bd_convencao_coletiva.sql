@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `convencao_coletiva`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `convencao_coletiva` (
-  `codigo` int(11) NOT NULL,
+  `codigo` varchar(20) NOT NULL,
   `categoria` varchar(20) NOT NULL,
   `data` varchar(20) NOT NULL,
-  `sindicato` int(11) NOT NULL,
+  `sindicato` varchar(20) NOT NULL,
   PRIMARY KEY (`codigo`),
   KEY `categoria_idx` (`categoria`),
   CONSTRAINT `conv_sindicato` FOREIGN KEY (`codigo`) REFERENCES `sindicato` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION

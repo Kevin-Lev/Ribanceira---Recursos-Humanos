@@ -6,8 +6,15 @@
 package ribanceira;
 
 import java.awt.CardLayout;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
+import DAO.RegistroAtividades;
+import controladores.G_RegistroAtividades;
+import controladores.G_Ocorrencia;
+import DAO.Contrato;
+import DAO.Ocorrencia;
+import controladores.G_Contrato;
+import java.util.ArrayList;
+import java.util.Set;
 
 /**
  *
@@ -19,6 +26,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
      * Creates new form NewJFrameprincipal
      */
     CardLayout card;
+   
 
     public JFrameprincipal() {
         initComponents();
@@ -30,7 +38,6 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
         this.setTitle("Ribanceira - Menu Principal");
         this.setSize(800, 600);
-        this.setResizable(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
 
@@ -69,9 +76,9 @@ public class JFrameprincipal extends javax.swing.JFrame {
         jMenuContrato = new javax.swing.JMenu();
         jMenuItemCadastrarContrato = new javax.swing.JMenuItem();
         jMenuItemConsultarContrato = new javax.swing.JMenuItem();
-        jMenuRelatorios = new javax.swing.JMenu();
-        jMenuItemRelatoriosGerais = new javax.swing.JMenuItem();
-        jMenuItemInformesRendimento = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuSalario = new javax.swing.JMenu();
+        jMenuItemEmitirHolerite = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -216,25 +223,20 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuContrato);
 
-        jMenuRelatorios.setText("Relatórios");
+        jMenu1.setText("Relatórios");
+        jMenuBar1.add(jMenu1);
 
-        jMenuItemRelatoriosGerais.setText("Gerais");
-        jMenuItemRelatoriosGerais.addActionListener(new java.awt.event.ActionListener() {
+        jMenuSalario.setText("Salário");
+
+        jMenuItemEmitirHolerite.setText("Emitir Holerite");
+        jMenuItemEmitirHolerite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemRelatoriosGeraisActionPerformed(evt);
+                jMenuItemEmitirHoleriteActionPerformed(evt);
             }
         });
-        jMenuRelatorios.add(jMenuItemRelatoriosGerais);
+        jMenuSalario.add(jMenuItemEmitirHolerite);
 
-        jMenuItemInformesRendimento.setText("Informes Rendimento");
-        jMenuItemInformesRendimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemInformesRendimentoActionPerformed(evt);
-            }
-        });
-        jMenuRelatorios.add(jMenuItemInformesRendimento);
-
-        jMenuBar1.add(jMenuRelatorios);
+        jMenuBar1.add(jMenuSalario);
 
         setJMenuBar(jMenuBar1);
 
@@ -242,11 +244,13 @@ public class JFrameprincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelRoot, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelRoot, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+            .addComponent(jPanelRoot, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
         );
 
         pack();
@@ -254,6 +258,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
     private void jMenuItemCadastrar_EmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrar_EmpActionPerformed
         // TODO add your handling code here:
+
         this.setTitle("Ribanceira RH - Cadastrar Empresa");
         JPanel panelCadastrarEmpresa = new JPanelCadastrarEmpresa();
         jPanelRoot.add(panelCadastrarEmpresa);
@@ -272,16 +277,22 @@ public class JFrameprincipal extends javax.swing.JFrame {
     private void jMenuInsere_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInsere_OcoActionPerformed
         // TODO add your handling code here:
         this.setTitle("Ribanceira RH - Registrar Ocorrência");
+
         JPanel panelRegistrarOcorrencia = new JPanelRegistrarOcorrencia();
+
         jPanelRoot.add(panelRegistrarOcorrencia);
+
         card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuInsere_OcoActionPerformed
 
     private void jMenuGerar_AlertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuGerar_AlertaActionPerformed
         // TODO add your handling code here:
         this.setTitle("Ribanceira RH - Registrar Aviso prévio");
+
         JPanel panelRegistrarAviso = new JPanelRegistrarAviso();
+
         jPanelRoot.add(panelRegistrarAviso);
+
         card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuGerar_AlertaActionPerformed
 
@@ -303,17 +314,36 @@ public class JFrameprincipal extends javax.swing.JFrame {
 
     private void jMenuConsulta_OcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsulta_OcoActionPerformed
         // TODO add your handling code here:
-        this.setTitle("Ribanceira RH - Consulta de ocorrências");
+       // this.setTitle("Ribanceira RH - Consulta de ocorrências");
+       Ocorrencia oco = new Ocorrencia();
+       ArrayList<RegistroAtividades> listaReg = new G_RegistroAtividades().getRegistroAtividades();
+       for(RegistroAtividades a : listaReg){
+           Set<Contrato> listaContrato = a.getFuncionario().getContratos();
+           for(Contrato c: listaContrato){
+             if(Float.parseFloat(a.getHoraEntrada()) > Float.parseFloat(c.getHoraEntrada())){
+                  oco.setTipo("Atraso");
+                  oco.setDataOcorrencia(a.getData());
+                  oco.setValor(-50);
+                  new G_Ocorrencia().SalvaOcorrencia(a.getFuncionario(), oco.getDataOcorrencia(), oco.getTipo(), false, oco.getValor());
+             }    
+           }
+       }
         JPanel panelConsultar_Oco = new JPanelConsultarOcorrencia();
+
         jPanelRoot.add(panelConsultar_Oco);
+
         card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuConsulta_OcoActionPerformed
 
     private void jMenuConsultar_AlertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultar_AlertaActionPerformed
         // TODO add your handling code here:
-        this.setTitle("Ribanceira RH - Consultar Aviso prévio");
+       
+      //  this.setTitle("Ribanceira RH - Consultar Aviso prévio");
+
         JPanel panelConsultarAviso = new JPanelConsultarAviso();
+
         jPanelRoot.add(panelConsultarAviso);
+
         card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuConsultar_AlertaActionPerformed
     /*
@@ -345,8 +375,8 @@ public class JFrameprincipal extends javax.swing.JFrame {
     private void jMenuItemManterSindicatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManterSindicatoActionPerformed
         // TODO add your handling code here:
         this.setTitle("Ribanceira RH - Manter Sindicato");
-        //JPanel panelManterSindicato = new JPanelManterSindicatos();
-        //jPanelRoot.add(panelManterSindicato);
+        JPanel panelManterSindicato = new JPanelManterSindicatos();
+        jPanelRoot.add(panelManterSindicato);
         card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuItemManterSindicatoActionPerformed
 
@@ -374,15 +404,10 @@ public class JFrameprincipal extends javax.swing.JFrame {
         card.next(jPanelRoot);
     }//GEN-LAST:event_jMenuItemConsultarContratoActionPerformed
 
-    private void jMenuItemRelatoriosGeraisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatoriosGeraisActionPerformed
+    private void jMenuItemEmitirHoleriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmitirHoleriteActionPerformed
         // TODO add your handling code here:
-        new JFrameRelatoriosGerais();
-    }//GEN-LAST:event_jMenuItemRelatoriosGeraisActionPerformed
-
-    private void jMenuItemInformesRendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInformesRendimentoActionPerformed
-        // TODO add your handling code here:
-        new JFrameInformesRendimento();
-    }//GEN-LAST:event_jMenuItemInformesRendimentoActionPerformed
+        new JFrameEmiteHolerite();
+    }//GEN-LAST:event_jMenuItemEmitirHoleriteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -412,7 +437,6 @@ public class JFrameprincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JFrameprincipal().setVisible(true);
@@ -421,6 +445,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenuAvisos;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCadastrar_Fun;
@@ -438,14 +463,13 @@ public class JFrameprincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCadastrarContrato;
     private javax.swing.JMenuItem jMenuItemCadastrar_Emp;
     private javax.swing.JMenuItem jMenuItemConsultarContrato;
+    private javax.swing.JMenuItem jMenuItemEmitirHolerite;
     private javax.swing.JMenuItem jMenuItemExportarConvencaoColetiva;
     private javax.swing.JMenuItem jMenuItemImportarConvencaoColetiva;
-    private javax.swing.JMenuItem jMenuItemInformesRendimento;
     private javax.swing.JMenuItem jMenuItemManterSindicato;
-    private javax.swing.JMenuItem jMenuItemRelatoriosGerais;
     private javax.swing.JMenu jMenuOcorrências;
-    private javax.swing.JMenu jMenuRelatorios;
     private javax.swing.JMenuItem jMenuRemover_Emp;
+    private javax.swing.JMenu jMenuSalario;
     private javax.swing.JMenu jMenuSindicato;
     private javax.swing.JPanel jPanelRoot;
     // End of variables declaration//GEN-END:variables

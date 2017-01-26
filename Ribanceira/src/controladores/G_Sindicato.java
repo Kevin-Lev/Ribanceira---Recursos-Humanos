@@ -16,10 +16,13 @@ import java.util.Comparator;
  *
  * @author Christian T. Nakata
  */
+
 public class G_Sindicato{
     
     public ArrayList<Sindicato> getListaSindicato() {
-        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session s;
+        
+        s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
         ArrayList<Sindicato> listaSindicato = (ArrayList<Sindicato>) s.createQuery("From Sindicato").list();
         Collections.sort(listaSindicato, new Comparator<Sindicato>() {
@@ -32,31 +35,31 @@ public class G_Sindicato{
         return listaSindicato;
     }
     
-    public void cadastrarSindicato(int codigo, String nome, String ramoAtividade, String endereco, String telefone){
+    public void cadastrarSindicato(String codigo, String nome, String ramoAtividade, String endereco, String telefone){
       Session s = HibernateUtil.getSessionFactory().getCurrentSession();
       s.beginTransaction();
       s.save(new Sindicato(codigo, nome, ramoAtividade, endereco, telefone));
       s.getTransaction().commit();
     }
     
-    public void EditarSindicato(int codigo, String nome, String ramoAtividade, String endereco, String telefone){
+    public void EditarSindicato(String codigo, String nome, String ramoAtividade, String endereco, String telefone){
       Session s = HibernateUtil.getSessionFactory().getCurrentSession();
       s.beginTransaction();
       s.saveOrUpdate(new Sindicato(codigo, nome, ramoAtividade, endereco, telefone));
       s.getTransaction().commit();
     }
     
-    public void ExcluirSindicato(int codigo, String nome, String ramoAtividade, String endereco, String telefone){
+    public void ExcluirSindicato(Sindicato sindicato){
       Session s = HibernateUtil.getSessionFactory().getCurrentSession();
       s.beginTransaction();
-      s.delete(new Sindicato(codigo, nome, ramoAtividade, endereco, telefone));
+      s.delete(sindicato);
       s.getTransaction().commit();
     }
     
-    public void atualizaSindicato (Sindicato sind) {
+    public void atualizarSindicato (Sindicato sindicato) {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
-        s.saveOrUpdate(sind);
+        s.saveOrUpdate(sindicato);
         s.getTransaction().commit();   
     }
 }

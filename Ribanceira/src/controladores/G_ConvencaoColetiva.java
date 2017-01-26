@@ -5,20 +5,21 @@
  */
 package controladores;
 
-import DAO.Sindicato;
 import DAO.ConvencaoColetiva;
 import Util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import org.hibernate.Session;
+
 /**
  *
  * @author Christian T. Nakata
  */
+
 public class G_ConvencaoColetiva {
     
-    public void salvaConvencaoColetiva(int codigo, Sindicato sindicato, String categoria, String data, int proporcaoSalMinimo) {
+    public void salvaConvencaoColetiva(String codigo, String sindicato, String categoria, String data, String proporcaoSalMinimo) {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
         s.save(new ConvencaoColetiva(codigo, sindicato, categoria, data, proporcaoSalMinimo));
@@ -32,7 +33,7 @@ public class G_ConvencaoColetiva {
         Collections.sort(listaConvencaoColetiva, new Comparator<ConvencaoColetiva>() {
             @Override
             public int compare(ConvencaoColetiva c1, ConvencaoColetiva c2) {
-                return c1.getSindicato().getNome().compareTo(c2.getSindicato().getNome());
+                return c1.getCodigo().compareTo(c2.getCodigo());
             }
         });
         s.getTransaction().commit();

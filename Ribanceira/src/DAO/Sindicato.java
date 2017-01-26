@@ -1,5 +1,5 @@
 package DAO;
-// Generated 12/12/2016 09:15:58 by Hibernate Tools 4.3.1
+// Generated Jan 26, 2017 3:47:47 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,38 +9,38 @@ package DAO;
 public class Sindicato  implements java.io.Serializable {
 
 
-     private int codigo;
+     private String codigo;
      private String nome;
      private String ramoAtividade;
      private String endereco;
      private String telefone;
-     private ConvencaoColetiva convencaoColetiva;
+     //private ConvencaoColetiva convencaoColetiva;
 
     public Sindicato() {
     }
 
 	
-    public Sindicato(int codigo, String nome, String ramoAtividade, String endereco, String telefone) {
+    public Sindicato(String codigo, String nome, String ramoAtividade, String endereco, String telefone) {
         this.codigo = codigo;
         this.nome = nome;
         this.ramoAtividade = ramoAtividade;
         this.endereco = endereco;
         this.telefone = telefone;
     }
-    public Sindicato(int codigo, String nome, String ramoAtividade, String endereco, String telefone, ConvencaoColetiva convencaoColetiva) {
-       this.codigo = codigo;
-       this.nome = nome;
-       this.ramoAtividade = ramoAtividade;
-       this.endereco = endereco;
-       this.telefone = telefone;
-       this.convencaoColetiva = convencaoColetiva;
-    }
+//    public Sindicato(String codigo, String nome, String ramoAtividade, String endereco, String telefone, ConvencaoColetiva convencaoColetiva) {
+//       this.codigo = codigo;
+//       this.nome = nome;
+//       this.ramoAtividade = ramoAtividade;
+//       this.endereco = endereco;
+//       this.telefone = telefone;
+//       this.convencaoColetiva = convencaoColetiva;
+//    }
    
-    public int getCodigo() {
+    public String getCodigo() {
         return this.codigo;
     }
     
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
     public String getNome() {
@@ -71,13 +71,13 @@ public class Sindicato  implements java.io.Serializable {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    public ConvencaoColetiva getConvencaoColetiva() {
-        return this.convencaoColetiva;
-    }
-    
-    public void setConvencaoColetiva(ConvencaoColetiva convencaoColetiva) {
-        this.convencaoColetiva = convencaoColetiva;
-    }
+//    public ConvencaoColetiva getConvencaoColetiva() {
+//        return this.convencaoColetiva;
+//    }
+//    
+//    public void setConvencaoColetiva(ConvencaoColetiva convencaoColetiva) {
+//        this.convencaoColetiva = convencaoColetiva;
+//    }
 
 
 

@@ -1,5 +1,5 @@
 package DAO;
-// Generated 18/01/2017 16:25:51 by Hibernate Tools 4.3.1
+// Generated Jan 26, 2017 3:47:47 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -26,18 +26,18 @@ public class Funcionario  implements java.io.Serializable {
      private Set avisoPrevios = new HashSet(0);
      private Set registroAtividadeses = new HashSet(0);
      private Set ocorrencias = new HashSet(0);
+     private Set salarios = new HashSet(0);
      private Set contratos = new HashSet(0);
 
     public Funcionario() {
     }
 
 	
-    public Funcionario(String nome, String dataNascimento, String endereco, String telefone, String email, String rg, String cpf, String tituloEleitor, String estadoCivil, String numeroCarteiraTrabalho, boolean ativo) {
+    public Funcionario(String nome, String dataNascimento, String endereco, String telefone, String rg, String cpf, String tituloEleitor, String estadoCivil, String numeroCarteiraTrabalho, boolean ativo) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.telefone = telefone;
-        this.email = email;
         this.rg = rg;
         this.cpf = cpf;
         this.tituloEleitor = tituloEleitor;
@@ -45,7 +45,7 @@ public class Funcionario  implements java.io.Serializable {
         this.numeroCarteiraTrabalho = numeroCarteiraTrabalho;
         this.ativo = ativo;
     }
-    public Funcionario(String nome, String dataNascimento, String endereco, String telefone, String email, String rg, String cpf, String tituloEleitor, String estadoCivil, String numeroCarteiraTrabalho, boolean ativo, Set avisoPrevios, Set registroAtividadeses, Set ocorrencias, Set contratos) {
+    public Funcionario(String nome, String dataNascimento, String endereco, String telefone, String email, String rg, String cpf, String tituloEleitor, String estadoCivil, String numeroCarteiraTrabalho, boolean ativo, Set avisoPrevios, Set registroAtividadeses, Set ocorrencias, Set salarios, Set contratos) {
        this.nome = nome;
        this.dataNascimento = dataNascimento;
        this.endereco = endereco;
@@ -60,6 +60,7 @@ public class Funcionario  implements java.io.Serializable {
        this.avisoPrevios = avisoPrevios;
        this.registroAtividadeses = registroAtividadeses;
        this.ocorrencias = ocorrencias;
+       this.salarios = salarios;
        this.contratos = contratos;
     }
    
@@ -167,6 +168,13 @@ public class Funcionario  implements java.io.Serializable {
     
     public void setOcorrencias(Set ocorrencias) {
         this.ocorrencias = ocorrencias;
+    }
+    public Set getSalarios() {
+        return this.salarios;
+    }
+    
+    public void setSalarios(Set salarios) {
+        this.salarios = salarios;
     }
     public Set getContratos() {
         return this.contratos;

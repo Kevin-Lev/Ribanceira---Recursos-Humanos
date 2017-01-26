@@ -17,6 +17,7 @@ import org.hibernate.Session;
  * @author Alessandra
  */
 public class G_Empresa {
+    
     public ArrayList<Empresa> getListaEmpresa() {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
@@ -30,4 +31,19 @@ public class G_Empresa {
         s.getTransaction().commit();
         return listaEmpresa;
     }
+    
+    public ArrayList<Empresa> getListaIdEmpresa() {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        s.beginTransaction();
+        ArrayList<Empresa> listaEmpresa = (ArrayList<Empresa>) s.createQuery("From Empresa").list();
+        Collections.sort(listaEmpresa, new Comparator<Empresa>() {
+            @Override
+            public int compare(Empresa o1, Empresa o2) {
+                return o1.getCodigo().compareTo(o2.getCodigo());
+            }
+        });
+        s.getTransaction().commit();
+        return listaEmpresa;
+    }
+    
 }

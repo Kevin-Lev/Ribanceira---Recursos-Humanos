@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18/01/2017 16:25:52 by Hibernate Tools 4.3.1 -->
+<!-- Generated Jan 26, 2017 3:47:47 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="DAO.Funcionario" table="funcionario" catalog="ribanceira_bd" optimistic-lock="version">
         <id name="codigo" type="java.lang.Integer">
@@ -58,6 +58,12 @@
                 <column name="funcionario" not-null="true" />
             </key>
             <one-to-many class="DAO.Ocorrencia" />
+        </set>
+        <set name="salarios" table="salario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="funcionario" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Salario" />
         </set>
         <set name="contratos" table="contrato" inverse="true" lazy="true" fetch="select">
             <key>

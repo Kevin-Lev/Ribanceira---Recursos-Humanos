@@ -17,8 +17,9 @@ import org.hibernate.Session;
  */
 public class G_Funcionario {
     
+    
+    
     public void salvaFuncionario(String nome, String dataNascimento, String endereco, String telefone, String email, String rg, String cpf, String tituloEleitor, String estadoCivil, String numeroCarteiraTrabalho, boolean ativo) {
-        
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
         s.save(new Funcionario(nome, dataNascimento, endereco, telefone, email, rg, cpf, tituloEleitor, estadoCivil, numeroCarteiraTrabalho, ativo));
@@ -53,7 +54,6 @@ public class G_Funcionario {
         s.getTransaction().commit();
         return listaFuncionario;
     }
-    
     
     public void atualizaFuncionario(Funcionario f) {
         
