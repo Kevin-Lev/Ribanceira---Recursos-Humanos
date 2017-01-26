@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import DAO.ConvencaoColetiva;
 import DAO.Sindicato;
 import controladores.G_ConvencaoColetiva;
+import java.awt.HeadlessException;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import java.util.Random;
 
 /**
  *
@@ -27,7 +29,7 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
     ArrayList<ConvencaoColetiva> listaConvencao;
     ArrayList<Sindicato> listaSindicato;
     Sindicato sindicato;
-
+        
     public JPanelConvencaoColetiva() {
         initComponents();
 
@@ -35,7 +37,7 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
         tableModel.setNumRows(0);
         listaSindicato = new G_Sindicato().getListaSindicato();
         for (Sindicato s : listaSindicato) {
-            tableModel.addRow(new Object[]{s.getNome(), s.getCodigo(), s.getEndereco()});
+            tableModel.addRow(new Object[]{s.getNome(), s.getCodigo(), s.getRamoAtividade()});
         }
   
     }
@@ -65,7 +67,6 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jButtonSalvarConv = new javax.swing.JButton();
-        jButtonCalcularAbono = new javax.swing.JButton();
         jTextFieldDataDeAtualizacao = new javax.swing.JTextField();
         jTextFieldProporcaoSalMinimo = new javax.swing.JTextField();
         jTextFieldDescontoDia = new javax.swing.JTextField();
@@ -140,13 +141,6 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
             }
         });
 
-        jButtonCalcularAbono.setText("Calcular abono pecuniário");
-        jButtonCalcularAbono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCalcularAbonoActionPerformed(evt);
-            }
-        });
-
         jTextFieldDataDeAtualizacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldDataDeAtualizacaoActionPerformed(evt);
@@ -190,8 +184,7 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldDataDeAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonCalcularAbono, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonSalvarConv, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19)))
                 .addContainerGap())
@@ -216,9 +209,7 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldDescontoDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonSalvarConv, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(jButtonCalcularAbono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButtonSalvarConv, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -226,12 +217,32 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarConvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarConvActionPerformed
-        // TODO add your handling code here:
+        try{
+            
+            sindicato = listaSindicato.get(jTableBuscaSindicato.getSelectedRow());
+            String s = sindicato.getCodigo();
+                    
+            Random randomGenerator = new Random();
+            int randomInt = randomGenerator.nextInt(10000);
+            
+            new G_ConvencaoColetiva().salvaConvencaoColetiva(String.valueOf(randomInt), 
+                                                             "categoria",
+                                                             jTextFieldDataDeAtualizacao.getText(),
+                                                             s,
+                                                             jTextFieldProporcaoSalMinimo.getText());
+
+            JOptionPane.showMessageDialog(this, "Convenção adicionada com sucesso!","Adição de Convenção",JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+        }
+        
+        catch (HeadlessException e) {
+            
+            JOptionPane.showMessageDialog(this, "Error - Falta de dados à inserir","Erro ao alterar",JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+            
+        }
+
     }//GEN-LAST:event_jButtonSalvarConvActionPerformed
-
-    private void jButtonCalcularAbonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularAbonoActionPerformed
-
-    }//GEN-LAST:event_jButtonCalcularAbonoActionPerformed
 
     private void jTextFieldDataDeAtualizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDataDeAtualizacaoActionPerformed
         // TODO add your handling code here:
@@ -253,7 +264,6 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.ButtonGroup buttonGroup6;
-    private javax.swing.JButton jButtonCalcularAbono;
     private javax.swing.JButton jButtonSalvarConv;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDialog jDialog1;
