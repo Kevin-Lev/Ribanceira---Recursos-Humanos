@@ -190,7 +190,7 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
                 + "Título IV do Decreto Nº5.452 de 1º de Maio de 1943, em cumprimento da legislação vigente", font2));
             
                 aviso.add(new Paragraph("Comunicamos ainda que, neste período, V.Sa.,"
-                + "terá o seu horário de trabalho reduzido em 2 horas diárias, em cumprimento a legislação"));
+                + "terá o seu horário de trabalho reduzido em 2 horas diárias, em cumprimento a legislação", font2));
                 aviso.add(new Paragraph (" "));
                 aviso.add(new Paragraph("                                                                                   Atenciosamente,", font2));
                 aviso.add(new Paragraph (" "));
