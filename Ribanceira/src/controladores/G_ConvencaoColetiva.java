@@ -19,10 +19,10 @@ import org.hibernate.Session;
 
 public class G_ConvencaoColetiva {
     
-    public void salvaConvencaoColetiva(String codigo, String sindicato, String categoria, String data, String proporcaoSalMinimo) {
+    public void salvaConvencaoColetiva(String sindicato, String categoria, String data, String proporcaoSalMinimo) {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
-        s.save(new ConvencaoColetiva(codigo, sindicato, categoria, data, proporcaoSalMinimo));
+        s.save(new ConvencaoColetiva(sindicato, categoria, data, proporcaoSalMinimo));
         s.getTransaction().commit();
     }
 
