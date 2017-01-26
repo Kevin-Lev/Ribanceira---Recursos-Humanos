@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `sindicato`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sindicato` (
-  `codigo` int(11) NOT NULL,
+  `codigo` varchar(20) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `ramo_atividade` varchar(45) NOT NULL,
   `endereco` varchar(50) NOT NULL,
