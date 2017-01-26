@@ -15,18 +15,18 @@ public class Ocorrencia  implements java.io.Serializable {
      private String tipo;
      private boolean justificado;
      private float valor;
-     private boolean processado;
+    
 
     public Ocorrencia() {
     }
 
-    public Ocorrencia(Funcionario funcionario, String dataOcorrencia, String tipo, boolean justificado, float valor, boolean processado) {
+    public Ocorrencia(Funcionario funcionario, String dataOcorrencia, String tipo, boolean justificado, float valor) {
        this.funcionario = funcionario;
        this.dataOcorrencia = dataOcorrencia;
        this.tipo = tipo;
        this.justificado = justificado;
        this.valor = valor;
-       this.processado = processado;
+       
     }
    
     public Integer getCodigo() {
@@ -72,17 +72,7 @@ public class Ocorrencia  implements java.io.Serializable {
         this.valor = valor;
     }
     
-    public boolean getProcessado(){
-        return this.processado;
-    }
-    
-    public void setProcessado(boolean processado){
-        this.processado = processado;
-    }
-
-
-
-
+  
 }
 
 
