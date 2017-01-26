@@ -14,7 +14,7 @@ public class Sindicato  implements java.io.Serializable {
      private String ramoAtividade;
      private String endereco;
      private String telefone;
-     private ConvencaoColetiva convencaoColetiva;
+     //private ConvencaoColetiva convencaoColetiva;
 
     public Sindicato() {
     }
@@ -27,14 +27,14 @@ public class Sindicato  implements java.io.Serializable {
         this.endereco = endereco;
         this.telefone = telefone;
     }
-    public Sindicato(String codigo, String nome, String ramoAtividade, String endereco, String telefone, ConvencaoColetiva convencaoColetiva) {
-       this.codigo = codigo;
-       this.nome = nome;
-       this.ramoAtividade = ramoAtividade;
-       this.endereco = endereco;
-       this.telefone = telefone;
-       this.convencaoColetiva = convencaoColetiva;
-    }
+//    public Sindicato(String codigo, String nome, String ramoAtividade, String endereco, String telefone) {
+//       this.codigo = codigo;
+//       this.nome = nome;
+//       this.ramoAtividade = ramoAtividade;
+//       this.endereco = endereco;
+//       this.telefone = telefone;
+//       //this.convencaoColetiva = convencaoColetiva;
+//    }
    
     public String getCodigo() {
         return this.codigo;
@@ -71,13 +71,13 @@ public class Sindicato  implements java.io.Serializable {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    public ConvencaoColetiva getConvencaoColetiva() {
-        return this.convencaoColetiva;
-    }
-    
-    public void setConvencaoColetiva(ConvencaoColetiva convencaoColetiva) {
-        this.convencaoColetiva = convencaoColetiva;
-    }
+//    public ConvencaoColetiva getConvencaoColetiva() {
+//        return this.convencaoColetiva;
+//    }
+//    
+//    public void setConvencaoColetiva(ConvencaoColetiva convencaoColetiva) {
+//        this.convencaoColetiva = convencaoColetiva;
+//    }
 
 
 
