@@ -220,25 +220,20 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
         try{
             
             sindicato = listaSindicato.get(jTableBuscaSindicato.getSelectedRow());
-            String s = sindicato.getCodigo();
-                    
-            Random randomGenerator = new Random();
-            int randomInt = randomGenerator.nextInt(10000);
             
-            new G_ConvencaoColetiva().salvaConvencaoColetiva(String.valueOf(randomInt), 
+            new G_ConvencaoColetiva().salvaConvencaoColetiva(sindicato.getCodigo(),
                                                              "categoria",
                                                              jTextFieldDataDeAtualizacao.getText(),
-                                                             s,
                                                              jTextFieldProporcaoSalMinimo.getText());
 
             JOptionPane.showMessageDialog(this, "Convenção adicionada com sucesso!","Adição de Convenção",JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
+            //this.setVisible(false);
         }
         
         catch (HeadlessException e) {
             
             JOptionPane.showMessageDialog(this, "Error - Falta de dados à inserir","Erro ao alterar",JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
+            //this.setVisible(false);
             
         }
 
