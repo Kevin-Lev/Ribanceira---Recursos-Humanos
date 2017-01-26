@@ -7,6 +7,7 @@ package ribanceira;
 
 import DAO.Contrato;
 import DAO.Funcionario;
+import DAO.Empresa;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
@@ -14,6 +15,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfWriter;
 import controladores.G_Contrato;
+import controladores.G_Empresa;
 import controladores.G_Funcionario;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -21,6 +23,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -32,8 +35,7 @@ import javax.swing.JOptionPane;
 public class JFrameEmiteHolerite extends javax.swing.JFrame {
 
     ArrayList<Funcionario> listaFuncionario;
-    ArrayList<Contrato> listaContrato;
-    
+    ArrayList<Empresa> listaEmpresa = new G_Empresa().getListaEmpresa();
     /**
      * Creates new form EmiteHolerite
      */
@@ -149,7 +151,8 @@ public class JFrameEmiteHolerite extends javax.swing.JFrame {
         // TODO add your handling code here:
         Funcionario f;
         f = listaFuncionario.get(jComboBoxSelecionaFun.getSelectedIndex());
-        Contrato con = new G_Contrato().getContrato(f);
+        Set<Contrato> listaContrato = f.getContratos();           
+        
         
         JOptionPane.showMessageDialog(null, "Holerite emitido com sucesso!");
         
@@ -161,25 +164,26 @@ public class JFrameEmiteHolerite extends javax.swing.JFrame {
           Font font4 = new Font(Font.FontFamily.TIMES_ROMAN, 11);
           PdfWriter.getInstance(holerite, new FileOutputStream("Holerite.pdf"));
           
+        for(Contrato c: listaContrato){  
           holerite.open();
           holerite.add(new Paragraph("----------------------------------------------------------------------------------------------------------------", font2));
           holerite.add(new Paragraph("Recibo de Pagamento e Salário", font3));
           holerite.add(new Paragraph(" referente ao mês/ano: " + getDateTime(), font1));
           holerite.add(new Paragraph("Empregador ", font2));
-          holerite.add(new Paragraph("    Nome: " + f.getNome(), font4));
-          holerite.add(new Paragraph("    Endereço: " + f.getEndereco(),font4));
-          holerite.add(new Paragraph("    CNPJ: " /*+ con.getEmpresa().getCnpj()*/, font4));
+          holerite.add(new Paragraph("    Nome: " + c.getEmpresa().getNomeEmpresa(), font4));
+          holerite.add(new Paragraph("    Endereço: " + c.getEmpresa().getNomeEmpresa(),font4));
+          holerite.add(new Paragraph("    CNPJ: " + c.getEmpresa().getCnpj() , font4));
           holerite.add(new Paragraph("----------------------------------------------------------------------------------------------------------------", font2));
           holerite.add(new Paragraph(" "));
           holerite.add(new Paragraph(" Código                 NOME DO EMPREGADO", font2));
           holerite.add(new Paragraph("       " + f.getCodigo() + "                                            " + f.getNome(), font4));
           holerite.add(new Paragraph(" "));
-          holerite.add(new Paragraph("SALÁRIO BASE:                                  " /*+ con.getBaseSalarial()*/, font4)); 
+          holerite.add(new Paragraph("SALÁRIO BASE:                                                          " + c.getBaseSalarial(), font4)); 
           holerite.add(new Paragraph("DESCONTO VALE TRANSPORTE:                          50,00" , font4));
           holerite.add(new Paragraph("DESCONTO VALE REFEIÇÃO:                                50,00",  font4));
           holerite.add(new Paragraph("DESCONTO DAS FALTAS EM DIAS:                       ",  font4));
           holerite.add(new Paragraph("ACRÉSCIMO DAS HORAS EXTRAS:                        ",  font4));
-          holerite.add(new Paragraph("IMPOSTOS:                                                                   " + con.getImpostos(),font4));
+          holerite.add(new Paragraph("IMPOSTOS:                                                                   " + c.getImpostos(),font4));
           holerite.add(new Paragraph(" "));
           holerite.add(new Paragraph(" "));
           holerite.add(new Paragraph("TOTAL DE DESCONTOS:                                ", font4));
@@ -190,6 +194,7 @@ public class JFrameEmiteHolerite extends javax.swing.JFrame {
           holerite.add(new Paragraph(" "));
           holerite.add(new Paragraph("_____/____/_______    __________________________________________________________ "));
           holerite.add(new Paragraph("           DATA                                         ASSINATURA DO FUNCIONÁRIO", font4));
+        }
         } catch (DocumentException | FileNotFoundException ex) {
                 System.out.println("Error:"+ex);
             }finally{
