@@ -463,38 +463,36 @@ public class JFrameRelatoriosGerais extends javax.swing.JFrame {
                     doc.add(new Paragraph("CNPJ: " + empresa.getCnpj()));                    
                     doc.add(new Paragraph(" "));    
                     for(Contrato c : listaContratos) {
-                        if(c.getEmpresa().equals(empresa)) {
-                            if(!c.getFuncionario().isAtivo()) {
-                                try {
-                                    PdfWriter.getInstance(doc, new FileOutputStream(nomeArquivo));
-                                    doc.open();
-                                    doc.add(new Paragraph("Nome: " + c.getFuncionario().getNome()));
-                                    if(jCheckBoxDado2.isSelected()) {
-                                        doc.add(new Paragraph("Data de nascimento: " + c.getFuncionario().getDataNascimento()));
-                                    }
-                                    if(jCheckBoxDado3.isSelected()) {
-                                        doc.add(new Paragraph("Endereço: " + c.getFuncionario().getEndereco()));
-                                    }
-                                    if(jCheckBoxDado4.isSelected()) {
-                                        doc.add(new Paragraph("Telefone: " + c.getFuncionario().getTelefone()));
-                                    }
-                                    if(jCheckBoxDado5.isSelected()) {
-                                        doc.add(new Paragraph("E-mail: " + c.getFuncionario().getEmail()));
-                                    }
-                                    if(jCheckBoxDado6.isSelected()) {
-                                        doc.add(new Paragraph("RG: " + c.getFuncionario().getRg()));
-                                    }
-                                    if(jCheckBoxDado7.isSelected()) {
-                                        doc.add(new Paragraph("CPF: " + c.getFuncionario().getCpf()));
-                                    }
-                                    if(jCheckBoxDado8.isSelected()) {
-                                        doc.add(new Paragraph("Carteira de trabalho: " + c.getFuncionario().getNumeroCarteiraTrabalho()));
-                                    }
-                                    doc.add(new Paragraph("---------------------------------------------------------------------------------------------------------------------------------"));
-                                } catch (DocumentException | FileNotFoundException ex) {
-                                    System.out.println("Error: " + ex);
-                                }  
-                            }
+                        if(!c.getFuncionario().isAtivo()) {
+                            try {
+                                PdfWriter.getInstance(doc, new FileOutputStream(nomeArquivo));
+                                doc.open();
+                                doc.add(new Paragraph("Nome: " + c.getFuncionario().getNome()));
+                                if(jCheckBoxDado2.isSelected()) {
+                                    doc.add(new Paragraph("Data de nascimento: " + c.getFuncionario().getDataNascimento()));
+                                }
+                                if(jCheckBoxDado3.isSelected()) {
+                                    doc.add(new Paragraph("Endereço: " + c.getFuncionario().getEndereco()));
+                                }
+                                if(jCheckBoxDado4.isSelected()) {
+                                    doc.add(new Paragraph("Telefone: " + c.getFuncionario().getTelefone()));
+                                }
+                                if(jCheckBoxDado5.isSelected()) {
+                                    doc.add(new Paragraph("E-mail: " + c.getFuncionario().getEmail()));
+                                }
+                                if(jCheckBoxDado6.isSelected()) {
+                                    doc.add(new Paragraph("RG: " + c.getFuncionario().getRg()));
+                                }
+                                if(jCheckBoxDado7.isSelected()) {
+                                    doc.add(new Paragraph("CPF: " + c.getFuncionario().getCpf()));
+                                }
+                                if(jCheckBoxDado8.isSelected()) {
+                                    doc.add(new Paragraph("Carteira de trabalho: " + c.getFuncionario().getNumeroCarteiraTrabalho()));
+                                }
+                                doc.add(new Paragraph("---------------------------------------------------------------------------------------------------------------------------------"));
+                            } catch (DocumentException | FileNotFoundException ex) {
+                                System.out.println("Error: " + ex);
+                            }  
                         }
                     }
                 } catch (DocumentException | FileNotFoundException ex) {
