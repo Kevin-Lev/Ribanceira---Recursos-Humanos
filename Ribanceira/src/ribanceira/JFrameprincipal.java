@@ -246,7 +246,7 @@ public class JFrameprincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,12 +320,40 @@ public class JFrameprincipal extends javax.swing.JFrame {
        for(RegistroAtividades a : listaReg){
            Set<Contrato> listaContrato = a.getFuncionario().getContratos();
            for(Contrato c: listaContrato){
-             if(Float.parseFloat(a.getHoraEntrada()) > Float.parseFloat(c.getHoraEntrada())){
+             if(Float.parseFloat(a.getHoraEntrada()) > Float.parseFloat(c.getHoraEntrada()) && (a.isIsProcessado())){
+                  oco.setFuncionario(a.getFuncionario());
                   oco.setTipo("Atraso");
                   oco.setDataOcorrencia(a.getData());
                   oco.setValor(-50);
+                  a.setIsProcessado(true);
                   new G_Ocorrencia().SalvaOcorrencia(a.getFuncionario(), oco.getDataOcorrencia(), oco.getTipo(), false, oco.getValor());
+                  new G_RegistroAtividades().EditarRegistro(a);
+                  
              }    
+             if(Float.parseFloat(a.getHoraSaida()) < Float.parseFloat(c.getHoraSaida()) && a.isIsProcessado()){
+                  oco.setTipo("Hora Incompleta");
+                  oco.setDataOcorrencia(a.getData());
+                  oco.setValor(-50);
+                  a.setIsProcessado(true);
+                  new G_Ocorrencia().SalvaOcorrencia(a.getFuncionario(), oco.getDataOcorrencia(), oco.getTipo(), false, oco.getValor());
+                  new G_RegistroAtividades().EditarRegistro(a);
+             }
+             else if(Float.parseFloat(a.getHoraSaida()) > Float.parseFloat(c.getHoraSaida()) && a.isIsProcessado()){
+                  oco.setTipo("Hora Extra");
+                  oco.setDataOcorrencia(a.getData());
+                  oco.setValor(100);
+                  a.setIsProcessado(true);
+                  new G_Ocorrencia().SalvaOcorrencia(a.getFuncionario(), oco.getDataOcorrencia(), oco.getTipo(), true, oco.getValor());
+                  new G_RegistroAtividades().EditarRegistro(a);
+             }
+             if(Float.parseFloat(a.getHoraSaida()) == -1 && Float.parseFloat(a.getHoraEntrada()) == -1 && a.isIsProcessado()){
+                 oco.setTipo("Falta");
+                 oco.setDataOcorrencia(a.getData());
+                 oco.setValor(-200);
+                 a.setIsProcessado(true);
+                 new G_Ocorrencia().SalvaOcorrencia(a.getFuncionario(), oco.getDataOcorrencia(), oco.getTipo(), false, oco.getValor());
+                 new G_RegistroAtividades().EditarRegistro(a);
+             }
            }
        }
         JPanel panelConsultar_Oco = new JPanelConsultarOcorrencia();
