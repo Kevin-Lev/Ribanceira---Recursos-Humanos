@@ -69,8 +69,6 @@
                               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                               <Component id="jButtonAtualizarList" min="-2" pref="121" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jButtonCadastrarSindicato" min="-2" pref="227" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="jButtonAlterarSindicato" min="-2" pref="116" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -87,7 +85,6 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButtonAlterarSindicato" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="jButtonExcluirSindicato" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="jButtonCadastrarSindicato" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="jButtonAtualizarList" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
@@ -112,14 +109,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExcluirSindicatoActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonCadastrarSindicato">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cadastrar novo sindicato"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCadastrarSindicatoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonSair">
@@ -149,22 +138,22 @@
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -205,8 +194,6 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jButtonCancelar" min="-2" pref="101" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                               <Component id="jButtonSalvarCadastro" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -263,10 +250,7 @@
                           <Component id="jLabelTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonSalvarCadastro" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                          <Component id="jButtonCancelar" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jButtonSalvarCadastro" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -306,14 +290,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSalvarCadastroActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonCancelar">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelarActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldEndereco">
@@ -378,9 +354,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jButtonCancelar2" min="-2" pref="101" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                  <Component id="jButtonSalvarCadastro1" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="jButtonSalvarAlteracao" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -436,10 +410,7 @@
                               <Component id="jLabelTelefone2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButtonSalvarCadastro1" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                              <Component id="jButtonCancelar2" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jButtonSalvarAlteracao" min="-2" pref="47" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -476,20 +447,12 @@
                     <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButtonSalvarCadastro1">
+                <Component class="javax.swing.JButton" name="jButtonSalvarAlteracao">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Salvar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSalvarCadastro1ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonCancelar2">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cancelar"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelar2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSalvarAlteracaoActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextFieldEndereco2">
