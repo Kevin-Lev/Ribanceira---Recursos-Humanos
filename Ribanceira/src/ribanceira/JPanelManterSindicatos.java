@@ -408,7 +408,7 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
                                                  jTextFieldEndereco.getText(),
                                                  jTextFieldTelefon.getText());
             JOptionPane.showMessageDialog(this, "Sindicato cadastrado com sucesso!","Cadastro de Sindicato",JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
+            //this.setVisible(false);
             jTabbedPaneManterSindicato.setSelectedIndex(0);
 
         }
@@ -416,7 +416,7 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
         else {
             
             JOptionPane.showMessageDialog(this, "Error - Falta de dados à inserir","Erro ao alterar",JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
+            //this.setVisible(false);
         }
     }//GEN-LAST:event_jButtonSalvarCadastroActionPerformed
 
@@ -452,7 +452,7 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
         catch (Exception e) {
             
             JOptionPane.showMessageDialog(this, "Error - Falta de dados à inserir","Erro ao alterar",JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
+            //this.setVisible(false);
             
         }
     }//GEN-LAST:event_jButtonAlterarSindicatoActionPerformed
@@ -471,13 +471,13 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
 
             new G_Sindicato().ExcluirSindicato(sindicato);
             JOptionPane.showMessageDialog(this, "Sindicato excluído com sucesso!","Exclusão de Sindicato",JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
+            //this.setVisible(false);
         }
         
         catch(HeadlessException e) {
             
             JOptionPane.showMessageDialog(this, "Error - Sindicato relacionado com uma convenção coletiva","Exclusão de Sindicato",JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
+            //this.setVisible(false);
         }
     }//GEN-LAST:event_jButtonExcluirSindicatoActionPerformed
 
@@ -519,13 +519,13 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
             
             new G_Sindicato().atualizarSindicato(sindicato);
             JOptionPane.showMessageDialog(this, "Sindicato atualizado com sucesso!","Atualização de Sindicato",JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
+            //this.setVisible(false);
         }
         
         catch (HeadlessException e) {
             
             JOptionPane.showMessageDialog(this, "Error - Falta de dados à inserir","Erro ao alterar",JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
+            //this.setVisible(false);
         }    }//GEN-LAST:event_jButtonSalvarAlteracaoActionPerformed
 
 
