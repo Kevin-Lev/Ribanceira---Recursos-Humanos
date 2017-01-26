@@ -1,5 +1,5 @@
 package DAO;
-// Generated Jan 26, 2017 3:47:47 PM by Hibernate Tools 4.3.1
+// Generated 26/01/2017 15:06:14 by Hibernate Tools 4.3.1
 
 
 
@@ -15,16 +15,18 @@ public class Ocorrencia  implements java.io.Serializable {
      private String tipo;
      private boolean justificado;
      private float valor;
+     private boolean processado;
 
     public Ocorrencia() {
     }
 
-    public Ocorrencia(Funcionario funcionario, String dataOcorrencia, String tipo, boolean justificado, float valor) {
+    public Ocorrencia(Funcionario funcionario, String dataOcorrencia, String tipo, boolean justificado, float valor, boolean processado) {
        this.funcionario = funcionario;
        this.dataOcorrencia = dataOcorrencia;
        this.tipo = tipo;
        this.justificado = justificado;
        this.valor = valor;
+       this.processado = processado;
     }
    
     public Integer getCodigo() {
@@ -68,6 +70,14 @@ public class Ocorrencia  implements java.io.Serializable {
     
     public void setValor(float valor) {
         this.valor = valor;
+    }
+    
+    public boolean getProcessado(){
+        return this.processado;
+    }
+    
+    public void setProcessado(boolean processado){
+        this.processado = processado;
     }
 
 
