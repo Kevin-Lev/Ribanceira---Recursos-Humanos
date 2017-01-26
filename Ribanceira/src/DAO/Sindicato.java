@@ -1,5 +1,5 @@
 package DAO;
-// Generated Jan 25, 2017 8:24:35 PM by Hibernate Tools 4.3.1
+// Generated Jan 26, 2017 3:47:47 PM by Hibernate Tools 4.3.1
 
 
 
@@ -27,13 +27,13 @@ public class Sindicato  implements java.io.Serializable {
         this.endereco = endereco;
         this.telefone = telefone;
     }
-//    public Sindicato(String codigo, String nome, String ramoAtividade, String endereco, String telefone) {
+//    public Sindicato(String codigo, String nome, String ramoAtividade, String endereco, String telefone, ConvencaoColetiva convencaoColetiva) {
 //       this.codigo = codigo;
 //       this.nome = nome;
 //       this.ramoAtividade = ramoAtividade;
 //       this.endereco = endereco;
 //       this.telefone = telefone;
-//       //this.convencaoColetiva = convencaoColetiva;
+//       this.convencaoColetiva = convencaoColetiva;
 //    }
    
     public String getCodigo() {
