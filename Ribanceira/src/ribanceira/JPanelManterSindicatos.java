@@ -9,6 +9,7 @@ import DAO.Sindicato;
 import controladores.G_ConvencaoColetiva;
 import controladores.G_Sindicato;
 import java.awt.CardLayout;
+import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -473,7 +474,7 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
             this.setVisible(false);
         }
         
-        catch(Exception e) {
+        catch(HeadlessException e) {
             
             JOptionPane.showMessageDialog(this, "Error - Sindicato relacionado com uma convenção coletiva","Exclusão de Sindicato",JOptionPane.INFORMATION_MESSAGE);
             this.setVisible(false);
@@ -521,7 +522,7 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
             this.setVisible(false);
         }
         
-        catch (Exception e) {
+        catch (HeadlessException e) {
             
             JOptionPane.showMessageDialog(this, "Error - Falta de dados à inserir","Erro ao alterar",JOptionPane.INFORMATION_MESSAGE);
             this.setVisible(false);

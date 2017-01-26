@@ -16,10 +16,13 @@ import java.util.Comparator;
  *
  * @author Christian T. Nakata
  */
+
 public class G_Sindicato{
     
     public ArrayList<Sindicato> getListaSindicato() {
-        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        Session s;
+        
+        s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
         ArrayList<Sindicato> listaSindicato = (ArrayList<Sindicato>) s.createQuery("From Sindicato").list();
         Collections.sort(listaSindicato, new Comparator<Sindicato>() {
@@ -53,10 +56,10 @@ public class G_Sindicato{
       s.getTransaction().commit();
     }
     
-    public void atualizaSindicato (Sindicato sind) {
+    public void atualizarSindicato (Sindicato sindicato) {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         s.beginTransaction();
-        s.saveOrUpdate(sind);
+        s.saveOrUpdate(sindicato);
         s.getTransaction().commit();   
     }
 }
