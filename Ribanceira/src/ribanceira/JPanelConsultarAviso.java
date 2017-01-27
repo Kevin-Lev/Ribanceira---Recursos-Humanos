@@ -74,6 +74,7 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
         jTableAvisosRegistrados = new javax.swing.JTable();
         jButtonEditarAviso = new javax.swing.JButton();
         jButtonGerarArquivo = new javax.swing.JButton();
+        jButtonAjuda = new javax.swing.JButton();
 
         jLabelAvisosRegistrados.setText("Avisos registrados:");
 
@@ -112,18 +113,26 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
             }
         });
 
+        jButtonAjuda.setText("Ajuda");
+        jButtonAjuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAjudaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabelAvisosRegistrados)
                         .addGap(0, 462, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonAjuda)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonGerarArquivo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonEditarAviso)))
@@ -140,7 +149,8 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEditarAviso)
-                    .addComponent(jButtonGerarArquivo))
+                    .addComponent(jButtonGerarArquivo)
+                    .addComponent(jButtonAjuda))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -212,8 +222,15 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
        }
     }//GEN-LAST:event_jButtonGerarArquivoActionPerformed
 
+    private void jButtonAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjudaActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "1.Selecione o aviso prévio referente ao funcionário desejado.\n2.Para editar os dados do aviso prévio selecionado, clique no botão [Editar Aviso].\n3. ","Ajuda - Gerar Aviso Prévio",JOptionPane.INFORMATION_MESSAGE);
+    
+    }//GEN-LAST:event_jButtonAjudaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAjuda;
     private javax.swing.JButton jButtonEditarAviso;
     private javax.swing.JButton jButtonGerarArquivo;
     private javax.swing.JLabel jLabelAvisosRegistrados;
