@@ -57,6 +57,7 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableBuscaSindicato = new javax.swing.JTable();
         jButtonAtualizarList = new javax.swing.JButton();
+        jButtonAjuda = new javax.swing.JButton();
         jPanelCadastrar = new javax.swing.JPanel();
         jLabelNomeSindicato = new javax.swing.JLabel();
         jTextFieldNomeSindicato = new javax.swing.JTextField();
@@ -142,6 +143,13 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
             }
         });
 
+        jButtonAjuda.setText("Ajuda");
+        jButtonAjuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAjudaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelBuscarLayout = new javax.swing.GroupLayout(jPanelBuscar);
         jPanelBuscar.setLayout(jPanelBuscarLayout);
         jPanelBuscarLayout.setHorizontalGroup(
@@ -150,7 +158,8 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelBuscarLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
                     .addGroup(jPanelBuscarLayout.createSequentialGroup()
@@ -172,7 +181,9 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
                     .addComponent(jButtonExcluirSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAtualizarList, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69)
-                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonSair, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(jButtonAjuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -383,11 +394,11 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneManterSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPaneManterSindicato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneManterSindicato, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPaneManterSindicato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jTabbedPaneManterSindicato.getAccessibleContext().setAccessibleName("");
@@ -528,8 +539,24 @@ public class JPanelManterSindicatos extends javax.swing.JPanel {
             //this.setVisible(false);
         }    }//GEN-LAST:event_jButtonSalvarAlteracaoActionPerformed
 
+    private void jButtonAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjudaActionPerformed
+        JOptionPane.showMessageDialog(this, "Alterando um registro de sindicato:\n" +
+"Escolha o sindicato que deseja alterar os dados da tabela e aperte o botão \"Alterar\". \n" +
+"Em seguida, no tab \"Alterar\" altere os dados desejados e salve com o botão \"Salvar\".\n" +
+"\n" +
+"Cadastrando um registro de sindicato:\n" +
+"Selecione o tab \"Cadastrar\" e preencha as lacunas. Em seguida, salve com o botão \"Salvar\".\n" +
+"\n" +
+"Excluindo um registro de sindicato:\n" +
+"Escolha o sindicato que deseja excluir pela tabela e aperte o botão \"Excluir sindicato\". \n" +
+"\n" +
+"Atualizando os registros dos sindicatos:\n" +
+"Para qualquer alteração realizada, atualize a tabela com o botão \"Atualizar Lista\".");
+    }//GEN-LAST:event_jButtonAjudaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAjuda;
     private javax.swing.JButton jButtonAlterarSindicato;
     private javax.swing.JButton jButtonAtualizarList;
     private javax.swing.JButton jButtonExcluirSindicato;

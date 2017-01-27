@@ -16,6 +16,7 @@ import java.awt.HeadlessException;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import java.util.Random;
+import javax.swing.JButton;
 
 /**
  *
@@ -30,6 +31,9 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
     ArrayList<Sindicato> listaSindicato;
     Sindicato sindicato;
         
+    JButton b = new JButton(); 
+    //b.setIcon(new ImageIcon("Imagens/pdf.png"));
+    
     public JPanelConvencaoColetiva() {
         initComponents();
 
@@ -70,6 +74,7 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
         jTextFieldDataDeAtualizacao = new javax.swing.JTextField();
         jTextFieldProporcaoSalMinimo = new javax.swing.JTextField();
         jTextFieldDescontoDia = new javax.swing.JTextField();
+        jButtonRelatorio = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -159,6 +164,8 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
             }
         });
 
+        jButtonRelatorio.setText("Relatório");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -184,7 +191,8 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldDataDeAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonSalvarConv, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19)))
                 .addContainerGap())
@@ -209,7 +217,9 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldDescontoDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jButtonSalvarConv, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonSalvarConv, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jButtonRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -227,13 +237,13 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
                                                              jTextFieldProporcaoSalMinimo.getText());
 
             JOptionPane.showMessageDialog(this, "Convenção adicionada com sucesso!","Adição de Convenção",JOptionPane.INFORMATION_MESSAGE);
-            //this.setVisible(false);
+            this.setVisible(false);
         }
         
         catch (HeadlessException e) {
             
             JOptionPane.showMessageDialog(this, "Error - Falta de dados à inserir","Erro ao alterar",JOptionPane.INFORMATION_MESSAGE);
-            //this.setVisible(false);
+            this.setVisible(false);
             
         }
 
@@ -259,6 +269,7 @@ public class JPanelConvencaoColetiva extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.ButtonGroup buttonGroup6;
+    private javax.swing.JButton jButtonRelatorio;
     private javax.swing.JButton jButtonSalvarConv;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDialog jDialog1;
