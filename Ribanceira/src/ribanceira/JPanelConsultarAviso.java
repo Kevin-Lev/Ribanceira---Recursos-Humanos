@@ -224,7 +224,7 @@ public class JPanelConsultarAviso extends javax.swing.JPanel {
 
     private void jButtonAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjudaActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "1.Selecione o aviso prévio referente ao funcionário desejado.\n2.Para editar os dados do aviso prévio selecionado, clique no botão [Editar Aviso].\n3. ","Ajuda - Gerar Aviso Prévio",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "1.Selecione o aviso prévio referente ao funcionário desejado.\n\n2.Para editar os dados do aviso prévio selecionado, clique no botão [Editar Aviso].\n\n3.Clique no botão [Gerar Arquivo] para emitir um documento PDF de aviso prévio para o funcionário.\n\n4.Vá para o diretório do sistema Ribanceira para encontrar o PDF do aviso prévio","Ajuda - Gerar Aviso Prévio",JOptionPane.INFORMATION_MESSAGE);
     
     }//GEN-LAST:event_jButtonAjudaActionPerformed
 
